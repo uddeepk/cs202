@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
 
         string conversionType ( argv[1]);
 
-        if ( !validNumber( argv[3])) {
+        if ( !validNumber( argv[2])) {
             std::cerr << "Temperature not in number" << std::endl;
             return 1;
         }
