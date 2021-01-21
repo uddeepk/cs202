@@ -44,6 +44,16 @@ int main(int argc, char **argv) {
         //Make sure the third argument is a number
 
     //Get answers depending upon arguments
+    if ( conversionType == "--ftoc" ) {
+        std::cout << "The temperature is " << cpp_ftoc(argv[2]) <<" degrees Celsius." << std::endl;
+    }
+    else if (conversionType == "--ctof") {
+        std::cout << "The temperature is " << c_ctof(argv[2]) << " degrees Farenheit." <<std::endl;
+    }
+    else {
+        std::cerr << "Improper conversion type call. Did you mean --ftoc or --ctof?" << std::endl;
+        return 1;
+    }
 
     return 0;
 }
@@ -55,7 +65,9 @@ double cpp_ftoc(const char* str) { //Converts using C++ STL (stod)
 }
 
 double c_ctof(const char* str) {//Uses C function strtod to do conversions
-    return 0;
+    double tempC = strtod(str, NULL);
+
+    return ((tempC * 9 / 5 ) + 32 );
 }
 
 bool validNumber ( const char* temp) {
