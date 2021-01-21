@@ -70,6 +70,34 @@ double c_ctof(const char* str) {//Uses C function strtod to do conversions
     return ((tempC * 9 / 5 ) + 32 );
 }
 
-bool validNumber ( const char* temp) {
-    return true;
+bool validNumber ( const char* str) {
+    size_t len = strlen ( str );
+    size_t offset = 0;
+
+    if( len == 0) {
+        return false;
+    }
+
+    if (str [0] == '-' || str[0] == '+') {
+        offset = 1;
+    }
+
+    int numOfDigits = 0, numOfDots = 0;
+
+    for ( size_t i = 0 + offset ; i < len ; ++i) {
+        if(str[i] >= '0' && str[i] <= '9') {
+            ++numOfDigits;
+        }
+        else if ( str [i] == '.' ) {
+            ++numOfDots;
+        }
+        else {
+            return false;
+        }
+
+        if ( numOfDots > 1 ){
+            return false;
+        }
+    }
+    return (numOfDigits > 0);
 }
