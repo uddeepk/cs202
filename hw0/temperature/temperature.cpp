@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
 double cpp_ftoc(const char* str) { //Converts using C++ STL (stod)
     double tempF = std::stod(std::string(str)) ;
 
-    return ((tempF - 32) * 9 / 5 );
+    return ((tempF - 32) * 5 / 9 );
 }
 
 double c_ctof(const char* str) {//Uses C function strtod to do conversions
