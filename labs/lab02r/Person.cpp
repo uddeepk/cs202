@@ -25,7 +25,7 @@ std::string Person::getName() const {
     return _name;
 }
 void passByValue(Person per) {
-    cout << "passByValue is called, object massed by value. Name of Person is " << per.getName() ;
+    cout << "passByValue is called, object massed by value. Name of Person is " << per.getName() << ". " ;
 }
 
 void displayNameFiveTimes (Person &per) {
@@ -36,7 +36,7 @@ void displayNameFiveTimes (Person &per) {
 
 }
 
-Person combinedNewName ( const Person &per1, const Person &per2) {
+Person combineTwoNames ( const Person &per1, const Person &per2) {
     cout << "Passes objects by const references and returns an object. ";
     return Person ( per1.getName() + " " + per2.getName());
 }

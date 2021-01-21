@@ -20,6 +20,6 @@ private:
 };
 void passByValue (Person per);
 void displayNameFiveTimes (Person &per); //passes by reference
-Person combinesTwoNames ( const Person &per1, const Person &per2); //returns Person
+Person combineTwoNames ( const Person &per1, const Person &per2); //returns Person
 
 #endif //LAB01R_PERSON_HPP
