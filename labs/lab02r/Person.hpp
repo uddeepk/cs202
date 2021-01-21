@@ -5,10 +5,20 @@
 #ifndef LAB01R_PERSON_HPP
 #define LAB01R_PERSON_HPP
 
+#include <string>
 
 class Person {
+public:
+    Person();
+    Person(const Person &per);
+    Person(std::string const &str);
+    ~Person(); //destructor
 
+private:
+    const std::string _name;
 };
-
+void passByValue (Person per);
+void displayNameFiveTimes (Person &per); //passes by reference
+Person combinesTwoNames ( const Person &per1, const Person &per2); //returns Person
 
 #endif //LAB01R_PERSON_HPP
