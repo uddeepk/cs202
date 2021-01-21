@@ -14,6 +14,7 @@ public:
     Person(std::string const &str);
     ~Person(); //destructor
 
+    std::string getName() const;
 private:
     const std::string _name;
 };
