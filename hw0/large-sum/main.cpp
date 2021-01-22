@@ -87,12 +87,14 @@ int main(int argc, char **argv) {
   string sumOfNumbers = getSumOfNumbers (fiftyDigitNumbers);
   //cout << sumOfNumbers << endl;
 
-  cout << sumOfNumbers.substr(0, 10) <<endl;
+  cout << sumOfNumbers.substr(0, 10) <<endl; //only display first 10 digits.
   
   return 0;
 }
 
 string getSumOfNumbers( const vector <string> &v ) {
+  //Computes sum like taught in school, getting the sum of rightmost digits and carrying
+  //over the digits to the left.
   long long sumOfDigits = 0 ;  //This will store the sum of digits at the certain location
   string sum ;
   
