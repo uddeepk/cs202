@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     fileName = argv[1];
   }
   else {
-    cerr <<"Improper arguments! Please enter filename likes so : \n$ large-sum inputfile.txt\n or leave empty in which case the program will default to input.txt" << endl;
+    cerr <<"Too many arguments! Please enter filename likes so : \n$ large-sum inputfile.txt\n or to use default input file input.txt, do not enter a filename argument." << endl;
   }
   
   myFile.open(fileName);
