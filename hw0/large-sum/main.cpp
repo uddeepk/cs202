@@ -32,13 +32,13 @@ int main() {
   std::ifstream myFile ;
 
   myFile.open("input.txt");
-  
+
   if(myFile.fail()) { 
-    //If file opening failed. Figure out another way to do it maybe using try catch.
+    //If file opening failed. This happens when no file is present.
     cerr << "input.txt not available. Place input.txt in the same locations as this file." << endl;
     return 1;
   }
-  
+
   string temp;
   while (getline(myFile, temp)) {//Continues while input is good(or until it reaches eof)
     //Added regex to ensure input is correct
@@ -54,8 +54,7 @@ int main() {
       //throw "Numbers not 50 digits long!";
       cerr << "The numbers are not 50 digits long !" << endl;
       return 1;
-    }
-      
+    }  
     //Push temp into vecNum
     fiftyDigitNumbers.push_back(temp);
   }
@@ -64,7 +63,10 @@ int main() {
   myFile.close();
   
   string sumOfNumbers = getSumOfNumbers (fiftyDigitNumbers);
-  cout << sumOfNumbers << endl;
+  //cout << sumOfNumbers << endl;
+
+  cout << sumOfNumbers.substr(0, 10) <<endl;
+  
   return 0;
 }
 
