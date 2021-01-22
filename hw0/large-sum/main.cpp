@@ -26,12 +26,12 @@ using std::cerr; using std::cout; using std::endl;
 
 string getSumOfNumbers ( const vector <string>& );
 
-char defaultFileName[] {"input.txt"} ;
+const char defaultFileName[] {"input.txt"} ;
 
 int main(int argc, char **argv) {
   vector <string> fiftyDigitNumbers ;//Vector to store the numbers
 
-  char *fileName;
+  const char *fileName;
   
   std::ifstream myFile ;
 
