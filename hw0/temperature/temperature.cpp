@@ -5,8 +5,8 @@
  * Spring 2021
  *
  * Temperature
- * Converts temperature from degrees Farenheit to degrees Celsius by processing the command line
- * variables argc and argv.
+ * Converts temperature from degrees Farenheit to degrees Celsius 
+ * by processing the command line variables argc and argv.
  *
  * Instructions: From command line the following are ways to put input
  * temperature --ftoc 50
@@ -29,8 +29,10 @@ int main(int argc, char **argv) {
     //Check input validity
         //Check correct number of args
         if ( argc != 3) {
-            std::cerr << (argc < 3 ? "too few " : "too many ") << " arguments."<<
-             "\nPut answer in form $temperature conversionType number" << std::endl;
+            std::cerr << (argc < 3 ? "too few " : "too many ")
+		      << " arguments.\n"
+		      << "Put answer in form $temperature conversionType number"
+		      << std::endl;
             return 1;
         }
         //Ensure arguments are correct
@@ -38,20 +40,24 @@ int main(int argc, char **argv) {
         string conversionType ( argv[1]);
 
         if ( !validNumber( argv[2])) {
-            std::cerr << "Wrong argument. Temperature should be a number" << std::endl;
+            std::cerr << "Wrong argument. Temperature should be a number"
+		      << std::endl;
             return 1;
         }
         //Make sure the third argument is a number
 
     //Get answers depending upon arguments
     if ( conversionType == "--ftoc" ) {
-        std::cout << "The temperature is " << cpp_ftoc(argv[2]) <<" degrees Celsius." << std::endl;
+        std::cout << "The temperature is " << cpp_ftoc(argv[2]) <<" degrees Celsius."
+		  << std::endl;
     }
     else if (conversionType == "--ctof") {
-        std::cout << "The temperature is " << c_ctof(argv[2]) << " degrees Farenheit." <<std::endl;
+        std::cout << "The temperature is " << c_ctof(argv[2]) << " degrees Farenheit."
+		  <<std::endl;
     }
     else {
-        std::cerr << "Improper conversion type call. Did you mean --ftoc or --ctof?" << std::endl;
+        std::cerr << "Improper conversion type call. Did you mean --ftoc or --ctof?"
+		  << std::endl;
         return 1;
     }
 
