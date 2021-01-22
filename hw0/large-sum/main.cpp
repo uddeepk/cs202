@@ -26,12 +26,26 @@ using std::cerr; using std::cout; using std::endl;
 
 string getSumOfNumbers ( const vector <string>& );
 
-int main() {
+char defaultFileName[] {"input.txt"} ;
+
+int main(int argc, char **argv) {
   vector <string> fiftyDigitNumbers ;//Vector to store the numbers
 
+  char *fileName;
+  
   std::ifstream myFile ;
 
-  myFile.open("input1.txt");
+  if (argc == 1) {
+    fileName = defaultFileName ;
+  }
+  else if ( argc == 2 ) {
+    fileName = argv[1];
+  }
+  else {
+    cerr <<"Improper arguments! Please enter filename likes so : \n$ large-sum inputfile.txt\n or leave empty in which case the program will default to input.txt" << endl;
+  }
+  
+  myFile.open(fileName);
 
   if(myFile.fail()) { 
     //If file opening failed. This happens when no file is present.
@@ -42,7 +56,7 @@ int main() {
   string temp;
   while (getline(myFile, temp)) {//Continues while input is good(or until it reaches eof)
 
-    if(temp.empty())
+    if(temp.empty()) //skips empty line
       continue;
     
     //Added regex to ensure input is correct
@@ -62,7 +76,9 @@ int main() {
     //Push temp into vecNum
     fiftyDigitNumbers.push_back(temp);
   }
+  
   if(fiftyDigitNumbers.empty()) {
+    //if there is no data in the input file.
     cerr << "No data. Please check input file." << endl;
   }
  
