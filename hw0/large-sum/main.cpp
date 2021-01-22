@@ -31,7 +31,7 @@ int main() {
 
   std::ifstream myFile ;
 
-  myFile.open("input.txt");
+  myFile.open("input1.txt");
 
   if(myFile.fail()) { 
     //If file opening failed. This happens when no file is present.
@@ -41,6 +41,10 @@ int main() {
 
   string temp;
   while (getline(myFile, temp)) {//Continues while input is good(or until it reaches eof)
+
+    if(temp.empty())
+      continue;
+    
     //Added regex to ensure input is correct
     std::regex re ("\\D");
     std::smatch m;
@@ -51,14 +55,16 @@ int main() {
     }
       
     if (temp.length() != 50 ) {
-      //throw "Numbers not 50 digits long!";
-      cerr << "The numbers are not 50 digits long !" << endl;
+      //terminate and display error
+      cerr << "The numbers are not 50 digits long ! " << "look for \n" << temp << endl;
       return 1;
     }  
     //Push temp into vecNum
     fiftyDigitNumbers.push_back(temp);
   }
-
+  if(fiftyDigitNumbers.empty()) {
+    cerr << "No data. Please check input file." << endl;
+  }
  
   myFile.close();
   
