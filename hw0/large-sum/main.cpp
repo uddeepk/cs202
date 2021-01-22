@@ -42,19 +42,23 @@ int main(int argc, char **argv) {
     fileName = argv[1];
   }
   else {
-    cerr <<"Too many arguments! Please enter filename likes so : \n$ large-sum inputfile.txt\n or to use default input file input.txt, do not enter a filename argument." << endl;
+    cerr <<"Too many arguments! Please enter filename likes so : \n"
+	 <<"$ large-sum inputfile.txt\n or to use default input file input.txt,"
+	 <<" do not enter a filename argument." << endl;
   }
   
   myFile.open(fileName);
 
   if(myFile.fail()) { 
     //If file opening failed. This happens when no file is present.
-    cerr << "input.txt not available. Place input.txt in the same locations as this file." << endl;
+    cerr << "input.txt not available. \n"
+	 << "Place input.txt in the same locations as this file." << endl;
     return 1;
   }
 
   string temp;
-  while (getline(myFile, temp)) {//Continues while input is good(or until it reaches eof)
+  while (getline(myFile, temp)) {
+    //Continues while input is good(or until it reaches eof)
 
     if(temp.empty()) //skips empty line
       continue;
@@ -64,13 +68,15 @@ int main(int argc, char **argv) {
     std::smatch m;
     
     if (std::regex_search( temp, m, re)) {
-      cerr << "Invalid input. Non digit character present. Search for " << m.str() << endl;
+      cerr << "Invalid input. Non digit character present. Search for "
+	   << m.str() << endl;
       return 1;
     }
       
     if (temp.length() != 50 ) {
       //terminate and display error
-      cerr << "The numbers are not 50 digits long ! " << "look for \n" << temp << endl;
+      cerr << "The numbers are not 50 digits long ! " << "look for \n" 
+	   << temp << endl;
       return 1;
     }  
     //Push temp into vecNum
@@ -93,8 +99,7 @@ int main(int argc, char **argv) {
 }
 
 string getSumOfNumbers( const vector <string> &v ) {
-  //Computes sum like taught in school, getting the sum of rightmost digits and carrying
-  //over the digits to the left.
+  //Computes sum by getting  sum of rightmost digits and carrying to the left
   long long sumOfDigits = 0 ;  //This will store the sum of digits at the certain location
   string sum ;
   
