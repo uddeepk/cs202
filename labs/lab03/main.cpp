@@ -32,8 +32,8 @@ int main() {
 
     // 1.Create a raw pointer to a dynamically allocated object of your class. Is this object ever
     // destroyed?
-
-    Person * per1 = new Person( "Bart");
+    Person per0 = Person("Bart");
+    Person * per1 = new Person( per0);
 
     cout << per1->getName() << endl;
 
