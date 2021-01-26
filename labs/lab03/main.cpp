@@ -15,7 +15,10 @@ void displayNameFiveTimes (Person &per) {
     }
 
 }
-
+void passByConstReference ( const Person &per) {
+    cout << "Passed object by const reference. " ;
+    cout << "The name of pers is " << per.getName() ;
+}
 Person combineTwoNames ( const Person &per1, const Person &per2) { //Pas by const ref
     cout << "Passes objects by const references and returns an object. ";
     return Person ( per1.getName() + " " + per2.getName()); //returns object by value
@@ -36,6 +39,10 @@ int main() {
     cout << "\n";
     Person p4 ( "Steve");
     cout << "\n";
+    cout <<" **Pass by const ref";
+    passByConstReference(p4);
+    cout <<"\n";
+
     cout << "**Pass by const ref";
     Person p5 = combineTwoNames(p4, p3);
     cout << "\n";

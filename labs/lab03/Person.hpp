@@ -18,8 +18,5 @@ public:
 private:
     const std::string _name;
 };
-void passByValue (Person per);
-void displayNameFiveTimes (Person &per); //passes by reference
-Person combineTwoNames ( const Person &per1, const Person &per2); //returns Person
 
 #endif //LAB01R_PERSON_HPP
