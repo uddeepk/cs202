@@ -36,6 +36,10 @@ int main() {
     Person * per1 = new Person( "Bart");
 
     cout << per1->getName() << endl;
+
+    //cout << per1 << endl; // per1 ptr points to this memory.
+    delete per1;
+    per1 = nullptr;
     // The object is not destroyed. Noticed no destructor called.
 
     // 2. Create a unique_ptr to an object of your class. Note when the object is created, and
