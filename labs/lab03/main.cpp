@@ -111,6 +111,15 @@ int main() {
 
     }
 
+    cout << "\nExtra! Showing shared_ptrs and scope\n";
+    std::shared_ptr <Person> ptrOutsideScope ;
+    {
+        auto sharedTempPtr = std::make_shared<Person>("Emily");
+        auto sharedTempPtr2 = std::make_shared<Person>("Oliver");
+
+        ptrOutsideScope = sharedTempPtr2;
+        sharedTempPtr2->setName("movedOliver");
+    }
     cout << "\n\n***End of Code***\n\n";
 
     //Before each step, print a line to the console explaining what you're doing,
