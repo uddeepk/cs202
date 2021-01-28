@@ -73,7 +73,7 @@ int main() {
     //auto uPtrPer2 = uPtrPer; //gives error
     //std::unique_ptr uPtrPer2 (uPtrPer);
     auto uPtrPer2 = std::move(uPtrPer);
-
+    uPtrPer2 ->setName("movedUniqueAndy");
     cout<< "\nThe unique pointer points to Person _" << uPtrPer2->getName() << "_ at address" <<uPtrPer2
     <<"\nAlso, notice that the original unique_ptr points to " << uPtrPer
     <<" which is the address of a nullptr. \n"; //points to address of 0 or "nullptr" after std::move
