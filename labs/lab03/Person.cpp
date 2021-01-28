@@ -7,15 +7,15 @@
 using std::cout;
 using std::endl;
 Person::Person():_name("Stranger") {
-    cout << "Constructed a Person named _Anon_ via Default Constructor!\n ";
+    cout << "Constructed a Person named _Anon_ via Default Constructor!\n";
 }
 
 Person::Person (const Person &per):_name("copyOf"+per._name) {
-    cout << "Constructed a Person named _" << _name << "via Copy Constructor!\n " ;
+    cout << "Constructed a Person named _" << _name << "via Copy Constructor!\n" ;
 }
 
 Person::Person(const std::string &str):_name(str) {
-    cout <<"Constructed a Person named _" << _name << "_ via (const std::string &) Constructor!\n " ;
+    cout <<"Constructed a Person named _" << _name << "_ via (const std::string &) Constructor!\n" ;
 }
 
 Person::~Person() {
