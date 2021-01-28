@@ -32,16 +32,18 @@ int main() {
 
     // 1.Create a raw pointer to a dynamically allocated object of your class. Is this object ever
     // destroyed?
-    cout << "Creating Raw pointer by copying an object " << endl;
+    cout << "Creating Raw pointer by copying an object\n ";
     Person per0 = Person("Bart");
     Person * per1 = new Person( per0);
 
-    cout << per1->getName() << endl;
+    cout << per1->getName() << "\n";
 
     //cout << per1 << endl; // per1 ptr points to this memory.
+
     //delete per1;
     per1 = nullptr;
     // The object is not destroyed. Noticed no destructor called.
+
     cout << "\n";
     // 2. Create a unique_ptr to an object of your class. Note when the object is created, and
     // that it is eventually destroyed. This object should be created with your
