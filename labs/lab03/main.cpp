@@ -40,15 +40,15 @@ int main() {
     // destroyed?
 
     cout << "1. Creating Raw pointer by copying an object!\n ";
-    Person per0 = Person("Bart");
-    Person * per1 = new Person( per0);
+    Person per0 = Person ("Bart");
+    Person * per1 = new Person( per0 );
 
     //cout << per1->getName() << "\n";
 
     //cout << per1 << endl; // per1 ptr points to this memory.
 
-    //delete per1;
-    per1 = nullptr;
+    //delete per1; //deleting object at pointer because objects at raw pointer do not get deleted auto
+    //per1 = nullptr; //making it point to null
     // ****The object is not destroyed. Noticed no destructor called.
 
     cout << "\n";
