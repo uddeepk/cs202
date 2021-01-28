@@ -62,7 +62,7 @@ int main() {
     //std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy")); //Calls the copy constructor
     auto uPtrPer =  std::make_unique <Person> ("Andy"); //Notice Template used only once, less redundant. More efficient
     //auto uPtrPer (std::make_unique <Person> ("Andy")); //Why not???
-    //std::unique_ptr <Person> uPtrPer(new Person("Andy")); //Works. ask why not.
+    //std::unique_ptr <Person> uPtrPer(new Person("Andy")); //Don't do it! ask again why!
     //auto uPtrPer = std::make_unique <Person> (Person("Andy")); //uses copy constructor inefficient ?
 
     cout <<"\n";
@@ -89,6 +89,7 @@ int main() {
     // 5.Make a shared_ptr to a dynamically allocated object of your class.
     cout << "5. Making a shared_ptr to a dynamically allocated object of Person class!\n";
 
+    //std::shared_ptr <Person> shPtrPer{new Person("Theodore")}; //Not the best way. multiple calls to new, bad for caching.
     auto shPtrPer = std::make_shared<Person> ("Theodore"); // we can also use '=' assignment.
 
     auto shPtrPer2 = shPtrPer;
