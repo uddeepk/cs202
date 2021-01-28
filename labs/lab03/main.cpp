@@ -82,9 +82,19 @@ int main() {
 
     auto shPtrPer2 = shPtrPer;
 
+    cout << shPtrPer << " is the address of the first shared_ptr to Person " << shPtrPer->getName()
+    << "\n";
+
+    cout << "\n" ;
     // 6.Make another shared_ptr that points at the same object. Note that the object does not
     // get destroyed until both shared_ptrs go out of scope.
-    //
+    cout << "6. Making another shared_ptr that points at the same object!\n";
+    auto shPtrPer3 (shPtrPer);
+    //auto shPtrPer3 = std::make_shared<Person>(*shPtrPer);
+    cout <<shPtrPer3 << " is the address of the shared_ptr pointing to same Person named "
+    << shPtrPer->getName(); //Checking memory address
+
+    cout << "\n***End of Code***\n";
     //Before each step, print a line to the console explaining what you're doing,
     //like "Creating raw pointer.", "Creating unique_ptr.", "Transferring ownership to
     //new unique_ptr.", "Calling a member function.", "Creating shared_ptr.",
