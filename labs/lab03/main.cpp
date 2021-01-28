@@ -1,10 +1,16 @@
+//int g_constructed, g_destroyed;
+
 #include "Person.hpp"
 #include <iostream>
 #include <vector>
 #include <memory>
+
+
 using std::cout; using std::endl;
 
 int main() {
+    //extern int g_constructed;
+    //extern int g_destroyed;
     /*
     int x;
     int y;
@@ -93,7 +99,6 @@ int main() {
     //auto shPtrPer3 = std::make_shared<Person>(*shPtrPer);
     cout <<shPtrPer3 << " is the address of the shared_ptr pointing to same Person named "
     << shPtrPer->getName(); //Checking memory address
-
     cout << "\n***End of Code***\n";
     //Before each step, print a line to the console explaining what you're doing,
     //like "Creating raw pointer.", "Creating unique_ptr.", "Transferring ownership to
