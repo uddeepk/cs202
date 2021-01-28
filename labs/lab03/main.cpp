@@ -53,9 +53,10 @@ int main() {
 
     cout << "Creating unique_ptr to an object of Person class!\n";
 
-    // std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy"));
-    //auto uPtrPer =  std::make_unique<Person> (Person("Andy"));
-    std::unique_ptr <Person> uPtrPer(new Person("Andy"));
+    //std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy")); //Inefficient, uses copy consttructor
+    auto uPtrPer =  std::make_unique <Person> ("Andy"); //Notice Template used only once, less redundant. More efficient
+    //std::unique_ptr <Person> uPtrPer(new Person("Andy")); //Works. ask why not.
+    //auto uPtrPer = std::make_unique <Person> (Person("Andy")); //uses copy constructor inefficient ?
 
     cout <<"\n";
     // 3.Transfer ownership of that object to a different unique_ptr. Note that the object itself
@@ -68,10 +69,17 @@ int main() {
 
     cout << "\n";
     // 4.Demonstrate the calling of a member function of your object through the unique_ptr.
-    cout << "Demonstrating the calling of a member function of the object throug unique_ptr!\n";
+    cout << "Demonstrating the calling of a member function of the object through unique_ptr!\n";
+    //Isn't it the same as calling member function from a raw pointer???
 
+    cout << uPtrPer2->getName() << "\n";
+
+    cout << "\n";
     // 5.Make a shared_ptr to a dynamically allocated object of your class.
-    //
+    cout << "Making a shared_ptr to a dynamically allocated object of Person class!\n";
+
+    auto shPtrPer = std::make_shared<Person> ("Theodore");
+
     // 6.Make another shared_ptr that points at the same object. Note that the object does not
     // get destroyed until both shared_ptrs go out of scope.
     //
