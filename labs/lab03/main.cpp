@@ -69,9 +69,13 @@ int main() {
     // is not copied.
 
     cout << "3. Transferring ownership of that object to a different unique_ptr\n";
+    //auto uPtrPer2 = uPtrPer; //gives error
+    //std::unique_ptr uPtrPer2 (uPtrPer);
     auto uPtrPer2 = std::move(uPtrPer);
 
-    // cout << uPtrPer; //points to address of 0 or "nullptr" after std::move
+    cout<< "\nThe unique pointer points to Person _" << uPtrPer2->getName() << "_ at address" <<uPtrPer2
+    <<"\nAlso, notice that the original unique_ptr points to " << uPtrPer
+    <<" which is the address of a nullptr. \n"; //points to address of 0 or "nullptr" after std::move
 
     cout << "\n";
     // 4.Demonstrate the calling of a member function of your object through the unique_ptr.
@@ -84,12 +88,12 @@ int main() {
     // 5.Make a shared_ptr to a dynamically allocated object of your class.
     cout << "5. Making a shared_ptr to a dynamically allocated object of Person class!\n";
 
-    auto shPtrPer = std::make_shared<Person> ("Theodore");
+    auto shPtrPer = std::make_shared<Person> ("Theodore"); // we can also use '=' assignment.
 
     auto shPtrPer2 = shPtrPer;
 
-    cout << shPtrPer << " is the address of the first shared_ptr to Person " << shPtrPer->getName()
-    << "\n";
+    cout << shPtrPer << " is the address of the first shared_ptr to Person _" << shPtrPer->getName()
+    << "_\n";
 
     cout << "\n" ;
     // 6.Make another shared_ptr that points at the same object. Note that the object does not
@@ -99,7 +103,7 @@ int main() {
     //auto shPtrPer3 = std::make_shared<Person>(*shPtrPer);
     cout <<shPtrPer3 << " is the address of the shared_ptr pointing to same Person named "
     << shPtrPer->getName(); //Checking memory address
-    cout << "\n***End of Code***\n";
+    cout << "\n\n***End of Code***\n\n";
     //Before each step, print a line to the console explaining what you're doing,
     //like "Creating raw pointer.", "Creating unique_ptr.", "Transferring ownership to
     //new unique_ptr.", "Calling a member function.", "Creating shared_ptr.",
