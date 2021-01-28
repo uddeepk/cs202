@@ -1,7 +1,7 @@
 #include "Person.hpp"
 #include <iostream>
 #include <vector>
-
+#include <memory>
 using std::cout; using std::endl;
 
 int main() {
@@ -38,14 +38,16 @@ int main() {
     cout << per1->getName() << endl;
 
     //cout << per1 << endl; // per1 ptr points to this memory.
-    delete per1;
+    //delete per1;
     per1 = nullptr;
     // The object is not destroyed. Noticed no destructor called.
 
     // 2. Create a unique_ptr to an object of your class. Note when the object is created, and
     // that it is eventually destroyed. This object should be created with your
     // "other constructor," which takes a parameter.
-    //
+    // std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy"));
+    auto uPtrPer =  std::make_unique<Person> (Person("Andy"));
+
     // 3.Transfer ownership of that object to a different unique_ptr. Note that the object itself
     // is not copied.
     //
