@@ -26,3 +26,6 @@ Person::~Person() {
 std::string Person::getName() const {
     return _name;
 }
+void Person::setName(std::string newName) {
+    _name = newName;
+}

@@ -13,10 +13,10 @@ public:
     Person(const Person &per);
     Person(std::string const &str);
     ~Person(); //destructor
-
+    void setName (std::string newName);
     std::string getName() const;
 private:
-    const std::string _name;
+    std::string _name;
 };
 
 #endif //LAB01R_PERSON_HPP
