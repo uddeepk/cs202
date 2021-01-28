@@ -19,6 +19,7 @@ Person::Person(const std::string &str):_name(str) {
 }
 
 Person::~Person() {
+    cout << _name << " is being destroyed, " ;
     cout << "Destructor is called! ";
 }
 std::string Person::getName() const {

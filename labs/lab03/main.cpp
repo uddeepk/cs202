@@ -32,6 +32,7 @@ int main() {
 
     // 1.Create a raw pointer to a dynamically allocated object of your class. Is this object ever
     // destroyed?
+    cout << "Creating Raw pointer by copying an object " << endl;
     Person per0 = Person("Bart");
     Person * per1 = new Person( per0);
 
@@ -41,13 +42,15 @@ int main() {
     //delete per1;
     per1 = nullptr;
     // The object is not destroyed. Noticed no destructor called.
-
+    cout << "\n";
     // 2. Create a unique_ptr to an object of your class. Note when the object is created, and
     // that it is eventually destroyed. This object should be created with your
     // "other constructor," which takes a parameter.
     // std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy"));
-    auto uPtrPer =  std::make_unique<Person> (Person("Andy"));
-
+    std::unique_ptr <Person> uPtrPer(new Person("Andy"));
+    //auto uPtrPer =  std::make_unique<Person> (Person("Andy"));
+    cout << uPtrPer->getName() << endl;
+    cout << endl;
     // 3.Transfer ownership of that object to a different unique_ptr. Note that the object itself
     // is not copied.
     //
