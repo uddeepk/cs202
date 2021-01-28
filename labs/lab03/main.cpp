@@ -40,7 +40,7 @@ int main() {
     // destroyed?
 
     cout << "1. Creating Raw pointer by copying an object!\n ";
-    Person per0 = Person ("Bart");
+    Person per0 = Person {"Bart"}; //Notice constuctor calls can be made with curly braces.
     Person * per1 = new Person( per0 );
 
     //cout << per1->getName() << "\n";
@@ -60,8 +60,8 @@ int main() {
     cout << "2. Creating unique_ptr to an object of Person class!\n";
 
     //std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy")); //Calls the copy constructor
-    auto uPtrPer =  std::make_unique <Person> ("Andy"); //Notice Template used only once, less redundant. More efficient
-    //auto uPtrPer (std::make_unique <Person> ("Andy")); //Why not???
+    auto uPtrPer =  std::make_unique <Person> ("Andy"); //Is constructor callNotice Template used only once, less redundant. More efficient
+    //auto uPtrPer (std::make_unique <Person> ("Andy"));// == to 63 Why not???
     //std::unique_ptr <Person> uPtrPer(new Person("Andy")); //Don't do it! ask again why!
     //auto uPtrPer = std::make_unique <Person> (Person("Andy")); //uses copy constructor inefficient ?
 
@@ -101,11 +101,18 @@ int main() {
     // 6.Make another shared_ptr that points at the same object. Note that the object does not
     // get destroyed until both shared_ptrs go out of scope.
     cout << "6. Making another shared_ptr that points at the same object!\n";
-    auto shPtrPer3 (shPtrPer);
-    //auto shPtrPer3 = std::make_shared<Person>(*shPtrPer);
-    cout <<shPtrPer3 << " is the address of the shared_ptr pointing to same Person named "
-    << shPtrPer->getName(); //Checking memory address
+
+
+    {
+        //auto shPtrPer3 {"Julian"}; //Works ...
+        auto shPtrPer3 = std::make_shared<Person>("Julian");
+        cout << shPtrPer3 << " is the address of the shared_ptr pointing to same Person named "
+             << shPtrPer->getName() << "\n"; //Checking memory address
+
+    }
+
     cout << "\n\n***End of Code***\n\n";
+
     //Before each step, print a line to the console explaining what you're doing,
     //like "Creating raw pointer.", "Creating unique_ptr.", "Transferring ownership to
     //new unique_ptr.", "Calling a member function.", "Creating shared_ptr.",
