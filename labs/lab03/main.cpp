@@ -59,8 +59,9 @@ int main() {
 
     cout << "2. Creating unique_ptr to an object of Person class!\n";
 
-    //std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy")); //Inefficient, uses copy consttructor
+    //std::unique_ptr <Person> uPtrPer = std::make_unique<Person> (Person("Andy")); //Calls the copy constructor
     auto uPtrPer =  std::make_unique <Person> ("Andy"); //Notice Template used only once, less redundant. More efficient
+    //auto uPtrPer (std::make_unique <Person> ("Andy")); //Why not???
     //std::unique_ptr <Person> uPtrPer(new Person("Andy")); //Works. ask why not.
     //auto uPtrPer = std::make_unique <Person> (Person("Andy")); //uses copy constructor inefficient ?
 
