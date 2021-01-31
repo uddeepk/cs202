@@ -26,8 +26,7 @@ private:
     //Data member would it be start time according to system clock ?
     std::chrono::system_clock::time_point _startTime;
     std::chrono::system_clock::time_point _stopTime;
-    std::string _name;
-
+    bool _isRunning ;
 };
 
 
