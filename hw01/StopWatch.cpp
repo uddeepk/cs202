@@ -3,3 +3,10 @@
 //
 
 #include "StopWatch.hpp"
+#include <iostream>
+
+using std::cout;
+
+StopWatch::StopWatch() {
+
+}
