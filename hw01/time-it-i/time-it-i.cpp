@@ -17,7 +17,7 @@ void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigne
 int main() {
 
     auto uniqueStopWatchPtr = std::make_unique<StopWatch>();
-    //utilizing unique pointer to remember to utilize them.
+    //utilizing unique pointer just to do it.
 
     //std::cin.get();
 
@@ -32,8 +32,9 @@ int main() {
     size_t numberOfObjects = 10;
 
     for ( int i = 1 ; i <= 9 ; ++i) { // bcuz 10^1 to 10^9
-        if ( i == 3 )
-            break;
+        cout << "Size " << numberOfObjects << " : \n";
+        //if ( i == 3 )
+            //break;
         //Get Vector
         uniqueStopWatchPtr->Start();
         getVector(vecOfNumbers, generator, numberOfObjects);
@@ -47,15 +48,47 @@ int main() {
 
         //search needle in hay stack
 
+        uniqueStopWatchPtr->Start();
         auto it = std::search(vecOfNumbers.begin(), vecOfNumbers.end(), needle.begin(), needle.end());
+        uniqueStopWatchPtr->Stop();
+        cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << "ms ,"
+        << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "s\n";
 
-        if(it != vecOfNumbers.end())
+        //sorting for binary_search and also using it as a run
+        uniqueStopWatchPtr->Start();
+        std::sort(vecOfNumbers.begin(), vecOfNumbers.end());
+        uniqueStopWatchPtr->Stop();
+        cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << "ms ,"
+             << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "s\n";
+
+        //binary_search with sorted vector
+        //get random number, i am using first element of the needle
+        auto myNumberForBinarySearch = *(needle.begin());
+
+        uniqueStopWatchPtr->Start();
+        std::binary_search(vecOfNumbers.begin(), vecOfNumbers.end(), myNumberForBinarySearch);
+        uniqueStopWatchPtr->Stop();
+        cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << "ms ,"
+             << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "s\n";
+
+        //one more algorithm , shuffle ?? :)
+        std::random_device rd;
+        std::mt19937 myTempGenerator (rd());
+
+        uniqueStopWatchPtr->Start();
+        //std::shuffle(vecOfNumbers.begin(), vecOfNumbers.end(), myTempGenerator());
+        uniqueStopWatchPtr->Stop();
+        cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << "ms ,"
+             << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "s\n";
+
+        /*if(it != vecOfNumbers.end())
             cout <<"Successful search\n";
         else
             cout <<"Unsuccessful search\n";
-
+        */
         //cout << vecOfNumbers.size() << ", " << uniqueStopWatchPtr->getCurrentTimeInSeconds()<< endl;
         numberOfObjects *= 10;
+        cout << "\n";
     }
 
 
@@ -81,5 +114,8 @@ void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigne
     auto needleEndIndex = needleStartIndex + myGenerator() % (v.end() - needleStartIndex) ;
 
     myNeedle.insert (myNeedle.begin(), needleStartIndex, needleEndIndex);
+
+    if(myNeedle.empty())
+        getNeedle(myNeedle, v);
 
 }
