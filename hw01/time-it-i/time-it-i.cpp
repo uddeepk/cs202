@@ -76,7 +76,7 @@ int main() {
         std::mt19937 myTempGenerator (rd());
 
         uniqueStopWatchPtr->Start();
-        //std::shuffle(vecOfNumbers.begin(), vecOfNumbers.end(), myTempGenerator());
+        std::shuffle(vecOfNumbers.begin(), vecOfNumbers.end(), myTempGenerator);
         uniqueStopWatchPtr->Stop();
         cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << "ms ,"
              << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "s\n";
