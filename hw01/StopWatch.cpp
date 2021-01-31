@@ -7,6 +7,8 @@
 
 using std::cout;
 
-StopWatch::StopWatch() {
-
+//Constructor starts the clock
+StopWatch::StopWatch():_name("Default"),_startTime(std::chrono::system_clock::now()) {
+    cout << "Constructed a StopWatch named _Default_ via Default Constructor.\n";
 }
+

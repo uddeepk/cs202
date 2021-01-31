@@ -12,8 +12,7 @@ class StopWatch {
 public:
     //Needs constructor
     StopWatch(); //Default Constructor
-    StopWatch(const StopWatch &watch); //Copy Constructor ; do I need it ?
-    StopWatch(const std::string& name); //Other Constructor ???
+
     ~StopWatch(); //Destructor
     //Start method
     void Start();
@@ -25,8 +24,9 @@ public:
     double getCurrentTimeInMilliseconds();
 private:
     //Data member would it be start time according to system clock ?
-    std::chrono::system_clock::time_point startTime;
-    std::chrono::system_clock::time_point stopTime;
+    std::chrono::system_clock::time_point _startTime;
+    std::chrono::system_clock::time_point _stopTime;
+    std::string _name;
 
 };
 
