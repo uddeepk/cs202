@@ -25,7 +25,8 @@ public:
     double getCurrentTimeInMilliseconds();
 private:
     //Data member would it be start time according to system clock ?
-
+    std::chrono::system_clock::time_point startTime;
+    std::chrono::system_clock::time_point stopTime;
 
 };
 
