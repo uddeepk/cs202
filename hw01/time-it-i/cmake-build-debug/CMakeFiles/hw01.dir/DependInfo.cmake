@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/uddeepk/CLionProjects/cs202/hw01/StopWatch.cpp" "/home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles/hw01.dir/StopWatch.cpp.o"
-  "/home/uddeepk/CLionProjects/cs202/hw01/time-it-i.cpp" "/home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles/hw01.dir/time-it-i.cpp.o"
+  "/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/StopWatch.cpp" "/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/hw01.dir/StopWatch.cpp.o"
+  "/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/time-it-i.cpp" "/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/hw01.dir/time-it-i.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

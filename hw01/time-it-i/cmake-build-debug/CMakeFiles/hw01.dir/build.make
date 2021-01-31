@@ -63,10 +63,10 @@ RM = /snap/clion/139/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/uddeepk/CLionProjects/cs202/hw01
+CMAKE_SOURCE_DIR = /home/uddeepk/CLionProjects/cs202/hw01/time-it-i
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug
+CMAKE_BINARY_DIR = /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/hw01.dir/depend.make
@@ -79,29 +79,29 @@ include CMakeFiles/hw01.dir/flags.make
 
 CMakeFiles/hw01.dir/time-it-i.cpp.o: CMakeFiles/hw01.dir/flags.make
 CMakeFiles/hw01.dir/time-it-i.cpp.o: ../time-it-i.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw01.dir/time-it-i.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hw01.dir/time-it-i.cpp.o -c /home/uddeepk/CLionProjects/cs202/hw01/time-it-i.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw01.dir/time-it-i.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hw01.dir/time-it-i.cpp.o -c /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/time-it-i.cpp
 
 CMakeFiles/hw01.dir/time-it-i.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw01.dir/time-it-i.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/uddeepk/CLionProjects/cs202/hw01/time-it-i.cpp > CMakeFiles/hw01.dir/time-it-i.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/time-it-i.cpp > CMakeFiles/hw01.dir/time-it-i.cpp.i
 
 CMakeFiles/hw01.dir/time-it-i.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw01.dir/time-it-i.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/uddeepk/CLionProjects/cs202/hw01/time-it-i.cpp -o CMakeFiles/hw01.dir/time-it-i.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/time-it-i.cpp -o CMakeFiles/hw01.dir/time-it-i.cpp.s
 
 CMakeFiles/hw01.dir/StopWatch.cpp.o: CMakeFiles/hw01.dir/flags.make
 CMakeFiles/hw01.dir/StopWatch.cpp.o: ../StopWatch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hw01.dir/StopWatch.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hw01.dir/StopWatch.cpp.o -c /home/uddeepk/CLionProjects/cs202/hw01/StopWatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hw01.dir/StopWatch.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hw01.dir/StopWatch.cpp.o -c /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/StopWatch.cpp
 
 CMakeFiles/hw01.dir/StopWatch.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw01.dir/StopWatch.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/uddeepk/CLionProjects/cs202/hw01/StopWatch.cpp > CMakeFiles/hw01.dir/StopWatch.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/StopWatch.cpp > CMakeFiles/hw01.dir/StopWatch.cpp.i
 
 CMakeFiles/hw01.dir/StopWatch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw01.dir/StopWatch.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/uddeepk/CLionProjects/cs202/hw01/StopWatch.cpp -o CMakeFiles/hw01.dir/StopWatch.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/StopWatch.cpp -o CMakeFiles/hw01.dir/StopWatch.cpp.s
 
 # Object files for target hw01
 hw01_OBJECTS = \
@@ -115,7 +115,7 @@ hw01: CMakeFiles/hw01.dir/time-it-i.cpp.o
 hw01: CMakeFiles/hw01.dir/StopWatch.cpp.o
 hw01: CMakeFiles/hw01.dir/build.make
 hw01: CMakeFiles/hw01.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hw01"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hw01"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hw01.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -128,6 +128,6 @@ CMakeFiles/hw01.dir/clean:
 .PHONY : CMakeFiles/hw01.dir/clean
 
 CMakeFiles/hw01.dir/depend:
-	cd /home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/uddeepk/CLionProjects/cs202/hw01 /home/uddeepk/CLionProjects/cs202/hw01 /home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug /home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug /home/uddeepk/CLionProjects/cs202/hw01/cmake-build-debug/CMakeFiles/hw01.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/uddeepk/CLionProjects/cs202/hw01/time-it-i /home/uddeepk/CLionProjects/cs202/hw01/time-it-i /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug /home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/hw01.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/hw01.dir/depend
 
