@@ -4,12 +4,15 @@
 #include <memory>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 using std::cout;
 using std::endl;
 
 void getVector ( std::vector <unsigned int> &vecOfNumbers, std::mt19937 &myGenerator,
                  size_t numberOfObjects) ;
+
+void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigned int> & v);
 
 int main() {
 
@@ -29,12 +32,29 @@ int main() {
     size_t numberOfObjects = 10;
 
     for ( int i = 1 ; i <= 9 ; ++i) { // bcuz 10^1 to 10^9
+        if ( i == 3 )
+            break;
         //Get Vector
         uniqueStopWatchPtr->Start();
         getVector(vecOfNumbers, generator, numberOfObjects);
         uniqueStopWatchPtr->Stop();
         //Get time for algorithm 5 times ??
-        cout << vecOfNumbers.size() << ", " << uniqueStopWatchPtr->getCurrentTimeInSeconds()<< endl;
+
+        //get needle for search
+        std::vector<unsigned int> needle ;
+
+        getNeedle(needle, vecOfNumbers);
+
+        //search needle in hay stack
+
+        auto it = std::search(vecOfNumbers.begin(), vecOfNumbers.end(), needle.begin(), needle.end());
+
+        if(it != vecOfNumbers.end())
+            cout <<"Successful search\n";
+        else
+            cout <<"Unsuccessful search\n";
+
+        //cout << vecOfNumbers.size() << ", " << uniqueStopWatchPtr->getCurrentTimeInSeconds()<< endl;
         numberOfObjects *= 10;
     }
 
@@ -50,4 +70,16 @@ void getVector ( std::vector <unsigned int> &vecOfNumbers, std::mt19937 &myGener
     for ( auto i = vecOfNumbers.size() ; i < numberOfObjects ; ++i) {
         vecOfNumbers.push_back(myGenerator());
     }
+}
+
+void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigned int> & v) {
+    std::random_device rnd;
+    std::mt19937 myGenerator(rnd());
+
+    auto needleStartIndex = v.begin() + ( myGenerator() % v.size() );
+
+    auto needleEndIndex = needleStartIndex + myGenerator() % (v.end() - needleStartIndex) ;
+
+    myNeedle.insert (myNeedle.begin(), needleStartIndex, needleEndIndex);
+
 }

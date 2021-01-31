@@ -9,22 +9,22 @@ using std::cout;
 
 //Constructor starts the clock
 StopWatch::StopWatch():_startTime(std::chrono::system_clock::now()), _isRunning(true) {
-    cout << "Constructed a StopWatch via Default Constructor.\n";
+    //cout << "Constructed a StopWatch via Default Constructor.\n";
 }
 
 StopWatch::~StopWatch() {
-    cout << "Destructor for StopWatch is called.\n";
+    //cout << "Destructor for StopWatch is called.\n";
 }
 void StopWatch::Start() {
     _startTime = std::chrono::system_clock::now();
     _isRunning = true;
-    cout << "Restarted StopWatch.\n" ;
+    //cout << "Restarted StopWatch.\n" ;
 }
 
 void StopWatch::Stop () {
     _stopTime = std::chrono::system_clock::now();
     _isRunning = false;
-    cout << "Stopped StopWatch.\n";
+    //cout << "Stopped StopWatch.\n";
 }
 
 double StopWatch::getCurrentTimeInSeconds() {
