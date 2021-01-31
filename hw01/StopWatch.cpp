@@ -21,3 +21,11 @@ void StopWatch::Stop () {
     _stopTime = std::chrono::system_clock::now();
     cout << "Stopped StopWatch.\n";
 }
+
+double StopWatch::getCurrentTimeInSeconds() {
+    double timeInSeconds = std::chrono::duration<double> (_stopTime - _startTime).count() ; //ration will be 1:1
+}
+
+double StopWatch::getCurrentTimeInMilliseconds() {
+    double timeInMilliseconds = std::chrono::duration<double, std::milli> (_stopTime - _startTime).count();
+}
