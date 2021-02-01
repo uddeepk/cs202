@@ -20,7 +20,7 @@
 // Make a data structure ?? Why ? because a lot of the functions are repeated.
 struct Book {
     // Members Using struct and making all public to easily see use of stopwatch
-    const char * _fileName; //can use this like ifstream.open( _fil..me)
+    const std::string _fileName; //can use this like ifstream.open( _fil..me)
     std::vector <std::string> bookTextVector;
     std::list <std::string> bookTextList;
     std::deque <std::string> bookTextDeque;
@@ -30,7 +30,7 @@ struct Book {
     Book (std::string fileName);
 };
 
-Book::Book ( std::string fileName):_fileName(fileName.c_str()) {
+Book::Book ( std::string fileName):_fileName(fileName) {
 }
 //Read method
     //Read all three ways at the same time ??
@@ -42,7 +42,7 @@ Book::Book ( std::string fileName):_fileName(fileName.c_str()) {
 
 // function for outputting both seconds and millis ??
 
-static const std::vector <std::string> DEFAULT_FILENAMES = { "pg13332.txt", "22680-0.txt" , "42357-0.txt",
+static const std::vector < std::string> DEFAULT_FILENAMES = { "pg13332.txt", "22680-0.txt" , "42357-0.txt",
                                                 "pg27507.txt", "pg35461.txt" };
 using std::unique_ptr;
 using std::cout;
@@ -55,7 +55,23 @@ int main() {
     for ( auto path : DEFAULT_FILENAMES) {
         vecOfBookPtrs.push_back(std::make_unique<Book>(path));
     }
-    cout << vecOfBookPtrs.size();
+    cout << vecOfBookPtrs[1]->_fileName;
+
+    myFile.open(vecOfBookPtrs[1]->_fileName.c_str());
+
+    if ( myFile)
+        cout << "\nsuccess\n" ;
+    std::string test ;
+    while (getline ( myFile, test))
+        ;
+
+    myFile.close();
+
+    myFile.open(vecOfBookPtrs[1]->_fileName.c_str());
+    getline(myFile, test);
+    getline(myFile, test);
+    getline(myFile, test);
+    cout << test;
     // Read book
 
     // store random string
