@@ -35,6 +35,12 @@ int main() {
         sin >> i >> word;
         if(!sin) {
             cout << "You messed up!\n";
+            if (sin.eof())
+                cout << "Because you didn't give enough input.\n";
+            sin.clear();
+        } else
+            cout << "int was " << i << " and word was " << word << std::endl;
+        if ( i == 13 )
             break;
         }
         cout << "int was " << i << " and word was " << word << std::endl;
