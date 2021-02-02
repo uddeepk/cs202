@@ -111,8 +111,15 @@ void Book::sortContainers(StopWatch &watch) {
     watch.Start();
     std::sort(_bookTextVector.begin(), _bookTextVector.end());
     watch.Stop();
+    _sortTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
-    for (auto x : _bookTextVector) {
+    watch.Start();
+    _bookTextList.sort();
+    watch.Stop();
+    _sortTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    watch.S
+    for (auto x : _bookTextList) {
         cout << x << " ";
     }
 

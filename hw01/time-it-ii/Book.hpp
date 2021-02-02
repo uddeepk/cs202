@@ -21,6 +21,7 @@ struct Book {
 
     std::vector <double> _readTimes;
     std::vector <double> _findTimes ;
+    std::vector <double> _sortTimes;
     //Constructors
     Book () = delete ; //disabling the default constructor
     Book (std::string fileName);
