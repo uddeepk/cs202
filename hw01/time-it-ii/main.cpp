@@ -62,8 +62,8 @@ int main() {
     ifstream testFileReading ;
     testFileReading.open ( DEFAULT_FILENAMES[0]);
     string readBuffer ;
-    while (testFileReading >> readBuffer) {
-    //while (getline(testFileReading, readBuffer)) {
+    //while (testFileReading >> readBuffer) {
+    while (getline(testFileReading, readBuffer)) {
         cout << readBuffer;
     }
 
