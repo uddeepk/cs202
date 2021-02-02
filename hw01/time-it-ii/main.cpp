@@ -44,6 +44,8 @@ void Book::readTheBook (StopWatch &watch)  {
     //Read method
     //Read all three ways at the same time ??
     ifstream myFile ;
+
+    //vector
     myFile.open(_fileName);
     string inputLine ;
     watch.Start();
@@ -55,6 +57,7 @@ void Book::readTheBook (StopWatch &watch)  {
     cout << "Time to read into vector :" << watch.getCurrentTimeInMilliseconds() << endl;
     myFile.close();
 
+    //list
     myFile.open(_fileName);
     watch.Start();
     while (getline(myFile,inputLine)) {
@@ -63,6 +66,17 @@ void Book::readTheBook (StopWatch &watch)  {
     }
     watch.Stop();
     cout << "Time to read into List :" << watch.getCurrentTimeInMilliseconds() << endl;
+    myFile.close();
+
+    //deque
+    myFile.open(_fileName);
+    watch.Start();
+    while (getline(myFile,inputLine)) {
+        if(!inputLine.empty())
+            bookTextList.push_back(inputLine);
+    }
+    watch.Stop();
+    cout << "Time to read into Deque :" << watch.getCurrentTimeInMilliseconds() << endl;
     myFile.close();
     //If read in the same section, the output can be compared for the same book.
 }
