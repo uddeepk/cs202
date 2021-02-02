@@ -25,7 +25,7 @@ using std::string;
 // Make a data structure ?? Why ? because a lot of the functions are repeated.
 struct Book {
     // Members Using struct and making all public to easily see use of stopwatch
-    const string _fileName; //can use this like ifstream.open( _fil..me)
+    string _fileName; //can use this like ifstream.open( _fil..me)
     string wholeBook;
     std::vector <string> bookTextVector;
     std::list <string> bookTextList;
@@ -40,6 +40,7 @@ struct Book {
 
 Book::Book ( std::string fileName):_fileName(fileName) {
 }
+
 void Book::readTheBook (StopWatch &watch)  {
     //Read method
     //Read all three ways at the same time ??
@@ -47,9 +48,14 @@ void Book::readTheBook (StopWatch &watch)  {
 
     //vector
     myFile.open(_fileName);
+    if (myFile.fail())
+        cout << "wtf\n";
     string inputLine ;
+
+    cout << inputLine ;
     watch.Start();
-    while (getline(myFile, inputLine)) {
+    while (myFile >> inputLine) {
+        cout << inputLine;
         if(!inputLine.empty())
             bookTextVector.push_back(inputLine);
     }
@@ -60,7 +66,7 @@ void Book::readTheBook (StopWatch &watch)  {
     //list
     myFile.open(_fileName);
     watch.Start();
-    while (getline(myFile,inputLine)) {
+    while (myFile >> inputLine) {
         if(!inputLine.empty())
             bookTextList.push_back(inputLine);
     }
@@ -71,14 +77,16 @@ void Book::readTheBook (StopWatch &watch)  {
     //deque
     myFile.open(_fileName);
     watch.Start();
-    while (getline(myFile,inputLine)) {
+    while (myFile >> inputLine) {
         if(!inputLine.empty())
             bookTextList.push_back(inputLine);
     }
     watch.Stop();
     cout << "Time to read into Deque :" << watch.getCurrentTimeInMilliseconds() << endl;
+
     myFile.close();
     //If read in the same section, the output can be compared for the same book.
+
 }
 
 
@@ -88,42 +96,26 @@ void Book::readTheBook (StopWatch &watch)  {
 
 // function for outputting both seconds and millis ??
 
-static const std::vector < std::string> DEFAULT_FILENAMES = { "pg13332.txt", "22680-0.txt" , "42357-0.txt",
-                                                "pg27507.txt", "pg35461.txt" };
+const static std::vector < std::string> DEFAULT_FILENAMES = { "22680-0.txt" , "42357-0.txt", "64317-0.txt",
+                                                         "pg27507.txt", "pg35641.txt" };
 
 int main() {
     StopWatch myWatch = StopWatch();
-    std::ifstream myFile ;
+    //std::ifstream myFile ;
     //myFile.open("pg13332.txt");
-    std::vector <unique_ptr <Book>> vecOfBookPtrs;
+    std::vector<std::unique_ptr<Book>> vecOfBookPtrs;
     // Making vector of books
-    for ( auto path : DEFAULT_FILENAMES) {
+    for (auto path : DEFAULT_FILENAMES) {
         vecOfBookPtrs.push_back(std::make_unique<Book>(path));
     }
 
-    for ( auto &currentBook : vecOfBookPtrs) {
+    for (auto &currentBook : vecOfBookPtrs) {
         //notice that can't use auto currentBook because Book() = delete :)
+
         currentBook->readTheBook(myWatch);
 
     }
-    //cout << vecOfBookPtrs[1]->_fileName;
 
-    /*myFile.open(vecOfBookPtrs[1]->_fileName.c_str());
-
-    if ( myFile)
-        cout << "\nsuccess\n" ;
-    std::string test ;
-    while (getline ( myFile, test))
-        ;
-
-    myFile.close();
-
-    myFile.open(vecOfBookPtrs[1]->_fileName.c_str());
-    getline(myFile, test);
-    getline(myFile, test);
-    getline(myFile, test);
-    cout << test;
-     */
     // Read book
 
     // store random string
