@@ -31,7 +31,7 @@ void Book::readTheBook (StopWatch &watch)  {
     // Into a single string, because, why not.
 
     watch.Start();
-    while (myFile >> inputLine) {
+    while (myFile >> inputLine) { // How to change this to std::getline ???
         _wholeBookString += inputLine + " " ;
     }
     watch.Stop();

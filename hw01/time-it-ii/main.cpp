@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <fstream>
 #include "Book.hpp"
 /* Read at least 5 Gutenberg Project books with std::string; record the time taken to read with atleast
  * 3 containers. I am using vector, list, and deque. Also, record times to "find" a random string and
@@ -29,10 +30,12 @@ using std::string;
 
 // function for outputting both seconds and millis ??
 
-const static std::vector < std::string> DEFAULT_FILENAMES = { "22680-0.txt" , "42357-0.txt", "64317-0.txt",
-                                                         "pg27507.txt", "pg35641.txt" };
+
 
 int main() {
+    const static std::vector < std::string> DEFAULT_FILENAMES = { "22680-0.txt" , "42357-0.txt", "64317-0.txt",
+                                                                  "pg27507.txt", "pg35641.txt" };
+
     StopWatch myWatch = StopWatch();
     //std::ifstream myFile ;
     //myFile.open("pg13332.txt");
@@ -55,5 +58,15 @@ int main() {
 
     }
 
+    // Past this is testing getline vs >>
+    ifstream testFileReading ;
+    testFileReading.open ( DEFAULT_FILENAMES[0]);
+    string readBuffer ;
+    while (testFileReading >> readBuffer) {
+    //while (getline(testFileReading, readBuffer)) {
+        cout << readBuffer;
+    }
+
+    testFileReading.close();
     return 0;
 }
