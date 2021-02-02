@@ -3,14 +3,11 @@
 
 #include "../time-it-i/StopWatch.hpp"
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
-#include <list>
 #include <algorithm>
-#include <deque>
 #include <memory>
-
+#include "Book.hpp"
 /* Read at least 5 Gutenberg Project books with std::string; record the time taken to read with atleast
  * 3 containers. I am using vector, list, and deque. Also, record times to "find" a random string and
  * "sort" each container. Graph the results.
@@ -23,71 +20,8 @@ using std::endl;
 using std::ifstream;
 using std::string;
 // Make a data structure ?? Why ? because a lot of the functions are repeated.
-struct Book {
-    // Members Using struct and making all public to easily see use of stopwatch
-    string _fileName; //can use this like ifstream.open( _fil..me)
-    string wholeBook;
-    std::vector <string> bookTextVector;
-    std::list <string> bookTextList;
-    std::deque <string> bookTextDeque;
 
-    //Constructors
-    Book () = delete ; //disabling the default constructor
-    Book (std::string fileName);
 
-    void readTheBook(StopWatch &watch);
-};
-
-Book::Book ( std::string fileName):_fileName(fileName) {
-}
-
-void Book::readTheBook (StopWatch &watch)  {
-    //Read method
-    //Read all three ways at the same time ??
-    ifstream myFile ;
-
-    //vector
-    myFile.open(_fileName);
-    if (myFile.fail())
-        cout << "wtf\n";
-    string inputLine ;
-
-    cout << inputLine ;
-    watch.Start();
-    while (myFile >> inputLine) {
-        cout << inputLine;
-        if(!inputLine.empty())
-            bookTextVector.push_back(inputLine);
-    }
-    watch.Stop();
-    cout << "Time to read into vector :" << watch.getCurrentTimeInMilliseconds() << endl;
-    myFile.close();
-
-    //list
-    myFile.open(_fileName);
-    watch.Start();
-    while (myFile >> inputLine) {
-        if(!inputLine.empty())
-            bookTextList.push_back(inputLine);
-    }
-    watch.Stop();
-    cout << "Time to read into List :" << watch.getCurrentTimeInMilliseconds() << endl;
-    myFile.close();
-
-    //deque
-    myFile.open(_fileName);
-    watch.Start();
-    while (myFile >> inputLine) {
-        if(!inputLine.empty())
-            bookTextList.push_back(inputLine);
-    }
-    watch.Stop();
-    cout << "Time to read into Deque :" << watch.getCurrentTimeInMilliseconds() << endl;
-
-    myFile.close();
-    //If read in the same section, the output can be compared for the same book.
-
-}
 
 
 //get a random string
@@ -109,16 +43,14 @@ int main() {
         vecOfBookPtrs.push_back(std::make_unique<Book>(path));
     }
 
+    // Read book
     for (auto &currentBook : vecOfBookPtrs) {
         //notice that can't use auto currentBook because Book() = delete :)
 
         currentBook->readTheBook(myWatch);
+        currentBook->findRandomString(myWatch);
 
     }
-
-    // Read book
-
-    // store random string
 
     // Find the random string
 
