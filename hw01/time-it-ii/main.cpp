@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 #include <memory>
 #include "Book.hpp"
 /* Read at least 5 Gutenberg Project books with std::string; record the time taken to read with atleast
@@ -47,16 +46,14 @@ int main() {
     for (auto &currentBook : vecOfBookPtrs) {
         //notice that can't use auto currentBook because Book() = delete :)
 
+        // Read book
         currentBook->readTheBook(myWatch);
+        // Find random string
         currentBook->findRandomString(myWatch);
+        // sort Containers
         currentBook->sortContainers(myWatch);
 
     }
-
-    // Find the random string
-
-    // Sort the containers
-
 
     return 0;
 }
