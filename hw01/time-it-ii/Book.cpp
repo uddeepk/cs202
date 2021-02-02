@@ -24,7 +24,7 @@ void Book::readTheBook (StopWatch &watch)  {
     myFile.open(_fileName);
     if (myFile.fail()) {
         std::cerr << _fileName << " missing !" << endl;
-        exit (3);
+        exit (3); //if istream fails then program exits.
     }
     string inputLine ;
 
@@ -35,6 +35,7 @@ void Book::readTheBook (StopWatch &watch)  {
         _wholeBookString += inputLine + " " ;
     }
     watch.Stop();
+    _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
 
     myFile.open(_fileName);
@@ -44,7 +45,7 @@ void Book::readTheBook (StopWatch &watch)  {
             _bookTextVector.push_back(inputLine);
     }
     watch.Stop();
-    cout << "Time to read into vector :" << watch.getCurrentTimeInMilliseconds() << endl;
+    _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
 
     //list
@@ -55,7 +56,7 @@ void Book::readTheBook (StopWatch &watch)  {
             _bookTextList.push_back(inputLine);
     }
     watch.Stop();
-    cout << "Time to read into List :" << watch.getCurrentTimeInMilliseconds() << endl;
+    _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
 
     //deque-
@@ -63,13 +64,11 @@ void Book::readTheBook (StopWatch &watch)  {
     watch.Start();
     while (myFile >> inputLine) {
         if(!inputLine.empty())
-            _bookTextList.push_back(inputLine);
+            _bookTextDeque.push_back(inputLine);
     }
     watch.Stop();
-    cout << "Time to read into Deque :" << watch.getCurrentTimeInMilliseconds() << endl;
-
+    _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
-    //If read in the same section, the output can be compared for the same book.
 
 }
 
@@ -81,16 +80,28 @@ void Book::findRandomString(StopWatch &watch) {
 
     std::string myRandomString = _bookTextVector[myGenerator() % _bookTextVector.size()];
 
+    //String :)
     watch.Start();
     _wholeBookString.find(myRandomString) ;
     watch.Stop();
     _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
+    //Vector
     watch.Start();
     std::find(_bookTextVector.begin(), _bookTextVector.end(), myRandomString) ;
     watch.Stop();
     _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
+    //List
     watch.Start();
+    std::find( _bookTextList.begin() , _bookTextList.end(), myRandomString) ;
+    watch.Stop();
+    _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    //Deque
+    watch.Start();
+    std::find ( _bookTextDeque.begin(), _bookTextDeque.end(), myRandomString) ;
+    watch.Stop();
+    _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
 }
