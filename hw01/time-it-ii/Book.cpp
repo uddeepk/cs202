@@ -7,7 +7,7 @@
 #include <fstream>
 #include <random>
 #include <algorithm>
-
+#include <cstring>
 using std::cout; using std::endl;
 using std::string;
 using std::ifstream;
@@ -23,7 +23,7 @@ void Book::readTheBook (StopWatch &watch)  {
     //vector
     myFile.open(_fileName);
     if (myFile.fail()) {
-        std::cerr << _fileName << " missing !" << endl;
+        std::cerr << _fileName << " missing ! Please fix or change source code!" << endl;
         exit (3); //if istream fails then program exits.
     }
     string inputLine ;
