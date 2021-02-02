@@ -10,7 +10,29 @@
  */
 #include <iostream>
 
+char* strdup(const char*);
+char* findx (const char* s, const char* x);
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    const char* message = "Hello World!";
+    char* test = strdup(message);
+    printf("%s", test);
+    //std::cout << "Hello, World!" << std::endl;
+    delete test;
     return 0;
+}
+
+char* strdup (const char* myCStyleString) {
+    char * myCharPtr = new char('\0');
+
+    char * myStrdup = myCharPtr;
+
+    while (*myCStyleString != '\0') {
+        *myStrdup = *myCStyleString;
+        ++myCStyleString;
+        ++myStrdup;
+    }
+    *myStrdup = '\0';
+    return myCharPtr;
+
 }
