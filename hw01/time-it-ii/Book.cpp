@@ -80,13 +80,17 @@ void Book::findRandomString(StopWatch &watch) {
     std::mt19937 myGenerator (rnd());
 
     std::string myRandomString = _bookTextVector[myGenerator() % _bookTextVector.size()];
-    cout << myRandomString << endl;
-    watch.Start();
-    std::size_t foundHere = _wholeBookString.find(myRandomString) ;
-    watch.Stop();
-    cout << foundHere << endl;
-    watch.Start();
 
+    watch.Start();
+    _wholeBookString.find(myRandomString) ;
     watch.Stop();
+    _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    watch.Start();
+    std::find(_bookTextVector.begin(), _bookTextVector.end(), myRandomString) ;
+    watch.Stop();
+    _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    watch.Start();
 
 }

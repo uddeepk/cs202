@@ -19,6 +19,7 @@ struct Book {
     std::list <std::string> _bookTextList;
     std::deque <std::string> _bookTextDeque;
 
+    std::vector <double> _findTimes ;
     //Constructors
     Book () = delete ; //disabling the default constructor
     Book (std::string fileName);
