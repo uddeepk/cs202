@@ -118,9 +118,9 @@ void Book::sortContainers(StopWatch &watch) {
     watch.Stop();
     _sortTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
-    watch.S
-    for (auto x : _bookTextList) {
-        cout << x << " ";
-    }
+    watch.Start();
+    std::sort(_bookTextDeque.begin(), _bookTextDeque.end());
+    watch.Stop();
+    _sortTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
 }
