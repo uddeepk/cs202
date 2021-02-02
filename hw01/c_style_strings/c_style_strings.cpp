@@ -23,7 +23,7 @@ int main() {
 }
 
 char* strdup (const char* myCStyleString) {
-    char * myCharPtr = new char('\0');
+    char * myCharPtr = new char();
 
     char * myStrdup = myCharPtr;
 
@@ -33,6 +33,8 @@ char* strdup (const char* myCStyleString) {
         ++myStrdup;
     }
     *myStrdup = '\0';
+    myStrdup = nullptr; // do i need to do this ?
+    delete myStrdup; // same as above.
     return myCharPtr;
 
 }
