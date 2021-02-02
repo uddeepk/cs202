@@ -31,16 +31,18 @@ void Book::readTheBook (StopWatch &watch)  {
     // Into a single string, because, why not.
 
     watch.Start();
-    while (myFile >> inputLine) { // How to change this to std::getline ???
-        _wholeBookString += inputLine + " " ;
+    while (getline(myFile, inputLine)) { // How to change this to std::getline ???
+        if(!inputLine.empty())
+            _wholeBookString += inputLine + "\n"; // In case I need output
     }
     watch.Stop();
+    //cout << _wholeBookString ;
     _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
 
     myFile.open(_fileName);
     watch.Start();
-    while (myFile >> inputLine) {
+    while (getline(myFile, inputLine)) {
         if(!inputLine.empty())
             _bookTextVector.push_back(inputLine);
     }
@@ -51,7 +53,7 @@ void Book::readTheBook (StopWatch &watch)  {
     //list
     myFile.open(_fileName);
     watch.Start();
-    while (myFile >> inputLine) {
+    while (getline(myFile, inputLine)) {
         if(!inputLine.empty())
             _bookTextList.push_back(inputLine);
     }
@@ -62,7 +64,7 @@ void Book::readTheBook (StopWatch &watch)  {
     //deque-
     myFile.open(_fileName);
     watch.Start();
-    while (myFile >> inputLine) {
+    while (getline(myFile, inputLine)) {
         if(!inputLine.empty())
             _bookTextDeque.push_back(inputLine);
     }

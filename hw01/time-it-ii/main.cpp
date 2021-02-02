@@ -64,7 +64,7 @@ int main() {
     string readBuffer ;
     //while (testFileReading >> readBuffer) {
     while (getline(testFileReading, readBuffer)) {
-        cout << readBuffer;
+        //cout << readBuffer << "\n";
     }
 
     testFileReading.close();
