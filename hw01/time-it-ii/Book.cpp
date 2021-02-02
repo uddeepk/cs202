@@ -105,3 +105,15 @@ void Book::findRandomString(StopWatch &watch) {
     _findTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
 }
+
+void Book::sortContainers(StopWatch &watch) {
+
+    watch.Start();
+    std::sort(_bookTextVector.begin(), _bookTextVector.end());
+    watch.Stop();
+
+    for (auto x : _bookTextVector) {
+        cout << x << " ";
+    }
+
+}

@@ -49,6 +49,7 @@ int main() {
 
         currentBook->readTheBook(myWatch);
         currentBook->findRandomString(myWatch);
+        currentBook->sortContainers(myWatch);
 
     }
 

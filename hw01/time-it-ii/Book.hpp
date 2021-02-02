@@ -27,6 +27,7 @@ struct Book {
 
     void readTheBook(StopWatch &watch);
     void findRandomString (StopWatch &watch);
+    void sortContainers(StopWatch &watch);
 };
 
 
