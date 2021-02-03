@@ -36,29 +36,22 @@ char* strdup (const char* myCStyleString) {
         ++myStrdup;
     }
     *myStrdup = '\0';
-    myStrdup = nullptr; // do i need to do this ?
-    delete myStrdup; // same as above.
     return myCharPtr;
 
 }
 
 char* findx(const char* s, const char* x) {
-
     for ( ; *s != '\0' ; ++s) {
         if ( *s == *x ) {
             const char* myTempStringPtr = s;
             auto tempCharPtr = x;
             for ( ; *tempCharPtr != '\0' ; ++tempCharPtr,++myTempStringPtr) {
                 //printf("%c", *myTempStringPtr);
-
                 if (*tempCharPtr != *myTempStringPtr)
                     break;
             }
             if (*tempCharPtr == '\0')
-                return strdup(s); //
-
-            //Do i delete myTempStringPtr and tempCharPtr
-            //Also what do I return for char* ??
+                return (char *) s;
         }
     }
     return strdup("nada");
