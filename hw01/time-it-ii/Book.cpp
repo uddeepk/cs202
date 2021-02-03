@@ -32,8 +32,11 @@ void Book::readTheBook (StopWatch &watch)  {
 
     watch.Start();
     while (getline(myFile, inputLine)) { // How to change this to std::getline ???
-        if(!inputLine.empty())
-            _wholeBookString += inputLine + "\n"; // In case I need output
+        inputLine.erase(std::remove(inputLine.begin(), inputLine.end(), '\r'), inputLine.end());
+        if(!inputLine.empty() )
+            _wholeBookString += inputLine ; // In case I need output
+
+            //cout << inputLine;
     }
     watch.Stop();
     //cout << _wholeBookString ;
@@ -43,6 +46,7 @@ void Book::readTheBook (StopWatch &watch)  {
     myFile.open(_fileName);
     watch.Start();
     while (getline(myFile, inputLine)) {
+        inputLine.erase(std::remove(inputLine.begin(), inputLine.end(), '\r'), inputLine.end());
         if(!inputLine.empty())
             _bookTextVector.push_back(inputLine);
     }
@@ -54,6 +58,7 @@ void Book::readTheBook (StopWatch &watch)  {
     myFile.open(_fileName);
     watch.Start();
     while (getline(myFile, inputLine)) {
+        inputLine.erase(std::remove(inputLine.begin(), inputLine.end(), '\r'), inputLine.end());
         if(!inputLine.empty())
             _bookTextList.push_back(inputLine);
     }
@@ -65,6 +70,7 @@ void Book::readTheBook (StopWatch &watch)  {
     myFile.open(_fileName);
     watch.Start();
     while (getline(myFile, inputLine)) {
+        inputLine.erase(std::remove(inputLine.begin(), inputLine.end(), '\r'), inputLine.end());
         if(!inputLine.empty())
             _bookTextDeque.push_back(inputLine);
     }
