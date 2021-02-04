@@ -6,6 +6,14 @@
 #include <random>
 #include <algorithm>
 
+struct TimesForProcessing {
+    int _trialNumber;
+    std::vector<double> _timeForSearch;
+    std::vector<double> _timeForSort;
+    std::vector<double> _timeForBinary_Search;
+    std::vector<double> _timeForShuffle;
+
+};
 using std::cout;
 using std::endl;
 
@@ -17,6 +25,7 @@ void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigne
 int main() {
 
     auto uniqueStopWatchPtr = std::make_unique<StopWatch>();
+    std::vector <std::unique_ptr<TimesForProcessing>> myRecordedTimes ;
     //utilizing unique pointer just to do it.
 
     //std::cin.get();
@@ -25,9 +34,11 @@ int main() {
     // on random integers or doubles created with mt19937 RNG.
     // Measure time for each algorithm atleast five times each for groups of 10 to 10 ^ 9
 
+
     int n = 0;
 
     while ( n < 5) {
+        auto myCurrentRecordedTime = std::make_unique<TimesForProcessing> ;
         cout << "Trial " << (n+1) << " \n";
         //mt19937 random number generator seeded
         std::mt19937 generator(std::chrono::system_clock::now().time_since_epoch().count());
@@ -53,7 +64,6 @@ int main() {
             //search needle in hay stack
 
             uniqueStopWatchPtr->Start();
-            auto it = std::search(vecOfNumbers.begin(), vecOfNumbers.end(), needle.begin(), needle.end());
             uniqueStopWatchPtr->Stop();
             cout << uniqueStopWatchPtr->getCurrentTimeInMilliseconds() << " "
                  << uniqueStopWatchPtr->getCurrentTimeInSeconds() << "\n";
@@ -110,6 +120,7 @@ void getVector ( std::vector <unsigned int> &vecOfNumbers, std::mt19937 &myGener
 }
 
 void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigned int> & v) {
+    // Makes a random needle
     std::random_device rnd;
     std::mt19937 myGenerator(rnd());
 
