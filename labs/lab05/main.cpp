@@ -79,9 +79,9 @@ int main() {
         sum += number;
         ++counter;
     }
-
-    cout << "The sum is :" << sum << std::endl;
-    cout << "The average is :" << static_cast<double> (sum) / counter << std::endl;
+    cout << "The number of integers : " << counter << std::endl;
+    cout << "The sum: " << sum << std::endl;
+    cout << "The average: " << static_cast<double> (sum) / counter << std::endl;
 
     return 0;
 }
