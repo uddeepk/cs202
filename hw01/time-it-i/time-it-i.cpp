@@ -44,7 +44,7 @@ int main() {
 
 
     while ( n < numberOfIterations) {
-        auto myCurrentRecordedTime = std::make_unique<TimesForProcessing> (n) ;
+        auto myCurrentRecordedTime = std::make_unique<TimesForProcessing> (n + 1) ;
 
         //mt19937 random number generator seeded
         std::mt19937 generator(std::chrono::system_clock::now().time_since_epoch().count());
