@@ -25,13 +25,25 @@ void getVector ( std::vector <unsigned int> &vecOfNumbers, std::mt19937 &myGener
 void getNeedle (std::vector <unsigned int> &myNeedle, const std::vector <unsigned int> & v);
 
 int main() {
-
+    int defaultNumberOfIterations = 5;
     auto uniqueStopWatchPtr = std::make_unique<StopWatch>();
     std::vector <std::unique_ptr<TimesForProcessing>> myRecordedTimes ;
 
+    std::cout << "Enter number of trials for the data :";
+    int userInput , numberOfIterations;
+    if (std::cin >> userInput) {
+        numberOfIterations = userInput;
+    }
+    else {
+        std::cout << "Invalid input! Choosing default number of iterations which is 5.\n";
+        numberOfIterations = defaultNumberOfIterations;
+    }
+
+
     int n = 0;
 
-    while ( n < 5) {
+
+    while ( n < numberOfIterations) {
         auto myCurrentRecordedTime = std::make_unique<TimesForProcessing> (n) ;
 
         //mt19937 random number generator seeded
