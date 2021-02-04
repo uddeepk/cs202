@@ -31,7 +31,7 @@ int main() {
 
     std::cout << "Enter number of trials for the data :";
     int userInput , numberOfIterations;
-    if (std::cin >> userInput) {
+    if (std::cin >> userInput && userInput > 0) {
         numberOfIterations = userInput;
     }
     else {
