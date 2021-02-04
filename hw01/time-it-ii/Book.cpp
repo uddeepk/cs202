@@ -34,7 +34,7 @@ void Book::readTheBook (StopWatch &watch)  {
     while (getline(myFile, inputLine)) { // How to change this to std::getline ???
         inputLine.erase(std::remove(inputLine.begin(), inputLine.end(), '\r'), inputLine.end());
         if(!inputLine.empty() )
-            _wholeBookString += inputLine ; // In case I need output
+            _wholeBookString += inputLine ; // because why not :)
 
             //cout << inputLine;
     }
