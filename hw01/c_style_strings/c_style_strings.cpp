@@ -13,24 +13,12 @@
 
 char* strdup(const char*);
 char* findx (const char* s, const char* x);
-
+std::ostream& testTheFunctions () ;
+bool testStrdup ( const char* myFunctionOutput, const char* myCheckValue);
+bool testFindx ( const char* myFunctionOutput, const char* myCheckValue);
 int main() {
-    const char* message  = "asdf asdf asdf asdf Julia aasdf asdf asdf ";
-    char* test = strdup(message);
-    printf("%s\n", test);
-    //std::cout << "Hello, World!" << std::endl;
 
-    const char* myOtherTest = "Julia";
-    auto found = findx(message, myOtherTest);
-    //for ( int i = 0 ; i < 6 ; ++i ) ++message;
 
-//    std::cout << &message << std::endl;
-//    std::cout << found << std::endl;
-    std::cout << &test << std::endl;
-//    std::cout << &myOtherTest << std::endl;
-
-    //std::cout << (message == myOtherTest) << std::endl;
-    printf("%s\n", found);
 
     return 0;
 }
@@ -72,5 +60,67 @@ char* findx(const char* s, const char* x) {
                 return (char* ) s;
         }
     }
-    return strdup("nada");
+    return (char*) s; //returns the end of the s or the adress for the '\0'
+}
+
+std::ostream& testTheFunctions (std::ostream& os) {
+    std::vector<const char*> testTexts  = {
+            "In 1979 Mandelbrot discovered that he could create one image in the complex plane that would serve as a "
+            "catalogue of Julia sets, a guide to each and every one.",
+            "The idea of hacking may conjure sylized images of electronic vandalism, espionage, dyed hair, and body "
+            "piercings. Most people associate hacking with breaking the law and assume that everyone who engages in "
+            "hacking activities is a criminal. Granted, there are people out there who use hacking techniques to break"
+            " the law, but hacking isn't really about that. In fact, hacking is more about following the law than "
+            "breaking it. The essence of hacking is finding unintended or overlooked uses for the laws and properties"
+            " of a given situation and then applying them in new and inventive ways to solve a problem-"
+            "whatever it may be.",
+            "To the untutored eye, Lisp is a strange programming language. In Lisp code there are parentheses everywhe"
+            "re. Some people even claim that the name stands for \"Lots of Isolated Silly Parentheses\". But the claim "
+            "that the name stands for LISt Processing, and the programming language handles lists (and lists of lists) "
+            "by putting them between parentheses. The parentheses mark the boundaries of the list. Sometimes a list is "
+            "preceded by an apostrophe ''', called a single-quote in Lisp. Lists are the basis of Lisp."
+    };
+    std::vector <const char*> expectedAnswersStrdup = { "Julia sets, a", "inventive ways to", "boundaries of the list"};
+    std::vector <const char*> expectedAnswersFindx = {
+            "Julia sets, a guide to each and every one.",
+            "inventive ways to solve a problem-whatever it may be.",
+            "boundaries of the list. Sometimes a list is preceded by an apostrophe ''', called a single-quote in Lisp. "
+            "Lists are the basis of Lisp."
+    };
+    int testsFailed = 0;
+
+    for (auto testText = testTexts.begin(), testPhrase = expectedAnswersStrdup.begin(), expectedAnswer = expectedAnswersFindx.begin();
+    testText != testTexts.end(), testPhrase != expectedAnswersStrdup.end(), expectedAnswer != expectedAnswersFindx.end() ;
+    ++testText, ++testPhrase, ++expectedAnswer) {
+
+        char * testOutput = strdup(*testPhrase);
+        char * testOutput2 = findx(*testText, *testPhrase);
+
+        if( !testStrdup(testOutput, *testPhrase)) {
+            ++testsFailed;
+            os << "Expected Output: " << *testPhrase << " Actual Output: " << *testOutput << "\n";
+        }
+        if ( testFindx(testOutput2, *expectedAnswer)) {
+            ++testsFailed;
+            os << "Expected Output: " << *expectedAnswer << " Actual Output :" << testOutput2 << "\n";
+
+        }
+
+    }
+
+    if (testsFailed == 0 ) {
+        os << "All tests passed" << std::endl;
+    }
+    return os;
+}
+bool testStrdup ( const char* myFunctionOutput, const char* myCheckValue) {
+    while (*myFunctionOutput == *myCheckValue && *myFunctionOutput != '\0' && *myCheckValue != '\0') {
+        ++myFunctionOutput;
+        ++myCheckValue;
+    }
+    return *myFunctionOutput == '\0' && *myCheckValue == '\0';
+}
+bool testFindx ( const char* myFunctionOutput, const char* myCheckValue) {
+    return testStrdup; // I wasn't able to check the pointer addresses because for some reasont the address changes
+    // even when the function is declared as const char *
 }
