@@ -1,3 +1,0 @@
-/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/uddeepk/CLionProjects/cs202/hw01/time-it-i/cmake-build-debug/CMakeFiles/hw01.dir
