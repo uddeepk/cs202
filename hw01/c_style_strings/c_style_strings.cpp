@@ -9,24 +9,41 @@
  * char* findx(const char* s, const har* x) //that finds the first occurance of the C-style string x in s.
  */
 #include <iostream>
+#include <vector>
 
 char* strdup(const char*);
 char* findx (const char* s, const char* x);
 
 int main() {
-    const char* message = "Hello World! asdf";
+    const char* message  = "asdf asdf asdf asdf Julia aasdf asdf asdf ";
     char* test = strdup(message);
     printf("%s\n", test);
     //std::cout << "Hello, World!" << std::endl;
-    delete test;
-    char *myOtherTest = "World";
-    char *found = findx(message, myOtherTest);
+
+    const char* myOtherTest = "Julia";
+    auto found = findx(message, myOtherTest);
+    //for ( int i = 0 ; i < 6 ; ++i ) ++message;
+
+//    std::cout << &message << std::endl;
+//    std::cout << found << std::endl;
+    std::cout << &test << std::endl;
+//    std::cout << &myOtherTest << std::endl;
+
+    //std::cout << (message == myOtherTest) << std::endl;
     printf("%s\n", found);
+
     return 0;
 }
 
 char* strdup (const char* myCStyleString) {
-    char * myCharPtr = new char();
+
+    size_t n = 0;
+    for (auto c = myCStyleString ; *c != '\0' ; ++c) {
+        ++n;
+    }
+
+    char * myCharPtr = new char () ;
+    myCharPtr = (char *) malloc(n * sizeof (char));
 
     char * myStrdup = myCharPtr;
 
@@ -41,17 +58,18 @@ char* strdup (const char* myCStyleString) {
 }
 
 char* findx(const char* s, const char* x) {
+    //std::cout << &s << std::endl;
     for ( ; *s != '\0' ; ++s) {
         if ( *s == *x ) {
             const char* myTempStringPtr = s;
-            auto tempCharPtr = x;
-            for ( ; *tempCharPtr != '\0' ; ++tempCharPtr,++myTempStringPtr) {
+            auto tempXPtr = x;
+            for ( ; *tempXPtr != '\0' ; ++tempXPtr,++myTempStringPtr) {
                 //printf("%c", *myTempStringPtr);
-                if (*tempCharPtr != *myTempStringPtr)
+                if (*tempXPtr != *myTempStringPtr)
                     break;
             }
-            if (*tempCharPtr == '\0')
-                return (char *) s;
+            if (*tempXPtr == '\0')
+                return (char* ) s;
         }
     }
     return strdup("nada");
