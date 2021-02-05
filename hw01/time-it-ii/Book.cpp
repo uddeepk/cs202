@@ -17,13 +17,17 @@ Book::Book ( std::string fileName):_fileName(fileName) {
 
 void Book::readTheBook (StopWatch &watch)  {
     //Read method
-    //Read all three ways at the same time ??
     ifstream myFile ;
 
-    //vector
     myFile.open(_fileName);
-    if (myFile.fail()) {
-        std::cerr << _fileName << " missing ! Please fix or change source code!" << endl;
+    if (!myFile) {
+        std::cerr << "Error with file" << endl;
+        if(myFile.eof()) {
+            std::cerr <<_fileName << "no data in the file" << endl;
+        }
+        else {
+            std::cerr << _fileName << " missing or other error ! Please fix or change source code!" << endl;
+        }
         exit (3); //if istream fails then program exits.
     }
     string inputLine ;
@@ -36,13 +40,13 @@ void Book::readTheBook (StopWatch &watch)  {
         if(!inputLine.empty() )
             _wholeBookString += inputLine ; // because why not :)
 
-            //cout << inputLine;
     }
     watch.Stop();
-    //cout << _wholeBookString ;
+
     _readTimes.push_back(watch.getCurrentTimeInMilliseconds());
     myFile.close();
 
+    //vector
     myFile.open(_fileName);
     watch.Start();
     while (getline(myFile, inputLine)) {

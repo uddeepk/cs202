@@ -10,7 +10,6 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <fstream>
 #include "Book.hpp"
 #include <iomanip>
 /* Read at least 5 Gutenberg Project books with std::string; record the time taken to read with atleast
@@ -24,16 +23,7 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 using std::string;
-// Make a data structure ?? Why ? because a lot of the functions are repeated.
 
-
-
-
-//get a random string
-
-// Sort the containers
-
-// function for outputting both seconds and millis ??
 template <typename T>
 
 std::ostream& displaySpreadApart ( std::ostream& os,const std::vector<T> &v) {
@@ -48,10 +38,9 @@ int main() {
                                                                   "pg27507.txt", "pg35641.txt" };
 
     StopWatch myWatch = StopWatch();
-    //std::ifstream myFile ;
-    //myFile.open("pg13332.txt");
+
     std::vector<std::unique_ptr<Book>> vecOfBookPtrs;
-    // Making vector of books
+
     for (auto path : DEFAULT_FILENAMES) {
         vecOfBookPtrs.push_back(std::make_unique<Book>(path));
     }
@@ -105,17 +94,5 @@ int main() {
       ++bookNumber;
     }
 
-
-    
-    // Past this is testing getline vs >>
-    ifstream testFileReading ;
-    testFileReading.open ( DEFAULT_FILENAMES[0]);
-    string readBuffer ;
-    //while (testFileReading >> readBuffer) {
-    while (getline(testFileReading, readBuffer)) {
-        //cout << readBuffer << "\n";
-    }
-
-    testFileReading.close();
     return 0;
 }
