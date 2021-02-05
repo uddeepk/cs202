@@ -7,18 +7,20 @@
  * char* strdup(const char*) //copies C-style string into memory it allocates dynamically (using new)
  *
  * char* findx(const char* s, const har* x) //that finds the first occurance of the C-style string x in s.
+ *
+ *
  */
 #include <iostream>
 #include <vector>
 
 char* strdup(const char*);
 char* findx (const char* s, const char* x);
-std::ostream& testTheFunctions () ;
+std::ostream& testTheFunctions (std::ostream& os) ;
 bool testStrdup ( const char* myFunctionOutput, const char* myCheckValue);
 bool testFindx ( const char* myFunctionOutput, const char* myCheckValue);
 int main() {
 
-
+    testTheFunctions(std::cout) << std::endl;
 
     return 0;
 }
@@ -31,7 +33,6 @@ char* strdup (const char* myCStyleString) {
     }
 
     char * myCharPtr = new char [n];
-    //myCharPtr = (char *) malloc(n * sizeof (char)); //Did not require new so I
 
     char * myStrdup = myCharPtr;
 
@@ -46,13 +47,13 @@ char* strdup (const char* myCStyleString) {
 }
 
 char* findx(const char* s, const char* x) {
-    //std::cout << &s << std::endl;
+    //In my opinion this does not work the way I want it. No matter how I declared the function, the address returned
+    //did not match the address that within the input string.
     for ( ; *s != '\0' ; ++s) {
         if ( *s == *x ) {
             const char* myTempStringPtr = s;
             auto tempXPtr = x;
             for ( ; *tempXPtr != '\0' ; ++tempXPtr,++myTempStringPtr) {
-                //printf("%c", *myTempStringPtr);
                 if (*tempXPtr != *myTempStringPtr)
                     break;
             }
@@ -100,7 +101,7 @@ std::ostream& testTheFunctions (std::ostream& os) {
             ++testsFailed;
             os << "Expected Output: " << *testPhrase << " Actual Output: " << *testOutput << "\n";
         }
-        if ( testFindx(testOutput2, *expectedAnswer)) {
+        if ( !testFindx(testOutput2, *expectedAnswer)) {
             ++testsFailed;
             os << "Expected Output: " << *expectedAnswer << " Actual Output :" << testOutput2 << "\n";
 
