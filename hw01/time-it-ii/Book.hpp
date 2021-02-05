@@ -22,6 +22,7 @@ struct Book {
     std::vector <double> _readTimes;
     std::vector <double> _findTimes ;
     std::vector <double> _sortTimes;
+    std::vector <double> _binarySearchTimes;
     //Constructors
     Book () = delete ; //disabling the default constructor
     Book (std::string fileName);
@@ -29,6 +30,7 @@ struct Book {
     void readTheBook(StopWatch &watch);
     void findRandomString (StopWatch &watch);
     void sortContainers(StopWatch &watch);
+    void binarySearchContainers(StopWatch &watch);
 };
 
 

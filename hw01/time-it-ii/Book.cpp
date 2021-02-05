@@ -26,7 +26,8 @@ void Book::readTheBook (StopWatch &watch)  {
             std::cerr <<_fileName << "no data in the file" << endl;
         }
         else {
-            std::cerr << _fileName << " missing or other error ! Please fix or change source code!" << endl;
+            std::cerr << _fileName << " missing or other error !"
+            <<"Please fix or change source code!" << endl;
         }
         exit (3); //if istream fails then program exits.
     }
@@ -135,4 +136,25 @@ void Book::sortContainers(StopWatch &watch) {
     watch.Stop();
     _sortTimes.push_back(watch.getCurrentTimeInMilliseconds());
 
+}
+
+void Book::binarySearchContainers(StopWatch &watch) {
+    std::random_device rnd;
+    std::mt19937 myGenerator (rnd());
+
+    std::string myRandomString = _bookTextVector[myGenerator() % _bookTextVector.size()];
+
+    watch.Start();
+    std::binary_search(_bookTextVector.begin(), _bookTextVector.end(), myRandomString);
+    watch.Stop();
+    _binarySearchTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    watch.Start();
+    std::binary_search(_bookTextList.begin(), _bookTextList.end(), myRandomString);
+    watch.Stop();
+    _binarySearchTimes.push_back(watch.getCurrentTimeInMilliseconds());
+
+    watch.Start();
+    std::binary_search(_bookTextDeque.begin(), _bookTextDeque.end(), myRandomString);
+    _binarySearchTimes.push_back(watch.getCurrentTimeInMilliseconds());
 }

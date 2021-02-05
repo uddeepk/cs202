@@ -2,8 +2,9 @@
 // CS 202
 // Hw2
 // Time It II
-// To compile, borrow or link the files from the time-it-i folder. It needs StopWatch.hpp, and StopWatch.cpp.
-// Also, ensure that the books' .txt files are present, otherwise modify code for you own files.
+// To compile, borrow or link the files from the time-it-i folder. It needs StopWatch.hpp,
+// and StopWatch.cpp. Also, ensure that the books' .txt files are present, otherwise modify
+// code for you own files.
 
 #include "../time-it-i/StopWatch.hpp"
 #include <iostream>
@@ -34,8 +35,9 @@ std::ostream& displaySpreadApart ( std::ostream& os,const std::vector<T> &v) {
 }
 
 int main() {
-    const static std::vector < std::string> DEFAULT_FILENAMES = { "22680-0.txt" , "42357-0.txt", "64317-0.txt",
-                                                                  "pg27507.txt", "pg35641.txt" };
+    const static std::vector < std::string> DEFAULT_FILENAMES = { "22680-0.txt" , "42357-0.txt",
+                                                                  "64317-0.txt","pg27507.txt",
+                                                                  "pg35641.txt" };
 
     StopWatch myWatch = StopWatch();
 
@@ -55,6 +57,8 @@ int main() {
         currentBook->findRandomString(myWatch);
         // sort Containers
         currentBook->sortContainers(myWatch);
+        //binary search containers
+        currentBook->binarySearchContainers(myWatch);
 
     }
     // Print book reading times
@@ -63,10 +67,10 @@ int main() {
     std::vector <string> myContainersUsed = {"String" , "Vector" , "List" , "Deque"};
 
     cout << std::setw(8) << "Book";
-    displaySpreadApart(cout, myContainersUsed)<< "\n";
+    displaySpreadApart(cout, myContainersUsed)<< endl;
     for (const auto &currentBook : vecOfBookPtrs) {
       cout << std::setw(8) << bookNumber;
-      displaySpreadApart( cout, currentBook->_readTimes) << "\n";
+      displaySpreadApart( cout, currentBook->_readTimes) << endl;
       ++bookNumber;
     }
     cout << "\n";
@@ -75,10 +79,10 @@ int main() {
     cout << "Time to find in books\n" ;
     bookNumber = 1;
     cout << std::setw(8) << "Book";
-    displaySpreadApart(cout, myContainersUsed)<< "\n";
+    displaySpreadApart(cout, myContainersUsed)<< endl;
     for(const auto &currentBook:vecOfBookPtrs) {
       cout << std::setw(8) << bookNumber;
-      displaySpreadApart( cout, currentBook->_findTimes) << "\n";
+      displaySpreadApart( cout, currentBook->_findTimes) << endl;
       ++bookNumber;
     }
     cout << "\n";
@@ -87,11 +91,28 @@ int main() {
     cout << "Time to sort strings in books\n" ;
     bookNumber = 1;
     cout << std::setw(8) << "Book";
-    displaySpreadApart(cout, std::vector(myContainersUsed.begin()+1, myContainersUsed.end())) << "\n";
+
+    displaySpreadApart(cout, std::vector(myContainersUsed.begin()+1, myContainersUsed.end()))
+    << "\n";
+
     for(const auto &currentBook:vecOfBookPtrs) {
       cout << std::setw(8) << bookNumber;
-      displaySpreadApart( cout, currentBook->_sortTimes) << "\n";
+      displaySpreadApart( cout, currentBook->_sortTimes) << endl;
       ++bookNumber;
+    }
+    cout << "\n";
+    // Print time to Binary_Search
+    cout << "Time to binary search strings in books\n" ;
+    bookNumber = 1;
+    cout << std::setw(8) << "Book";
+
+    displaySpreadApart(cout, std::vector(myContainersUsed.begin()+1, myContainersUsed.end()))
+            << endl;
+
+    for(const auto &currentBook:vecOfBookPtrs) {
+        cout << std::setw(8) << bookNumber;
+        displaySpreadApart( cout, currentBook->_binarySearchTimes) << endl;
+        ++bookNumber;
     }
 
     return 0;
