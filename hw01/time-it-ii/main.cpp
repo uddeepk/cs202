@@ -1,5 +1,9 @@
+// Uddeep Karki
+// CS 202
+// Hw2
 // Time It II
-// To compile, borrow or link the files from the time-it-i folder.
+// To compile, borrow or link the files from the time-it-i folder. It needs StopWatch.hpp, and StopWatch.cpp.
+// Also, ensure that the books' .txt files are present, otherwise modify code for you own files.
 
 #include "../time-it-i/StopWatch.hpp"
 #include <iostream>
