@@ -42,8 +42,8 @@ char* strdup (const char* myCStyleString) {
         ++n;
     }
 
-    char * myCharPtr = new char () ;
-    myCharPtr = (char *) malloc(n * sizeof (char));
+    char * myCharPtr = new char [n];
+    //myCharPtr = (char *) malloc(n * sizeof (char)); //Did not require new so I
 
     char * myStrdup = myCharPtr;
 
