@@ -120,7 +120,7 @@ std::ostream& testTheFunctions (std::ostream& os) {
 
         }
 
-        delete [] testOutput;
+        delete [] testOutput; // raw pointers have to be deleted.
 
     }
 
