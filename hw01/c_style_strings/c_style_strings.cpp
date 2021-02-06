@@ -26,11 +26,14 @@ int main() {
 
     return 0;
 }
-
 char* strdup (const char* myCStyleString) {
-
-    char * myCharPtr = new char ;
-
+    size_t length = 0;
+    const char* traversingChar = myCStyleString;
+    while ( *traversingChar ) {
+        ++length;
+        ++traversingChar;
+    }
+    char * myCharPtr = new char[length + 1] ;
     char * myStrdup = myCharPtr;
 
     while (*myCStyleString != '\0') {
