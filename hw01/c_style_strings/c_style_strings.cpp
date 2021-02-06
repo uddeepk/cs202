@@ -120,11 +120,14 @@ std::ostream& testTheFunctions (std::ostream& os) {
 
         }
 
+        delete [] testOutput;
+
     }
 
     if (testsFailed == 0 ) {
         os << "All tests passed" << std::endl;
     }
+
     return os;
 }
 bool testStrdup ( const char* myFunctionOutput, const char* myCheckValue) {
