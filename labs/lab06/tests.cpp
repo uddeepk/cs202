@@ -1,7 +1,7 @@
 //
 // Created by uddeepk on 2/9/21.
 //
-#include "catch.hpp"
+#include "../../catch.hpp"
 
 
 
