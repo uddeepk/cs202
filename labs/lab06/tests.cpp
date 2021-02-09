@@ -1,7 +1,7 @@
 //
 // Created by uddeepk on 2/9/21.
 //
-#include "../../catch.hpp"
+#include "catch.hpp"
 
 
 
@@ -51,4 +51,23 @@ TEST_CASE("Inequality of vectors", "[inequality]") {
     Vector3f a;
     Vector3f b(500, 0,984);
     REQUIRE( a != b);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//Tring to find the best way to use SECTION. Is the following redundant compared to the first ?
+//What case do we use SECTION? Revisit later.
+
+TEST_CASE("Practice with Sections", "[hypotamoose]") {
+    Vector3f a; // default
+    SECTION("Testing default constructor") {
+        REQUIRE(a._x == Approx(0));
+        REQUIRE(a._y == Approx(0));
+        REQUIRE(a._z == Approx(0));
+    }
+    Vector3f b (42, -9.92, .00081);
+    SECTION("Testing other constructor") {
+        REQUIRE( b._x == Approx(42));
+        REQUIRE( b._y == Approx(-9.92)); //9.92 is a doulbe, a._y will be converted to a double for ...//Had to approx or // Question for later.
+        REQUIRE( b._z == Approx(0.00081));
+    }
+
 }
