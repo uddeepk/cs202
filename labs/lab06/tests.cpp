@@ -25,7 +25,7 @@ bool operator!=(const Vector3f& a, const Vector3f& b) {
     return (a._x != b._x) || (a._y != b._y) || (a._z != b._z) ;
 }
 
-TEST_CASE("Defult constructor", "[default]") {
+TEST_CASE("Default constructor", "[default]") {
     Vector3f a; // default
     REQUIRE( a._x == Approx(0));
     REQUIRE( a._y == Approx(0));
@@ -66,7 +66,7 @@ TEST_CASE("Practice with Sections", "[hypotamoose]") {
     Vector3f b (42, -9.92, .00081);
     SECTION("Testing other constructor") {
         REQUIRE( b._x == Approx(42));
-        REQUIRE( b._y == Approx(-9.92)); //9.92 is a doulbe, a._y will be converted to a double for ...//Had to approx or // Question for later.
+        REQUIRE( b._y == Approx(-9.92)); //9.92 is a double, a._y will be converted to a double for ...//Had to approx or // Question for later.
         REQUIRE( b._z == Approx(0.00081));
     }
 
