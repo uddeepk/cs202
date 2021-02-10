@@ -31,7 +31,19 @@ TEST_CASE("Queue: First-In First-Out", "[queue]") {
         myQueueOfDragons.pop_front(); //Norbert got taken away
         REQUIRE(myQueueOfDragons.front()._name == "Fafnir");
     }
+}
 
+TEST_CASE("Stack:Last-in First Out", "[stack]") {
+    //Make stack using std::list
+    std::list <Dragon> myStackOfDragons = {
+            Dragon("Common Welsh Green", "Hazel", "Green", "Wales", "Romanian Dragon Sanctuary", 18, "Beca"),
+            Dragon("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand", "N/A", 40, "Julunggul"),
+            Dragon("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart")
+    };
 
-
+    SECTION("Push a value to the back of the list") {
+        REQUIRE(myStackOfDragons.back()._name == "Stewart");
+        myStackOfDragons.push_back(Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"));
+        REQUIRE(myStackOfDragons.back()._breed == "Ukranian Ironbelly" );
+    }
 }
