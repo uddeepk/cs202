@@ -16,7 +16,7 @@ struct Dragon {
     Dragon ( std::vector <std::string> &dragonAttributes) ; //constructor with vector
     Dragon ( std::string breed, std::string eyeColor, std::string skinColor,
     std::string nativeLocation, std::string affiliation, unsigned int length, std::string name);
-    //Dragon (const Dragon &); // Copy construction. LEt compiler deal with it
+    Dragon (const Dragon &); // Copy construction. LEt compiler deal with it
     ~Dragon();
     // Overload < operator for using sort on std::list container
     bool operator<(const Dragon &dragon2);

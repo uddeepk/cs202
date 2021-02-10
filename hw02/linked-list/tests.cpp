@@ -7,14 +7,21 @@
 #include <list>
 
 TEST_CASE("Queue: First-In First-Out", "[queue]") {
+
     //Creating queue using std::list
-    std::list<Dragon> myListOfDragons = {
-            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
+    std::list<Dragon> myQueueOfDragons = {
+            Dragon ("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
             Dragon("Swedish Short-Snout", "Yellow", "Silvery Blue", "Sweden", "Romanian Dragon Sanctuary", 22, "Fafnir"),
             Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu")
 
     };
 
-    REQUIRE(myListOfDragons.front()._name == "Norbert");
+    REQUIRE(myQueueOfDragons.front()._name == "Norbert");
+
+    SECTION("Push a value to the back of the list") {
+        //myQueueOfDragons.push_back(Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
+        REQUIRE(myQueueOfDragons.front()._name == "Norbert");
+        REQUIRE(myQueueOfDragons.back()._name == "Tailong");
+    }
 
 }
