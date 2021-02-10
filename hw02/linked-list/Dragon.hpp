@@ -9,11 +9,9 @@
 #define LINKED_LIST_DRAGON_HPP
 
 #include <string>
-#include <vector>
 
 struct Dragon {
     Dragon () = delete; // disabling default constructor
-    Dragon ( std::vector <std::string> &dragonAttributes) ; //constructor with vector
     Dragon ( std::string breed, std::string eyeColor, std::string skinColor,
     std::string nativeLocation, std::string affiliation, unsigned int length, std::string name);
     Dragon (const Dragon &); // Copy construction. LEt compiler deal with it

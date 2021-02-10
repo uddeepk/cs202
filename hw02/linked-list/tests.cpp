@@ -5,6 +5,8 @@
 #include "catch.hpp"
 #include "Dragon.hpp"
 #include <list>
+#include <iostream>
+#include <sstream>
 
 bool operator==( const Dragon& d1, const Dragon&d2) {
     return (d1._breed == d2._breed && d1._breed == d2._breed && d1._eyeColor == d2._eyeColor && d1._skinColor == d2._skinColor
@@ -12,6 +14,19 @@ bool operator==( const Dragon& d1, const Dragon&d2) {
     d1._name == d2._name);
 }
 
+std::ostream& myDragonOutput ( std::ostream& os, const std::list <Dragon>& myList) {
+
+    for(const auto &dragon : myList) {
+        os << "Breed: " << dragon._breed << "\n";
+        os << "Eye Color: " << dragon._eyeColor << "\n";
+        os << "Skin Color: " << dragon._skinColor << "\n";
+        os << "Native Location " << dragon._nativeLocation << "\n";
+        os << "Affiliation: " << dragon._affiliation << "\n";
+        os << "Length: " << dragon._length << "\n";
+        os << "Name: " << dragon._name << "\n\n";
+    }
+    return os;
+}
 TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     //Creating queue using std::list
@@ -89,4 +104,19 @@ TEST_CASE("Insert and Find","[list]") {
 
     // Utilizing the operator overload for == we can do the following.
     REQUIRE(myListOfDragons == myExpectedListOfDragons);
+}
+
+//Print the list out
+TEST_CASE("Print the list out","[print]") {
+    std::list <Dragon> myListOfDragons = {
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
+    };
+
+
+
+
 }

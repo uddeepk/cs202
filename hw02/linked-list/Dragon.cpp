@@ -8,19 +8,9 @@
 
 #include "Dragon.hpp"
 #include <string>
-#include <vector>
-#include <iostream>
+
 
 using std::string;
-using std::vector;
-
-Dragon::Dragon (vector <string> &dragonAttributes): _breed(dragonAttributes[0]),
-                _eyeColor(dragonAttributes[1]), _skinColor(dragonAttributes[2]),
-                _nativeLocation(dragonAttributes[3]), _affiliation(dragonAttributes[4]),
-                _length(static_cast<unsigned int>(std::stoi(dragonAttributes[5]))),
-                _name(dragonAttributes[6]) {
-    // Constructor with a vector
-}
 
 Dragon::Dragon ( string breed, string eyeColor, string skinColor, string nativeLocation,
                  string affiliation, unsigned int length, string name):
