@@ -18,10 +18,20 @@ TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     REQUIRE(myQueueOfDragons.front()._name == "Norbert");
 
+    //Push a
     SECTION("Push a value to the back of the list") {
-        //myQueueOfDragons.push_back(Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
-        REQUIRE(myQueueOfDragons.front()._name == "Norbert");
+        myQueueOfDragons.push_back(
+                Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
+        //REQUIRE(myQueueOfDragons.front()._name == "Norbert");
         REQUIRE(myQueueOfDragons.back()._name == "Tailong");
     }
+
+    //Pop a value from the front of the list
+    SECTION("Pop a value from the front of the list") {
+        myQueueOfDragons.pop_front(); //Norbert got taken away
+        REQUIRE(myQueueOfDragons.front()._name == "Fafnir");
+    }
+
+
 
 }
