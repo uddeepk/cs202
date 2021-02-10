@@ -17,13 +17,13 @@ bool operator==( const Dragon& d1, const Dragon&d2) {
 std::ostream& myDragonOutput ( std::ostream& os, const std::list <Dragon>& myList) {
 
     for(const auto &dragon : myList) {
-        os << "Breed: " << dragon._breed << "\n";
+        os << "\nBreed: " << dragon._breed << "\n";
         os << "Eye Color: " << dragon._eyeColor << "\n";
         os << "Skin Color: " << dragon._skinColor << "\n";
         os << "Native Location " << dragon._nativeLocation << "\n";
         os << "Affiliation: " << dragon._affiliation << "\n";
         os << "Length: " << dragon._length << "\n";
-        os << "Name: " << dragon._name << "\n\n";
+        os << "Name: " << dragon._name << "\n";
     }
     return os;
 }
@@ -116,13 +116,32 @@ TEST_CASE("Print the list out","[print]") {
             Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
     };
 
-    // TODO: Figure out how to compare streams.
-    //myDragonOutput(std::cout, myListOfDragons);
 
-    //Test ostringstream
+    //Here we use an ostringstream object to store the ostream values that the myDragonOutput
+    //returns. Then we have the loop below to create a string to match the ideal output.
+    //Thus, using the .str() function in the std::ostringstream, we can easily compare the
+    //actual output and the expected output.
+
+
+    //Use ostringstream object to store the output from the
     std::ostringstream oss;
     myDragonOutput(oss, myListOfDragons);
 
+    //Creating Expected output
+    std::string myExpectedOutput ;
 
+    for (auto const &dragon : myListOfDragons) {
+        myExpectedOutput = myExpectedOutput +
+                "\nBreed: " + dragon._breed + "\n" +
+                "Eye Color: " + dragon._eyeColor + "\n" +
+                "Skin Color: " + dragon._skinColor + "\n" +
+                "Native Location " + dragon._nativeLocation + "\n" +
+                "Affiliation: " + dragon._affiliation + "\n" +
+                "Length: " + std::to_string(dragon._length) + "\n" +
+                "Name: " + dragon._name + "\n";
+    }
+
+    //Comparing the actual output to the expected output.
+    REQUIRE(oss.str() == myExpectedOutput);
 
 }
