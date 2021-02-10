@@ -116,6 +116,12 @@ TEST_CASE("Print the list out","[print]") {
             Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
     };
 
+    // TODO: Figure out how to compare streams.
+    //myDragonOutput(std::cout, myListOfDragons);
+
+    //Test ostringstream
+    std::ostringstream oss;
+    myDragonOutput(oss, myListOfDragons);
 
 
 
