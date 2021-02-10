@@ -6,6 +6,12 @@
 #include "Dragon.hpp"
 #include <list>
 
+bool operator==( const Dragon& d1, const Dragon&d2) {
+    return (d1._breed == d2._breed && d1._breed == d2._breed && d1._eyeColor == d2._eyeColor && d1._skinColor == d2._skinColor
+    && d1._nativeLocation==d2._nativeLocation && d1._affiliation == d2._affiliation && d1._length == d2._length &&
+    d1._name == d2._name);
+}
+
 TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     //Creating queue using std::list
@@ -45,4 +51,42 @@ TEST_CASE("Stack:Last-in First Out", "[stack]") {
     myStackOfDragons.pop_back();
     REQUIRE(myStackOfDragons.back()._name == "Stewart");
 
+}
+
+TEST_CASE("Insert and Find","[list]") {
+
+    //My list to use insert and find
+    std::list <Dragon> myListOfDragons = {
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
+    };
+
+    std::list <Dragon> myExpectedListOfDragons = {
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
+    };
+    //Sorting instead of putting items in order.
+    myListOfDragons.sort();
+
+    //My Dragon to be inserted
+    Dragon myInsertDragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart");
+
+    auto appropriatePlaceInList = myListOfDragons.begin();
+
+    for( ;
+    appropriatePlaceInList != myListOfDragons.end() && *appropriatePlaceInList < myInsertDragon ;
+    ++appropriatePlaceInList) {
+        // Taking advantage of the precedence in the && operator.
+        // Run until one of the conditions becomes false
+    }
+
+    myListOfDragons.insert(appropriatePlaceInList, myInsertDragon);
+
+    // Utilizing the operator overload for == we can do the following.
+    REQUIRE(myListOfDragons == myExpectedListOfDragons);
 }
