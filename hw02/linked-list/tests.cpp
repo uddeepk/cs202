@@ -5,28 +5,15 @@
 #include "catch.hpp"
 #include "Dragon.hpp"
 #include <list>
-#include <iostream>
 #include <sstream>
 
-bool operator==( const Dragon& d1, const Dragon&d2) {
-    return (d1._breed == d2._breed && d1._breed == d2._breed && d1._eyeColor == d2._eyeColor && d1._skinColor == d2._skinColor
-    && d1._nativeLocation==d2._nativeLocation && d1._affiliation == d2._affiliation && d1._length == d2._length &&
-    d1._name == d2._name);
-}
-
 std::ostream& myDragonOutput ( std::ostream& os, const std::list <Dragon>& myList) {
-
-    for(const auto &dragon : myList) {
-        os << "\nBreed: " << dragon._breed << "\n";
-        os << "Eye Color: " << dragon._eyeColor << "\n";
-        os << "Skin Color: " << dragon._skinColor << "\n";
-        os << "Native Location " << dragon._nativeLocation << "\n";
-        os << "Affiliation: " << dragon._affiliation << "\n";
-        os << "Length: " << dragon._length << "\n";
-        os << "Name: " << dragon._name << "\n";
+    for(auto dragon : myList) {
+        dragon.myPrintDragon(os);
     }
     return os;
 }
+
 TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     //Creating queue using std::list

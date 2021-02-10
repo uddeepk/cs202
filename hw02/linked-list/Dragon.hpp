@@ -18,6 +18,8 @@ struct Dragon {
     ~Dragon();
     // Overload < operator for using sort on std::list container
     bool operator<(const Dragon &dragon2);
+
+    std::ostream& myPrintDragon (std::ostream&);
     //Half dozen fields
     const std::string _breed;
     const std::string _eyeColor;
@@ -29,5 +31,6 @@ struct Dragon {
     const std::string _name;
 };
 
+bool operator==( const Dragon& d1, const Dragon&d2);
 
 #endif //LINKED_LIST_DRAGON_HPP
