@@ -29,6 +29,9 @@ Dragon::Dragon ( string breed, string eyeColor, string skinColor, string nativeL
     // Constructor with the constructors passed
 }
 
+Dragon::~Dragon() {
+    // Hi! :)
+}
 bool Dragon::operator<(const Dragon &dragon2) {
     if( _breed < dragon2._breed) {
         return true;
