@@ -18,19 +18,16 @@ TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     REQUIRE(myQueueOfDragons.front()._name == "Norbert");
 
-    //Push a
-    SECTION("Push a value to the back of the list") {
-        myQueueOfDragons.push_back(
-                Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
-        //REQUIRE(myQueueOfDragons.front()._name == "Norbert");
-        REQUIRE(myQueueOfDragons.back()._name == "Tailong");
-    }
+    //Push a value to the back of the list
+    myQueueOfDragons.push_back(Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
+    //REQUIRE(myQueueOfDragons.front()._name == "Norbert");
+    REQUIRE(myQueueOfDragons.back()._name == "Tailong");
+
 
     //Pop a value from the front of the list
-    SECTION("Pop a value from the front of the list") {
-        myQueueOfDragons.pop_front(); //Norbert got taken away
-        REQUIRE(myQueueOfDragons.front()._name == "Fafnir");
-    }
+    myQueueOfDragons.pop_front(); //Norbert got taken away
+    REQUIRE(myQueueOfDragons.front()._name == "Fafnir");
+
 }
 
 TEST_CASE("Stack:Last-in First Out", "[stack]") {
@@ -40,10 +37,12 @@ TEST_CASE("Stack:Last-in First Out", "[stack]") {
             Dragon("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand", "N/A", 40, "Julunggul"),
             Dragon("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart")
     };
+    REQUIRE(myStackOfDragons.back()._name == "Stewart");
+    myStackOfDragons.push_back(Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"));
 
-    SECTION("Push a value to the back of the list") {
-        REQUIRE(myStackOfDragons.back()._name == "Stewart");
-        myStackOfDragons.push_back(Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"));
-        REQUIRE(myStackOfDragons.back()._breed == "Ukranian Ironbelly" );
-    }
+    //"Pop a value from the back of the list
+    REQUIRE(myStackOfDragons.back()._name == "Neville");
+    myStackOfDragons.pop_back();
+    REQUIRE(myStackOfDragons.back()._name == "Stewart");
+
 }
