@@ -11,6 +11,7 @@
 #include <memory>
 
 class Cave {
+//    friend bool operator==( const CaveNode &room1, const CaveNode &room2);
 public:
 
     //what is the number of rooms in the cave?
