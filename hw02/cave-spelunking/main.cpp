@@ -7,7 +7,7 @@
 int main() {
     Cave myCave;
 
-    std::istringstream iss ("Longd\nShortd\nLongD2\nShortD2\nLong3\nShort3\n0 1\n1 2");
+    std::istringstream iss ("Longd\nShortd\nLongD2\nShortD2\nLong3\nShort3\n0 1 2\n1 2");
 
     myCave.readRooms(iss);
 

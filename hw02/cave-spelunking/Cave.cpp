@@ -93,7 +93,12 @@ void Cave::getDescription() {
     else
         printLongDesc(currentRoom);
 
-
+    // I'm putting menu here
+    int n = 0;
+    for ( const auto &adjRoom : presentCaveRoom->adjacentRooms) {
+        std::cout << n << ": " << adjRoom->shortdesc << "\n";
+        ++n;
+    }
 }
 
 void Cave::printLongDesc(int room) const {
