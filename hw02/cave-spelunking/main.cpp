@@ -12,11 +12,17 @@ int main() {
     myCave.readRooms(iss);
 
     while(true) {
-        //Print description
+        int userInput ;
 
+        //Print description
+        myCave.getDescription();
         //Provide menu
 
         //Recive action and execute
+        std::cout << "Enter your choice: " ;
+        std::cin >> userInput;
+        if(userInput == 9)
+            break;
     }
 
 //    std::istringstream iss2 ( "5 6 7") ;

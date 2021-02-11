@@ -13,6 +13,7 @@
 class Cave {
 //    friend bool operator==( const CaveNode &room1, const CaveNode &room2);
 public:
+    void getDescription();
 
     //what is the number of rooms in the cave?
     int size() const; // shouldn't it be int

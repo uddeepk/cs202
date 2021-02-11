@@ -19,15 +19,29 @@ void Cave::readRooms(istream &is) {
         if(!is)
             break;
 
-        getline(is, inputLine);//shortd
+        if(!getline(is, inputLine)) {
+            std::cerr << "Error in data!" << std::endl;
+            return;
+        }//shortd
+
         if(isdigit(inputLine[0])) {
             std::cout << "Found number, next step break\n";
             break;
         }
-        getline(is, inputLine);//longd
+        shortDescription = inputLine;
+
+        inputLine = "";// Making easy to check failure of is.
+
+        if(!getline(is, inputLine)) {
+            std::cerr << "Error in data!" << std::endl;
+            return;//longd
+        }
+
+        longDescription = inputLine;
+
         CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription);
         caveRooms.push_back(tempCaveNodePtr) ;
-//        std::cout << tempCaveNodePtr << " " << caveRooms[0] << std::endl;
+        //std::cout << tempCaveNodePtr->longdesc << " " << caveRooms[0]->longdesc << std::endl;
     }
 //    std::cout << caveRooms[2] << std::endl;
     // Now we can use connect
@@ -41,13 +55,13 @@ void Cave::readRooms(istream &is) {
         if ( !iss) {
             //Error
             std::cerr << "Error in data!!" << std::endl;
+            break;
         }
         int connectedRoom;
         while (iss >> connectedRoom) {
-            std::cout << connectedRoom << " ";
+            //std::cout << connectedRoom << " ";
             connect(theRoomNumber, connectedRoom);
         }
-
 
     }while (getline(is, inputLine));
 
@@ -71,7 +85,17 @@ void Cave::connect(int room1, int room2) {
 
 }
 
+void Cave::getDescription() {
+    auto presentCaveRoom = caveRooms[currentRoom];
 
-//bool operator==(const Cave::CaveNode &room1, const Cave::CaveNode &room2) {
-//    return (room1.shortdesc == room2.shortdesc && room1.longdesc == room2.longdesc);
-//}
+    if ( presentCaveRoom->visited )
+        std::cout << presentCaveRoom->shortdesc << std::endl;
+    else
+        printLongDesc(currentRoom);
+
+
+}
+
+void Cave::printLongDesc(int room) const {
+    std::cout << caveRooms[currentRoom]->longdesc << std::endl;
+}
