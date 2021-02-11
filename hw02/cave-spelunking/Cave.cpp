@@ -12,7 +12,7 @@ using std::istream;
 
 void Cave::readRooms(istream &is) {
     std::string inputLine ;
-
+    int n = 0;
     while (true) {
         string shortDescription, longDescription;
 
@@ -39,8 +39,9 @@ void Cave::readRooms(istream &is) {
 
         longDescription = inputLine;
 
-        CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription);
+        CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription, n);
         caveRooms.push_back(tempCaveNodePtr) ;
+        ++n;
         //std::cout << tempCaveNodePtr->longdesc << " " << caveRooms[0]->longdesc << std::endl;
     }
 //    std::cout << caveRooms[2] << std::endl;
@@ -103,4 +104,18 @@ void Cave::getDescription() {
 
 void Cave::printLongDesc(int room) const {
     std::cout << caveRooms[currentRoom]->longdesc << std::endl;
+}
+
+void Cave::gotoAdjacentRoom(int roomIndex) {
+    auto presentCaveRoom = caveRooms[currentRoom];
+
+    if(roomIndex >= presentCaveRoom->adjacentRooms.size()) {
+
+        std::cerr << "You look and realize that it is not a path! \n";
+        std::cout << "You look around the room again for viable paths" << std::endl;
+        return;
+    }
+    auto destinationRoom = presentCaveRoom->adjacentRooms[roomIndex];
+    currentRoom = destinationRoom->roomNumber;
+
 }

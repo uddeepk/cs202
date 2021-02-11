@@ -23,6 +23,10 @@ int main() {
         std::cin >> userInput;
         if(userInput == 9)
             break;
+
+        if(userInput >=0 && userInput < 3) {
+            myCave.gotoAdjacentRoom(userInput); // validity checks inside the method ? cool
+        }
     }
 
 //    std::istringstream iss2 ( "5 6 7") ;
