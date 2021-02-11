@@ -44,7 +44,7 @@ std::ostream& Dragon::myPrintDragon (std::ostream& os) {
     os << "\nBreed: " << _breed << "\n";
     os << "Eye Color: " << _eyeColor << "\n";
     os << "Skin Color: " << _skinColor << "\n";
-    os << "Native Location " << _nativeLocation << "\n";
+    os << "Native Location: " << _nativeLocation << "\n";
     os << "Affiliation: " << _affiliation << "\n";
     os << "Length: " << _length << "\n";
     os << "Name: " << _name << "\n";

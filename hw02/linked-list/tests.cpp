@@ -95,6 +95,23 @@ TEST_CASE("Insert and Find","[list]") {
 
 //Print the list out
 TEST_CASE("Print the list out","[print]") {
+    Dragon mySingleDragon ("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand", "N/A", 40, "Julunggul");
+    std::ostringstream oss;
+    mySingleDragon.myPrintDragon(oss);
+
+    //Test Single Case
+    std::string mySingleDragonOutputString = "\nBreed: Antipodean Opaleye\n"
+                                             "Eye Color: Multicolored\n"
+                                             "Skin Color: Pearly\n"
+                                            "Native Location: New Zealand\n"
+                                            "Affiliation: N/A\n"
+                                            "Length: 40\n"
+                                            "Name: Julunggul\n";
+
+    REQUIRE(oss.str() == mySingleDragonOutputString);
+
+    oss.str(""); // making oss empty again.
+
     std::list <Dragon> myListOfDragons = {
             Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
             Dragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart"),
@@ -111,7 +128,7 @@ TEST_CASE("Print the list out","[print]") {
 
 
     //Use ostringstream object to store the output from the
-    std::ostringstream oss;
+
     myDragonOutput(oss, myListOfDragons);
 
     //Creating Expected output
@@ -122,7 +139,7 @@ TEST_CASE("Print the list out","[print]") {
                 "\nBreed: " + dragon._breed + "\n" +
                 "Eye Color: " + dragon._eyeColor + "\n" +
                 "Skin Color: " + dragon._skinColor + "\n" +
-                "Native Location " + dragon._nativeLocation + "\n" +
+                "Native Location: " + dragon._nativeLocation + "\n" +
                 "Affiliation: " + dragon._affiliation + "\n" +
                 "Length: " + std::to_string(dragon._length) + "\n" +
                 "Name: " + dragon._name + "\n";

@@ -85,4 +85,6 @@ int main() {
     int* myIntegerArray2 = new int [10];
     printMemoryAddress(myIntegerArray2);
     printMemoryAddress(++myIntegerArray2);
+
+    Figure out how to turn off compiler optimiztion
 }
