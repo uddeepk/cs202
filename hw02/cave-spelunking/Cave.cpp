@@ -94,6 +94,7 @@ void Cave::getDescription() {
     else
         printLongDesc(currentRoom);
 
+    presentCaveRoom->visited = true;
     // I'm putting menu here
     int n = 0;
     for ( const auto &adjRoom : presentCaveRoom->adjacentRooms) {
