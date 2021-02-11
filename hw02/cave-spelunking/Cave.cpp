@@ -12,10 +12,13 @@ using std::istream;
 
 void Cave::readRooms(istream &is) {
     std::string inputLine ;
+
     while (true) {
         string shortDescription, longDescription;
+
         if(!is)
             break;
+
         getline(is, inputLine);//shortd
         if(isdigit(inputLine[0])) {
             std::cout << "Found number, next step break\n";

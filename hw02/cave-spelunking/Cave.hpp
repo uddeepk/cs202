@@ -44,12 +44,13 @@ private:
         std::vector<std::shared_ptr<CaveNode>> adjacentRooms;
         std::string shortdesc; // a short description of this room
         std::string longdesc; // a long description of this room
+        bool visited = false;
     };
 
     using CaveNodePtr = std::shared_ptr<CaveNode>;
 
     std::vector<CaveNodePtr> caveRooms;
-    int currentRoom;
+    int currentRoom = 0; // Lets suppose this as the entrance and default value for ease.
 };
 
 

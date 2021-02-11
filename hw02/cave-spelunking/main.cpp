@@ -11,6 +11,14 @@ int main() {
 
     myCave.readRooms(iss);
 
+    while(true) {
+        //Print description
+
+        //Provide menu
+
+        //Recive action and execute
+    }
+
 //    std::istringstream iss2 ( "5 6 7") ;
 //
 //    int test;
