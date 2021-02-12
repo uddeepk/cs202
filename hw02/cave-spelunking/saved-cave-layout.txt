@@ -1,0 +1,38 @@
+You have been spelunking in Karki's Cave. You squeeze through one of the tightest hole ever. Suddenly, you find yourself slide uncontrolably. After what felt like an eternity, you drop into this room. Now you have to find your way out. Now you resume your journey.
+0
+The Main Landing
+There are Stalagmites everywhere. Even though its supposed to be dark, there are glowing structures near the walls. They look like mushrooms. Looking closer at the walls, you see there are three paths. One is a Crack in the walls. The other is a tunnel with the sound of a faint voice coming from inside it. The third is a Hole in which you saw a rabbit jump in.
+1
+1 2 3 
+The Crack
+You choose to squeeze through the rocks. Beads of sweat roll down you face. The sweat stings your eyes. As, you almost lose hope, you see a light. And it is really sad that rocks have caved in to prevent you from going any further. You notice two holes. You have to drop quite a bit and will not be able to climb back up from these two holes. One leads to a Landing, the other to a Tunnel. Or you can go back to the Landing.
+1
+0 2 4 
+The Tunnel
+You decide to move forward. The tunnel is really wet. Its walls seem unnaturally round as if some huge machine bored through the tunne. You walk forward and you reach a fork. Both the left and the right paths look identical. You can go towards the Left Landing, the Right Landing or go back to the Landing.
+1
+0 4 5 
+The Hole
+Fighting doubts about hallucinations, you jump into the hole. All of a sudden, you are inside a room. There is nothing in this room other than a small dim light hanging from the ceiling, and three doors. You look back, and there is no way you can climb back up the hole to the landing.
+0
+6 7 8 
+The Left Landing
+After walking here you realize that this part is already occupied by someone. A pale looking creature looks at you with its humongous eyes. It is continually mumbling something. "He took our precious away". It pays no attention to you. You see that there is only one other path than the entrance to this thing. This path looks to be a steep slide to a Landing. You can go back to the Tunnel. Or you can enter the mysterious slide to the Landing.
+1
+2 0 
+The Right Landing
+You choose Right, because the Right way is the "Right way". Your flashback reveals your love telling you "When in doubt go Right". This landing has a strange door. You can either go back into the Tunnel or enter the Mysterious Room.
+0
+2 6 
+The Mysterious Room 1
+You enter this mysterious room. You notice the candle on the desk. You have no idea or what may be keeping the candle lit. There is nothing other than the door you came in through, and the door you can exit. One of the doors leads to the Landing, and the other to the other Mysterious Room.
+0
+5 3 
+The Mysterious Room 2
+You used to choose multi choice question. The same way, you decide to choose C's, you decide to chose the middle road. You have a chance of being correct don't you. However, there is nothing in this room. The empty room reminds you of the multiple times you messed up and had to go back. Maybe there is another way out.
+0
+3 
+The Mysterious Room 3
+This room has a bed, and a table. There looks to be nothing significant in this room. You can go back to the Mysterious Room you came from.
+0
+3 
