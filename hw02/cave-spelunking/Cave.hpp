@@ -11,7 +11,7 @@
 #include <memory>
 
 class Cave {
-//    friend bool operator==( const CaveNode &room1, const CaveNode &room2);
+
 public:
     void getDescription();
 
@@ -57,5 +57,5 @@ private:
     int currentRoom = 0; // Lets suppose this as the entrance and default value for ease.
 };
 std::ostream& beautifyOutput ( std::ostream &os, const std::string &s);
-
+void getMenu() ;
 #endif //CAVE_SPELUNKING_CAVE_HPP

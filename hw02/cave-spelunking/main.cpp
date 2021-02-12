@@ -1,24 +1,47 @@
 #include <iostream>
 #include <string>
 #include "Cave.hpp"
-#include <sstream>
 #include <fstream>
-#include <iomanip>
 using std::cout;
 using std::endl;
+
 int main() {
     Cave myCave;
 
-    //std::istringstream iss ("short1\nlong1\n0\n1 2\nshort2\nlong2\n0\n 2\nshort3\nlong3\n0\n 1\n");
-    std::cout << "Do you want to resume from last save point ? y/n";
     std::ifstream myCaveLayout;
-    if ( std::cin.get() == 'y')
-        myCaveLayout.open("saved-cave-layout.txt");
-    else
-        myCaveLayout.open("cave-layout.txt");
+    while (true){
+        std::cout << "Do you want to start a new game ? (yes/no) ";
+        std::string userChoice;
+        getline(std::cin, userChoice);
+        if ( userChoice == "no") {
+            myCaveLayout.open("saved-cave-layout.txt");
+            if(myCaveLayout.fail()) {
+                std::cerr << "Save file corrupt." << endl;
+                cout << "Starting new game" << endl;
+                myCaveLayout.open("cave-layout.txt");
+            }
+            break;
+        } else if (userChoice == "yes") {
+            myCaveLayout.open("cave-layout.txt");
+            break;
+        } else {
+            std::cout << "Please pick the proper choice" <<std::endl;
+        }
+    }
+    if(!myCaveLayout) {
+        if(myCaveLayout.eof()) {
+            std::cerr << "File empty" << endl;
+        }
+        if(myCaveLayout.fail()) {
+            std::cerr << "Check FIle" << endl;
+        }
+        exit (3);
+    }
+
     std::string welcomeMessage;
     getline(myCaveLayout, welcomeMessage);
     beautifyOutput(cout, welcomeMessage) << endl;
+
     myCave.readRooms(myCaveLayout);
 
     myCaveLayout.close();
@@ -29,6 +52,7 @@ int main() {
         //Print description
         myCave.getDescription();
         //Provide menu
+        getMenu();
 
         //Recive action and execute
         std::cout << "Enter your choice: " ;
@@ -40,13 +64,6 @@ int main() {
             myCave.gotoAdjacentRoom(userInput); // validity checks inside the method ? cool
         }
     }
-
-//    std::istringstream iss2 ( "5 6 7") ;
-//
-//    int test;
-//    while( iss2 >> test) {
-//        std::cout << test << " " ;
-//    }
 
     return 0;
 }

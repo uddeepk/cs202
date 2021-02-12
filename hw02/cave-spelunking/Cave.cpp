@@ -12,7 +12,9 @@ using std::string;
 using std::istream;
 
 void Cave::readRooms(istream &is) {
-
+    std::string inputLine;
+    getline(is, inputLine);
+    currentRoom = std::stoi(inputLine);
     int n = 0;
     vector <string> adjacentCaveRooms;
 
@@ -20,7 +22,7 @@ void Cave::readRooms(istream &is) {
     while (is.peek() != EOF) {
         string shortDescription, longDescription;
 
-        std::string inputLine ;
+        inputLine.clear();
         getline(is, inputLine);
         if(inputLine.empty()) {
             continue;
@@ -82,12 +84,6 @@ void Cave::connect(int room1, int room2) {
         // ROom not yet recorded for adjacent room.
         firstRoom->adjacentRooms.push_back(secondRoom);
     }
-
-//    if(std::find(secondRoom->adjacentRooms.begin(), secondRoom->adjacentRooms.end(), firstRoom)
-//    == secondRoom->adjacentRooms.end()) {
-//        secondRoom->adjacentRooms.push_back(firstRoom);
-//    }
-
 }
 
 void Cave::getDescription() {
@@ -98,7 +94,7 @@ void Cave::getDescription() {
         printLongDesc(currentRoom);
 
     presentCaveRoom->visited = true;
-    // I'm putting menu here
+    // I'm putting part of menu here
     int n = 0;
     for ( const auto &adjRoom : presentCaveRoom->adjacentRooms) {
         std::cout << n << ": " << adjRoom->shortdesc << "\n";
@@ -108,7 +104,6 @@ void Cave::getDescription() {
 
 void Cave::printLongDesc(int room) const {
     beautifyOutput(std::cout, caveRooms[currentRoom]->longdesc) << std::endl;
-//    std::cout << caveRooms[currentRoom]->longdesc << std::endl;
 }
 
 void Cave::gotoAdjacentRoom(int roomIndex) {
@@ -133,4 +128,9 @@ std::ostream& beautifyOutput ( std::ostream &os, const std::string &s) {
 
     }
     return os;
+}
+
+void getMenu() {
+    std::cout << "6: Save Rooms\n";
+    std::cout << "9: Quit\n";
 }
