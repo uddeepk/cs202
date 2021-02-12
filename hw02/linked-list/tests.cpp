@@ -1,5 +1,21 @@
 //
-// Created by uddeepk on 2/9/21.
+// Uddeep Karki
+// CS 202 Hw 02
+// tests.cpp
+// This file uses the Catch2 to check a queue, a stack, insertion, and search using a
+// a Linked List by implementing std::list
+// This program tests
+// 1. Queue: First -In, First-OUt
+//        a. Push a value to the back of the list
+//        b. Pop a value from the front of the list
+// 2. Stack: Last-in First-out
+//        a. Push a value to the back of the list
+//        b. Pop a value from the back of the list
+// 3. Insert and Find
+//        a. Sort list
+//        b. Search for value in the list
+//        c. Use insert member function in the std::list class.
+// 4. Print the list out and test the ostream for the correct output.
 //
 
 #include "catch.hpp"

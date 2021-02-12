@@ -1,7 +1,7 @@
 //Uddeep Karki
 //Hw02
 //Dragon.hpp
-//This is the header for the Dragon class. It has 6? attributes.
+//This is the header for the Dragon class. It has 7 attributes.
 //The basis of the stats are from the Harry Potter Universe
 
 
@@ -14,7 +14,7 @@ struct Dragon {
     Dragon () = delete; // disabling default constructor
     Dragon ( std::string breed, std::string eyeColor, std::string skinColor,
     std::string nativeLocation, std::string affiliation, unsigned int length, std::string name);
-    Dragon (const Dragon &); // Copy construction. LEt compiler deal with it
+    Dragon (const Dragon &); // Copy constructor
     ~Dragon();
     // Overload < operator for using sort on std::list container
     bool operator<(const Dragon &dragon2);

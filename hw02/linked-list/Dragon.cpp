@@ -24,7 +24,7 @@ Dragon::Dragon( const Dragon& d1):
                 _breed(d1._breed), _eyeColor(d1._eyeColor), _skinColor(d1._skinColor),
                 _nativeLocation(d1._nativeLocation), _affiliation(d1._affiliation),
                 _length(d1._length), _name(d1._name) {
-
+    // Made this just to look at it.
 }
 Dragon::~Dragon() {
     // Hi! :)
