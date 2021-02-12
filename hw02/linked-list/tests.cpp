@@ -34,16 +34,20 @@ TEST_CASE("Queue: First-In First-Out", "[queue]") {
 
     //Creating queue using std::list
     std::list<Dragon> myQueueOfDragons = {
-            Dragon ("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
-            Dragon("Swedish Short-Snout", "Yellow", "Silvery Blue", "Sweden", "Romanian Dragon Sanctuary", 22, "Fafnir"),
-            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu")
+            Dragon ("Norwegian Ridgeback", "Orange", "Black","Norway",
+                    "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Swedish Short-Snout", "Yellow", "Silvery Blue", "Sweden",
+                   "Romanian Dragon Sanctuary", 22, "Fafnir"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary",
+                   "Romanian Dragon Sanctuary", 50, "Susu")
 
     };
 
     REQUIRE(myQueueOfDragons.front()._name == "Norbert");
 
     //Push a value to the back of the list
-    myQueueOfDragons.push_back(Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
+    myQueueOfDragons.push_back(Dragon("Chinese Fireball", "Yellow", "Scarlet",
+                                      "China", "Romanian Dragon Sanctuary", 25, "Tailong"));
     //REQUIRE(myQueueOfDragons.front()._name == "Norbert");
     REQUIRE(myQueueOfDragons.back()._name == "Tailong");
 
@@ -57,12 +61,17 @@ TEST_CASE("Queue: First-In First-Out", "[queue]") {
 TEST_CASE("Stack:Last-in First Out", "[stack]") {
     //Make stack using std::list
     std::list <Dragon> myStackOfDragons = {
-            Dragon("Common Welsh Green", "Hazel", "Green", "Wales", "Romanian Dragon Sanctuary", 18, "Beca"),
-            Dragon("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand", "N/A", 40, "Julunggul"),
-            Dragon("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart")
+            Dragon("Common Welsh Green", "Hazel", "Green", "Wales",
+                   "Romanian Dragon Sanctuary", 18, "Beca"),
+            Dragon("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand",
+                   "N/A", 40, "Julunggul"),
+            Dragon("Herbridean Black", "Purple", "Dark", "Scotland",
+                   "Banchory Bangers", 30, "Stewart")
     };
     REQUIRE(myStackOfDragons.back()._name == "Stewart");
-    myStackOfDragons.push_back(Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"));
+    myStackOfDragons.push_back(Dragon("Ukranian Ironbelly", "Deep red",
+                                      "Metallic grey-silver", "Ukraine",
+                                      "N/A", 60, "Neville"));
 
     //"Pop a value from the back of the list
     REQUIRE(myStackOfDragons.back()._name == "Neville");
@@ -75,24 +84,34 @@ TEST_CASE("Insert and Find","[list]") {
 
     //My list to use insert and find
     std::list <Dragon> myListOfDragons = {
-            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville"),
-            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
-            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
-            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver",
+                   "Ukraine", "N/A", 60, "Neville"),
+            Dragon("Hungarian Horntail", "Yellow", "Black",
+                   "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China",
+                   "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway",
+                   "Romanian Dragon Sanctuary", 40, "Norbert"),
     };
 
     std::list <Dragon> myExpectedListOfDragons = {
-            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
-            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart"),
-            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
-            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
-            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China",
+                   "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland",
+                    "Banchory Bangers", 30, "Stewart"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary",
+                   "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway",
+                   "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver",
+                   "Ukraine", "N/A", 60, "Neville")
     };
     //Sorting instead of putting items in order.
     myListOfDragons.sort();
 
     //My Dragon to be inserted
-    Dragon myInsertDragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart");
+    Dragon myInsertDragon ("Herbridean Black", "Purple", "Dark", "Scotland",
+                           "Banchory Bangers", 30, "Stewart");
 
     auto appropriatePlaceInList = myListOfDragons.begin();
 
@@ -111,7 +130,8 @@ TEST_CASE("Insert and Find","[list]") {
 
 //Print the list out
 TEST_CASE("Print the list out","[print]") {
-    Dragon mySingleDragon ("Antipodean Opaleye", "Multicolored", "Pearly", "New Zealand", "N/A", 40, "Julunggul");
+    Dragon mySingleDragon ("Antipodean Opaleye", "Multicolored", "Pearly",
+                           "New Zealand", "N/A", 40, "Julunggul");
     std::ostringstream oss;
     mySingleDragon.myPrintDragon(oss);
 
@@ -129,11 +149,16 @@ TEST_CASE("Print the list out","[print]") {
     oss.str(""); // making oss empty again.
 
     std::list <Dragon> myListOfDragons = {
-            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China", "Romanian Dragon Sanctuary", 25, "Tailong"),
-            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland", "Banchory Bangers", 30, "Stewart"),
-            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary", "Romanian Dragon Sanctuary", 50, "Susu"),
-            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway", "Romanian Dragon Sanctuary", 40, "Norbert"),
-            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver", "Ukraine", "N/A", 60, "Neville")
+            Dragon("Chinese Fireball", "Yellow", "Scarlet", "China",
+                   "Romanian Dragon Sanctuary", 25, "Tailong"),
+            Dragon ("Herbridean Black", "Purple", "Dark", "Scotland",
+                    "Banchory Bangers", 30, "Stewart"),
+            Dragon("Hungarian Horntail", "Yellow", "Black", "Hungary",
+                   "Romanian Dragon Sanctuary", 50, "Susu"),
+            Dragon("Norwegian Ridgeback", "Orange", "Black", "Norway",
+                   "Romanian Dragon Sanctuary", 40, "Norbert"),
+            Dragon("Ukranian Ironbelly", "Deep red", "Metallic grey-silver",
+                   "Ukraine", "N/A", 60, "Neville")
     };
 
 

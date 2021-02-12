@@ -52,7 +52,8 @@ std::ostream& Dragon::myPrintDragon (std::ostream& os) {
 }
 
 bool operator==( const Dragon& d1, const Dragon&d2) {
-    return (d1._breed == d2._breed && d1._breed == d2._breed && d1._eyeColor == d2._eyeColor && d1._skinColor == d2._skinColor
-            && d1._nativeLocation==d2._nativeLocation && d1._affiliation == d2._affiliation && d1._length == d2._length &&
-            d1._name == d2._name);
+    return (d1._breed == d2._breed && d1._breed == d2._breed
+            && d1._eyeColor == d2._eyeColor && d1._skinColor == d2._skinColor
+            && d1._nativeLocation==d2._nativeLocation && d1._affiliation == d2._affiliation
+            && d1._length == d2._length && d1._name == d2._name);
 }

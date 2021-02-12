@@ -14,11 +14,7 @@
 void to_lower(char* s); // declaring the function
 
 int main(int argc, char **argv) {
-//    char testString[] = "My Test String";
-//    std::cout << testString<< std::endl;
-//    std::cout << "After to_lower" << std::endl;
-//    to_lower(testString);
-//    std::cout << testString << std::endl;
+
     if ( argc < 2) {
         std::cerr << "Not enough arguments!" << std::endl;
         return 1;
