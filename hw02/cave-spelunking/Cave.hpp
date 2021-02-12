@@ -41,7 +41,9 @@ public:
 
 private:
     struct CaveNode {
-        CaveNode(std::string sdesc, std::string ldesc, int n):shortdesc(sdesc), longdesc(ldesc), roomNumber(n) {} ;
+        CaveNode(std::string sdesc, std::string ldesc,bool beenThere, int n):
+        shortdesc(sdesc), longdesc(ldesc), visited(beenThere), roomNumber(n) {} ;
+
         std::vector<std::shared_ptr<CaveNode>> adjacentRooms;
         std::string shortdesc; // a short description of this room
         std::string longdesc; // a long description of this room

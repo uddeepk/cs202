@@ -5,42 +5,64 @@
 #include "Cave.hpp"
 #include <sstream>
 #include <algorithm>
+#include <map>
 
 using std::vector;
 using std::string;
 using std::istream;
 
 void Cave::readRooms(istream &is) {
-    std::string inputLine ;
+
     int n = 0;
-    while (true) {
+    vector <string> adjacentCaveRooms;
+
+    std::map <CaveNodePtr , string> caveRoomAndAdjacentRooms;
+    while (is.peek() != EOF) {
         string shortDescription, longDescription;
 
-        if(!is)
-            break;
-
-        if(!getline(is, inputLine)) {
+//        if(!is)
+//            break;
+        std::string inputLine ;
+        getline(is, inputLine);
+        if(inputLine.empty()) {
             std::cerr << "Error in data!" << std::endl;
             return;
         }//shortd
 
-        if(isdigit(inputLine[0])) {
-            std::cout << "Found number, next step break\n";
-            break;
-        }
+//        if(isdigit(inputLine[0])) {
+//            std::cout << "Found number, next step break\n";
+//            break;
+//        }
         shortDescription = inputLine;
 
-        inputLine = "";// Making easy to check failure of is.
+        inputLine.clear();// Making easy to check failure of is.
+        getline(is, inputLine);
 
-        if(!getline(is, inputLine)) {
+        if(inputLine.empty()) {
             std::cerr << "Error in data!" << std::endl;
-            return;//longd
+            return;
         }
 
         longDescription = inputLine;
 
-        CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription, n);
+        inputLine.clear();
+        getline(is, inputLine);
+        if(inputLine.empty()) {
+            std::cerr << "Error in data!" << std::endl;
+            return;
+        }
+        bool visited ;
+        CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription, visited, n);
         caveRooms.push_back(tempCaveNodePtr) ;
+
+        inputLine.clear();
+
+        getline(is, inputLine);
+        if(inputLine.empty()) {
+            std::cerr << "Error in data!" << std::endl;
+            return;
+        }
+        adjacentCaveRooms.push_back(inputLine);
         ++n;
         //std::cout << tempCaveNodePtr->longdesc << " " << caveRooms[0]->longdesc << std::endl;
     }
@@ -48,23 +70,29 @@ void Cave::readRooms(istream &is) {
     // Now we can use connect
     //std::cout << inputLine ;
     //Note that it already contains a string of numbers.
-    do {
-        std::istringstream iss (inputLine);
+    if(caveRooms.size() != adjacentCaveRooms.size()) {
+        std::cerr << "Error in the data, wrong number of rooms to info of adjacent rooms";
+        exit(3);
+    }
 
-        int theRoomNumber ;
-        iss >> theRoomNumber;
-        if ( !iss) {
-            //Error
-            std::cerr << "Error in data!!" << std::endl;
-            break;
-        }
+//    do {
+    for ( int theRoomNumber = 0 ; theRoomNumber < n ; ++theRoomNumber ) {
+        std::istringstream iss (adjacentCaveRooms[theRoomNumber]);
+
+        //int theRoomNumber ;
+        //iss >> theRoomNumber;
+//        if ( !iss) {
+//            //Error
+//            std::cerr << "Error in data!!" << std::endl;
+//            break;
+//        }
         int connectedRoom;
         while (iss >> connectedRoom) {
             //std::cout << connectedRoom << " ";
             connect(theRoomNumber, connectedRoom);
         }
 
-    }while (getline(is, inputLine));
+    } //while (getline(is, inputLine));
 
 
 }
