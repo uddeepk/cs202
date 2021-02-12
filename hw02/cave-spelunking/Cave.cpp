@@ -83,19 +83,18 @@ void Cave::connect(int room1, int room2) {
         firstRoom->adjacentRooms.push_back(secondRoom);
     }
 
-    if(std::find(secondRoom->adjacentRooms.begin(), secondRoom->adjacentRooms.end(), firstRoom)
-    == secondRoom->adjacentRooms.end()) {
-        secondRoom->adjacentRooms.push_back(firstRoom);
-    }
+//    if(std::find(secondRoom->adjacentRooms.begin(), secondRoom->adjacentRooms.end(), firstRoom)
+//    == secondRoom->adjacentRooms.end()) {
+//        secondRoom->adjacentRooms.push_back(firstRoom);
+//    }
 
 }
 
 void Cave::getDescription() {
     auto presentCaveRoom = caveRooms[currentRoom];
+    std::cout << presentCaveRoom->shortdesc << std::endl;
 
-    if ( presentCaveRoom->visited )
-        std::cout << presentCaveRoom->shortdesc << std::endl;
-    else
+    if ( !presentCaveRoom->visited )
         printLongDesc(currentRoom);
 
     presentCaveRoom->visited = true;
@@ -108,7 +107,8 @@ void Cave::getDescription() {
 }
 
 void Cave::printLongDesc(int room) const {
-    std::cout << caveRooms[currentRoom]->longdesc << std::endl;
+    beautifyOutput(std::cout, caveRooms[currentRoom]->longdesc) << std::endl;
+//    std::cout << caveRooms[currentRoom]->longdesc << std::endl;
 }
 
 void Cave::gotoAdjacentRoom(int roomIndex) {
@@ -123,4 +123,14 @@ void Cave::gotoAdjacentRoom(int roomIndex) {
     auto destinationRoom = presentCaveRoom->adjacentRooms[roomIndex];
     currentRoom = destinationRoom->roomNumber;
 
+}
+
+std::ostream& beautifyOutput ( std::ostream &os, const std::string &s) {
+    for(size_t index = 0 ; index < s.length() ; ++index) {
+        if(index % 74 == 0)
+            os << "\n";
+        os << s[index] ;
+
+    }
+    return os;
 }
