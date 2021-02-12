@@ -20,19 +20,11 @@ void Cave::readRooms(istream &is) {
     while (is.peek() != EOF) {
         string shortDescription, longDescription;
 
-//        if(!is)
-//            break;
         std::string inputLine ;
         getline(is, inputLine);
         if(inputLine.empty()) {
-            std::cerr << "Error in data!" << std::endl;
-            return;
-        }//shortd
-
-//        if(isdigit(inputLine[0])) {
-//            std::cout << "Found number, next step break\n";
-//            break;
-//        }
+            continue;
+        }
         shortDescription = inputLine;
 
         inputLine.clear();// Making easy to check failure of is.
@@ -40,7 +32,7 @@ void Cave::readRooms(istream &is) {
 
         if(inputLine.empty()) {
             std::cerr << "Error in data!" << std::endl;
-            return;
+            exit(3);
         }
 
         longDescription = inputLine;
@@ -49,7 +41,7 @@ void Cave::readRooms(istream &is) {
         getline(is, inputLine);
         if(inputLine.empty()) {
             std::cerr << "Error in data!" << std::endl;
-            return;
+            exit(3);
         }
         bool visited ;
         CaveNodePtr tempCaveNodePtr = std::make_shared<CaveNode>(shortDescription, longDescription, visited, n);
@@ -60,41 +52,25 @@ void Cave::readRooms(istream &is) {
         getline(is, inputLine);
         if(inputLine.empty()) {
             std::cerr << "Error in data!" << std::endl;
-            return;
+            exit(3);
         }
         adjacentCaveRooms.push_back(inputLine);
+
+        caveRoomAndAdjacentRooms[tempCaveNodePtr] = inputLine;
         ++n;
-        //std::cout << tempCaveNodePtr->longdesc << " " << caveRooms[0]->longdesc << std::endl;
     }
-//    std::cout << caveRooms[2] << std::endl;
-    // Now we can use connect
-    //std::cout << inputLine ;
-    //Note that it already contains a string of numbers.
-    if(caveRooms.size() != adjacentCaveRooms.size()) {
-        std::cerr << "Error in the data, wrong number of rooms to info of adjacent rooms";
+    if (caveRoomAndAdjacentRooms.size() == 0) {
+        std::cerr << "Error in Data." ;
         exit(3);
     }
+    for (auto &[roomPtr, adjacentRoomsIndex]:caveRoomAndAdjacentRooms ) {
+        std::istringstream iss (adjacentRoomsIndex);
 
-//    do {
-    for ( int theRoomNumber = 0 ; theRoomNumber < n ; ++theRoomNumber ) {
-        std::istringstream iss (adjacentCaveRooms[theRoomNumber]);
-
-        //int theRoomNumber ;
-        //iss >> theRoomNumber;
-//        if ( !iss) {
-//            //Error
-//            std::cerr << "Error in data!!" << std::endl;
-//            break;
-//        }
         int connectedRoom;
         while (iss >> connectedRoom) {
-            //std::cout << connectedRoom << " ";
-            connect(theRoomNumber, connectedRoom);
+            connect(roomPtr->roomNumber, connectedRoom); // This is redundant. I can easily use the roomPtr
         }
-
-    } //while (getline(is, inputLine));
-
-
+    }
 }
 
 void Cave::connect(int room1, int room2) {
