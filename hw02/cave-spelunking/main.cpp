@@ -48,7 +48,7 @@ int main() {
 
     while(true) {
         int userInput ;
-
+        std::string inputBuffer;
         //Print description
         myCave.getDescription();
         //Provide menu
@@ -56,12 +56,25 @@ int main() {
 
         //Recive action and execute
         std::cout << "Enter your choice: " ;
-        std::cin >> userInput;
+        getline(std::cin, inputBuffer);
+
+        userInput = std::stoi(inputBuffer);
+
         if(userInput == 9)
             break;
 
         if(userInput >=0 && userInput < 3) {
             myCave.gotoAdjacentRoom(userInput); // validity checks inside the method ? cool
+        } else if ( userInput == 6) {
+            //save
+            cout << "Saving!!!!" << endl;
+            std::ofstream myCaveSave("saved-cave-layout.txt");
+            myCaveSave << welcomeMessage << " Now you resume your journey.\n";
+            myCave.saveRooms(myCaveSave);
+            break;
+        } else {
+            std::cout << "Please enter proper input!" << std::endl;
+            getline(std::cin, inputBuffer);
         }
     }
 

@@ -120,6 +120,21 @@ void Cave::gotoAdjacentRoom(int roomIndex) {
 
 }
 
+void Cave::saveRooms(std::ostream &os) const {
+    os << currentRoom ;
+
+    for(const auto &caveData : caveRooms) {
+        os << "\n";
+        os << caveData->shortdesc << "\n";
+        os << caveData->longdesc << "\n";
+        os << caveData->visited << "\n";
+
+        for(const auto &room : caveData->adjacentRooms) {
+            os << room->roomNumber << " ";
+        }
+    }
+}
+
 std::ostream& beautifyOutput ( std::ostream &os, const std::string &s) {
     for(size_t index = 0 ; index < s.length() ; ++index) {
         if(index % 74 == 0)
