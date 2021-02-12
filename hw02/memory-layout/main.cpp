@@ -125,15 +125,18 @@ int main() {
         std::string referenceName = "myIntegerArray[" + std::to_string(index) + "]";
         printMemoryAddress(&myIntegerArray[index], referenceName);
     }
-
+    int myIntegerArray3 [10];
+    printMemoryAddress(myIntegerArray3, "myIntArray3");
     //std::cout << (myIntegerArray[1] - myIntegerArray[0]);
 
     std::cout << "\n";
     std::cout << "Array using new\n";
     int* myIntegerArray2 = new int [10];
+
     for ( size_t index = 0 ; index < 10 ; ++index) {
         std::string referenceName = "myIntegerArray2[" + std::to_string(index) + "]";
         printMemoryAddress(&myIntegerArray2[index], referenceName);
+
     }
     delete [] myIntegerArray2;
 
