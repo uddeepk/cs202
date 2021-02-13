@@ -88,10 +88,11 @@ void Cave::connect(int room1, int room2) {
 
 void Cave::getDescription() {
     auto presentCaveRoom = caveRooms[currentRoom];
-    std::cout << presentCaveRoom->shortdesc << std::endl;
 
     if ( !presentCaveRoom->visited )
         printLongDesc(currentRoom);
+
+    std::cout << "\nYou are at " << presentCaveRoom->shortdesc << "\n" << std::endl;
 
     presentCaveRoom->visited = true;
     // I'm putting part of menu here
@@ -135,6 +136,9 @@ void Cave::saveRooms(std::ostream &os) const {
     }
 }
 
+int Cave::getCurrentRoom() const {
+    return currentRoom;
+}
 std::ostream& beautifyOutput ( std::ostream &os, const std::string &s) {
     for(size_t index = 0 ; index < s.length() ; ++index) {
         if(index % 74 == 0)
@@ -146,6 +150,7 @@ std::ostream& beautifyOutput ( std::ostream &os, const std::string &s) {
 }
 
 void getMenu() {
+    std::cout << "5: Long Description\n";
     std::cout << "6: Save Rooms\n";
     std::cout << "9: Quit\n";
 }

@@ -57,6 +57,17 @@ int main() {
         //Recive action and execute
         std::cout << "Enter your choice: " ;
         getline(std::cin, inputBuffer);
+        if ( inputBuffer.length() > 1 || inputBuffer.empty() ) {
+            std::cout << "Not a valid input!" << std::endl;
+            getline(std::cin, inputBuffer);
+            continue;
+        }
+
+        if( !isdigit(inputBuffer[0])) {
+            std::cout << "Not a valid input!" << std::endl;
+            getline(std::cin, inputBuffer);
+            continue;
+        }
 
         userInput = std::stoi(inputBuffer);
 
@@ -72,9 +83,11 @@ int main() {
             myCaveSave << welcomeMessage << " Now you resume your journey.\n";
             myCave.saveRooms(myCaveSave);
             break;
+        } else if (userInput == 5) {
+            myCave.printLongDesc(myCave.getCurrentRoom());
         } else {
-            std::cout << "Please enter proper input!" << std::endl;
-            getline(std::cin, inputBuffer);
+                std::cout << "Not a valid choice!" << std::endl;
+                getline(std::cin, inputBuffer);
         }
     }
 
