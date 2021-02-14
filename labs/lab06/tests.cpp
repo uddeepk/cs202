@@ -21,6 +21,7 @@
 bool operator==(const Vector3f& a, const Vector3f& b) {
     return (a._x == b._x)    && (a._y == b._y) && (a._z == b._z);
 }
+
 bool operator!=(const Vector3f& a, const Vector3f& b) {
     return (a._x != b._x) || (a._y != b._y) || (a._z != b._z) ;
 }
@@ -70,4 +71,71 @@ TEST_CASE("Practice with Sections", "[hypotamoose]") {
         REQUIRE( b._z == Approx(0.00081));
     }
 
+}
+
+TEST_CASE("Add","[add]") {
+    Vector3f a(1, 2, 3), b(3, 4, 5);
+    auto c = a.add(b);
+
+    REQUIRE( c._x == Approx(4));
+    REQUIRE( c._y == Approx(6));
+    REQUIRE( c._z == Approx(8));
+
+}
+
+TEST_CASE( "SUBTRACT", "[subtract]") {
+    Vector3f a(1, 2, 3), b(3, 4, 5);
+    auto c = a.sub(b);
+
+    REQUIRE( c._x == Approx(-2));
+    REQUIRE( c._y == Approx(-2));
+    REQUIRE( c._z == Approx(-2));
+}
+
+TEST_CASE( "Scale", "[scale]") {
+    Vector3f a(1, 2, 3);
+    auto b = a.scale(3);
+
+    REQUIRE( b._x == Approx(3));
+    REQUIRE( b._y == Approx(6));
+    REQUIRE( b._z == Approx(9));
+
+}
+
+TEST_CASE("Negate", "[negate]") {
+    Vector3f a(1, 2, 3);
+    a.negate();
+
+    REQUIRE( a._x == Approx(-1));
+    REQUIRE( a._y == Approx(-2));
+    REQUIRE( a._z == Approx(-3));
+}
+
+TEST_CASE("Dot product","[dot]") {
+    Vector3f a(1, 2, 3), b(3, 4, 5);
+    auto dotProduct = a.dot(b);
+
+    REQUIRE( dotProduct == Approx(23));
+}
+
+TEST_CASE( "Cross Product", "[cross]") {
+    Vector3f a(1, 2, 3), b(3, 4, 5);
+    auto c = a.cross(b);
+
+    // Require...
+}
+
+TEST_CASE( "Length", "[length]") {
+    Vector3f a(1, 2, 3);
+    auto lengthA =a.length();
+
+    //TODO REQUIRE
+
+}
+
+TEST_CASE( "Unit Vector", "[unit]") {
+    Vector 3f a(1, 2, 3);
+    auto unitVectorA = a.unit();
+
+    //TODO REQUIRE
 }
