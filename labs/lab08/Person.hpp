@@ -19,7 +19,7 @@ public:
 //    Person operator+(  const Person &person2); // LOok at note, only global variables better in this case.
 
     std::string getName() const;
-    static int getInstances()  {return _instances;}
+    static int getInstances(); //  {return _instances;}
 private:
     const std::string _name;
     static int _instances ;

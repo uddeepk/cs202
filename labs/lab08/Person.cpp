@@ -9,9 +9,9 @@ using std::endl;
 
 int Person::_instances = 0;
 
-//static int Person::getInstances() {
-//    return _instances;
-//}
+int Person::getInstances() {
+    return _instances;
+}
 Person::Person() {
     cout << "Called Person default constructor! \n";
     ++_instances;
