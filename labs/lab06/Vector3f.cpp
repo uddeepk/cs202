@@ -46,11 +46,11 @@ void Vector3f::negate() {
 //Vector3f scale
 
 float Vector3f::dot(const Vector3f& rhs) {
-    return (_x * rhs._x + _y * rhs._y + _z*rhs._z);
+    return (_x * rhs._x + _y * rhs._y + _z * rhs._z);
 }
 
 Vector3f Vector3f::cross(const Vector3f& rhs) {
-    return Vector3f(_y*rhs._z - _z * rhs._y , _z * rhs._x - _x * rhs._z, _x * rhs._y - _y * rhs._x);
+    return Vector3f(_y * rhs._z - _z * rhs._y , _z * rhs._x - _x * rhs._z, _x * rhs._y - _y * rhs._x);
 }
 
 float Vector3f::length() {
