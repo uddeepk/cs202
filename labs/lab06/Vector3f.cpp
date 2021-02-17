@@ -1,7 +1,8 @@
 //
 // Created by uddeepk on 2/9/21.
 //
-
+// Float vs Double
+// everywhere try use const references
 #include "Vector3f.hpp"
 #include <math.h>
 Vector3f::Vector3f(): _x(0), _y(0), _z(0) {
@@ -36,7 +37,7 @@ void Vector3f::scale(const float scalar)  {
     _z *= scalar;
 }
 void Vector3f::negate() {
-    this->scale(-1);
+    this->scale(-1); // origin - vector
 }
 //Vector3f operator* (const float scalar, const Vector3f& rhs) {
 //
@@ -57,9 +58,13 @@ float Vector3f::length() {
 }
 
 Vector3f Vector3f::unit() {
-    auto a {(*this)};
+    Vector3f a (*this); // Write like this to signify that copy is being used.
+    // This is a copy constructor.
+
     a.scale(1/this->length());
+
     return a;
+    //return *this/this->length();
 }
 
 Vector3f operator+ (const Vector3f& lhs, const Vector3f& rhs) {
@@ -69,7 +74,7 @@ Vector3f operator- (const Vector3f& lhs, const Vector3f& rhs) {
     return lhs.sub(rhs);
 }
 Vector3f operator* (const Vector3f& vec3, const float scalar) {
-    auto a { vec3};
+    Vector3f a( vec3 );
     a.scale(scalar);
     return a;
 }
@@ -77,7 +82,7 @@ Vector3f operator* (const float scalar, const Vector3f& vec3) {
     return vec3 * scalar;
 }
 Vector3f operator/ (const Vector3f& vec3, const float scalar) {
-    auto a{vec3};
+    Vector3f a( vec3 );
     a.scale(1/scalar);
     return a;
 }

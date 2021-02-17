@@ -16,6 +16,7 @@ public:
     float _y;
     float _z;
 
+
     Vector3f add(const Vector3f&) const;
     Vector3f sub(const Vector3f&) const;
     void scale(const float scalar) ;
