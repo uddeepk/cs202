@@ -115,6 +115,9 @@ TEST_CASE("Dot product","[dot]") {
 TEST_CASE( "Cross Product", "[cross]") {
     Vector3f a(1, 2, 3), b(3, 4, 5);
     auto c = a.cross(b);
+    auto expectedCrossProduct = Vector3f(-2, 4, -2);
+
+    REQUIRE(c == expectedCrossProduct);
 
     // Require...
 }
