@@ -16,7 +16,24 @@ public:
     float _y;
     float _z;
 
+    Vector3f add(const Vector3f&) const;
+    Vector3f sub(const Vector3f&) const;
+    void scale(const float scalar) ;
+    void negate ();
+    float dot(const Vector3f& rhs);
+    Vector3f cross(const Vector3f& rhs);
+    float length();
+    Vector3f unit();
 
 };
+bool operator==(const Vector3f& a, const Vector3f& b) ;
+
+bool operator!=(const Vector3f& a, const Vector3f& b);
+
+Vector3f operator+ (const Vector3f& lhs, const Vector3f& rhs);
+Vector3f operator- (const Vector3f& lhs, const Vector3f& rhs);
+Vector3f operator* (const Vector3f& vec3, const float scalar);
+Vector3f operator* (const float scalar, const Vector3f& vec3);
+Vector3f operator/ (const Vector3f& vec3, const float scalar);
 
 #endif //LAB06_VECTOR3F_HPP
