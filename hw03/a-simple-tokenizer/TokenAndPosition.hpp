@@ -1,0 +1,14 @@
+//
+// Created by uddeepk on 2/17/21.
+//
+
+#ifndef A_SIMPLE_TOKENIZER_TOKENANDPOSITION_HPP
+#define A_SIMPLE_TOKENIZER_TOKENANDPOSITION_HPP
+
+
+class TokenAndPosition {
+
+};
+
+
+#endif //A_SIMPLE_TOKENIZER_TOKENANDPOSITION_HPP
