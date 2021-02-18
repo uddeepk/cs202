@@ -10,6 +10,8 @@
 #include <iostream>
 
 struct TokenAndPosition {
+    //Constructor
+    TokenAndPosition(const std::string &token, int &lin, unsigned int column) ;
     std::string _token;
     int _line;
     unsigned int _column;
