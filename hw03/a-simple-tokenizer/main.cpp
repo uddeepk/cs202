@@ -1,6 +1,10 @@
 #include <iostream>
+#include <sstream>
+#include "TokenAndPosition.hpp"
 
+using std::istringstream;
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::istringstream testIss("Hello, World! ");
+    readLines(testIss);
     return 0;
 }
