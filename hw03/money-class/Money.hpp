@@ -7,6 +7,7 @@
 #ifndef MONEY_CLASS_MONEY_HPP
 #define MONEY_CLASS_MONEY_HPP
 
+#include <iostream>
 
 // Money stores amount in cents
 
@@ -48,4 +49,6 @@ Money operator- (const Money& lhs, const Money& rhs);
 Money operator* (const Money& lhs, double number);
 Money operator* (double number, const Money& rhs);
 Money operator/ (const Money& lhs, double number);
+
+std::ostream& operator<<(std::ostream& os, const Money& myMoney) ;
 #endif //MONEY_CLASS_MONEY_HPP

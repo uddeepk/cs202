@@ -67,3 +67,9 @@ Money operator/ (const Money& lhs, double number) {
     auto tempMoney ( lhs );
     return (tempMoney /= number);
 }
+
+std::ostream& operator<<(std::ostream& os, const Money& myMoney) {
+    // positive or negative
+    // extract dollar
+    // extract cents
+}
