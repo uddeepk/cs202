@@ -22,7 +22,6 @@ vector<TokenAndPosition> readLines (istream &is) {
     while (getline(is, inputBuffer)) {
         istringstream iss(inputBuffer);
 
-
         while (true) {
             // Traverse white space ??
             while( iss.peek() == ' ')
