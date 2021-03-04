@@ -16,7 +16,7 @@ public:
     int & operator[](std::size_t index);
     const int & operator[](std::size_t index) const;
 
-    std::size_t size() const; //
+    [[nodiscard]] size_t size() const; //
 private:
     int * _data;
     std::size_t _size;
