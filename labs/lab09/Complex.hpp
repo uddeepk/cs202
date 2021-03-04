@@ -18,8 +18,8 @@ private:
 
 };
 Complex operator+(const Complex &lhs, const Complex &rhs) ;
-Complex operator+(const Complex &lhs, double rhs);
-Complex operator+(double lhs, const Complex &rhs);
+//Complex operator+(const Complex &lhs, double rhs); // I don't need this
+//Complex operator+(double lhs, const Complex &rhs); // Same. seems compiler performs an implicit conversion
 
 
 #endif //LAB09_COMPLEX_HPP

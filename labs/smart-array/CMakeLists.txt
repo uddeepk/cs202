@@ -3,4 +3,4 @@ project(smart_array)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(smart_array main.cpp tests.cpp)
+add_executable(smart_array main.cpp tests.cpp SmartArray.cpp SmartArray.hpp)
