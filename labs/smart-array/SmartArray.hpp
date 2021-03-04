@@ -9,7 +9,7 @@
 
 class SmartArray {
 public:
-    SmartArray (std::size_t size);
+    explicit SmartArray (std::size_t size); // explicit stops implicit conversions
     SmartArray(const SmartArray&);
     ~SmartArray();
     SmartArray & operator=(const SmartArray &orig);
