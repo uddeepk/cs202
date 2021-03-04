@@ -81,7 +81,7 @@ TEST_CASE("Rational * and *= opeartor") {
     REQUIRE(oss.str() == "2/25");
     oss.str("");
     Rational f = a + 1;
-
+    REQUIRE(f == Rational(27,25));
     Rational x { 1,3};
     const Rational oneHalf {1 , 2};
     oss.str("");
@@ -124,39 +124,42 @@ TEST_CASE("Check GCD " ) { //Used std::gcd instead
 }
 
 
-//TEST_CASE("Complex numbers can be constructed") {
-//    Complex a { 2, 5};
-//    ostringstream oss ;
-//    oss << a ;
-//    REQUIRE(oss.str() == "2 + 5i");
-//    Complex b { 3, -2};
-//    oss.str("");
-//    oss.clear();
-//    oss << b;
-//    REQUIRE(oss.str() == "3 - 2i");
-//}
-//TEST_CASE("Complex numbers can be added with += and +") {
-//    Complex a (0);
-//    Complex b(1);
-//    b += a;
-//    ostringstream oss ;
-//    oss << b ;
-//    REQUIRE(oss.str() == "1 + 0i");
-//    oss.str("");
-//    oss.clear();
-//    Complex c(3, 4);
-//    Complex d = b + c;
-//    oss << d;
-//    REQUIRE(oss.str() == "4 + 4i");
-//    oss.str("");
-//    oss.clear();
-//    Complex x = c + 3;
-//    oss << x;
-//    REQUIRE(oss.str() == "6 + 4i");
-//}
-//
-//TEST_CASE("Test case from question") {
-//    ostringstream oss;
-//    oss << 1 + Complex(2,3) ;
-//    REQUIRE(oss.str() == "3 + 3i");
-//}
+TEST_CASE("Complex numbers can be constructed") {
+    Complex a { 2, 5};
+    ostringstream oss ;
+    oss << a ;
+    REQUIRE(oss.str() == "2 + 5i");
+    Complex b { 3, -2};
+    oss.str("");
+    oss.clear();
+    oss << b;
+    REQUIRE(oss.str() == "3 - 2i");
+}
+TEST_CASE("Complex numbers can be added with += and +") {
+    Complex a (0);
+    Complex b(1);
+    b += a;
+    ostringstream oss ;
+    oss << b ;
+    REQUIRE(oss.str() == "1 + 0i");
+    oss.str("");
+    oss.clear();
+    Complex c(3, 4);
+    Complex d = b + c;
+    oss << d;
+    REQUIRE(oss.str() == "4 + 4i");
+    oss.str("");
+    oss.clear();
+    Complex x = c + 3;
+    oss << x;
+    REQUIRE(oss.str() == "6 + 4i");
+}
+
+TEST_CASE("Test case from question") {
+    ostringstream oss;
+    oss << 1 + Complex(2,3) ;
+    REQUIRE(oss.str() == "3 + 3i");
+    oss.str("");
+    oss << Complex(2,3) + 1 ;
+    REQUIRE(oss.str() == "3 + 3i");
+}

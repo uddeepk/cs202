@@ -28,17 +28,16 @@ Complex &Complex::operator+=(const Complex &rhs) {
     return *this;
 }
 
-Complex operator+(const Complex &lhs, const Complex &rhs) {
-    auto temp { lhs };
-    temp += rhs;
-    return temp;
+Complex operator+(Complex lhs, const Complex &rhs) {
+    lhs += rhs;
+    return lhs;
 }
-
-Complex operator+(const Complex &lhs, double rhs) {
-    Complex tempRhs {rhs};
-    return lhs + tempRhs;
-}
-
-Complex operator+(double lhs, const Complex &rhs) {
-    return rhs + lhs;
-}
+//
+//Complex operator+(const Complex &lhs, double rhs) {
+//    Complex tempRhs {rhs};
+//    return lhs + tempRhs;
+//}
+//
+//Complex operator+(double lhs, const Complex &rhs) {
+//    return rhs + lhs;
+//}

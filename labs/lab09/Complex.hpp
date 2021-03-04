@@ -17,7 +17,7 @@ private:
     double _imaginary{0};
 
 };
-Complex operator+(const Complex &lhs, const Complex &rhs) ;
+Complex operator+(Complex lhs, const Complex &rhs) ;
 //Complex operator+(const Complex &lhs, double rhs); // I don't need this
 //Complex operator+(double lhs, const Complex &rhs); // Same. seems compiler performs an implicit conversion
 
