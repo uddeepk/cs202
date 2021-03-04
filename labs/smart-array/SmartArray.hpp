@@ -5,18 +5,21 @@
 #ifndef SMART_ARRAY_SMARTARRAY_HPP
 #define SMART_ARRAY_SMARTARRAY_HPP
 
+#include <cstddef>
 
 class SmartArray {
 public:
-    SmartArray (int size);
+    SmartArray (std::size_t size);
+    SmartArray(const SmartArray&);
     ~SmartArray();
-    int & operator[](unsigned int index);
-    const int & operator[](unsigned int index) const;
+    SmartArray & operator=(const SmartArray &orig);
+    int & operator[](std::size_t index);
+    const int & operator[](std::size_t index) const;
 
-    int size() const; //
+    std::size_t size() const; //
 private:
     int * _data;
-    int _size;
+    std::size_t _size;
 };
 
 
