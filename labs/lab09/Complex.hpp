@@ -18,6 +18,8 @@ private:
 
 };
 Complex operator+(Complex lhs, const Complex &rhs) ;
+//Note: commented out the bottom two so that I can directly use the implicit conversions/initializations.
+//Revisit after learning if it is a good idea.
 //Complex operator+(const Complex &lhs, double rhs); // I don't need this
 //Complex operator+(double lhs, const Complex &rhs); // Same. seems compiler performs an implicit conversion
 
