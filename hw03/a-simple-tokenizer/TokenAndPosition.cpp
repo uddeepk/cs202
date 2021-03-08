@@ -16,7 +16,7 @@ using std::istringstream;
 //}
 TokenAndPosition::TokenAndPosition(const string &token, const int &line, const unsigned int &column):_token(token), _line(line),_column(column)  {}
 
-vector<TokenAndPosition> readLines (istream &is) {
+vector<TokenAndPosition> readLinesMyWay (istream &is) {
     int lineCounter = 1;
     string inputBuffer;
     vector<TokenAndPosition> myTokens;
