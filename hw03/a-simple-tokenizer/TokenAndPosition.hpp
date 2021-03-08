@@ -18,6 +18,7 @@ struct TokenAndPosition {
 };
 
 std::vector <std::string> lineToTokens (const std::string &line);
+std::vector <TokenAndPosition> readLines (std::istream &is);
 std::vector <TokenAndPosition> readLinesMyWay(std::istream &is);
 void printTokens(std::ostream &os, const std::vector<TokenAndPosition> &tokens);
 std::ostream operator<< (std::ostream &os, const TokenAndPosition &token);

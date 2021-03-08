@@ -16,6 +16,28 @@ using std::istringstream;
 //}
 TokenAndPosition::TokenAndPosition(const string &token, const int &line, const unsigned int &column):_token(token), _line(line),_column(column)  {}
 
+vector <string> lineToTokens (const string &line) {
+    vector <string> myTokens ;
+    istringstream iss {line} ;
+    while (true) {
+        if(!iss)
+            break;
+        string tempBuffer;
+        iss >> tempBuffer;
+        myTokens.push_back(tempBuffer);
+    }
+    return myTokens;
+}
+vector <TokenAndPosition> readLines (istream &is) {
+    string inputBuffer;
+    while (getline( is, inputBuffer)) {
+        if( inputBuffer == "\r" || inputBuffer.empty())
+            break;
+
+        vector <string> tokensInLine { lineToTokens(inputBuffer)} ;
+
+    }
+}
 vector<TokenAndPosition> readLinesMyWay (istream &is) {
     int lineCounter = 1;
     string inputBuffer;

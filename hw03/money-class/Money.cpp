@@ -72,4 +72,5 @@ std::ostream& operator<<(std::ostream& os, const Money& myMoney) {
     // positive or negative
     // extract dollar
     // extract cents
+
 }
