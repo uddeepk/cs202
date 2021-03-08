@@ -17,7 +17,6 @@ using std::istringstream;
 TokenAndPosition::TokenAndPosition(const string &token, const int &line, const unsigned int &column):_token(token), _line(line),_column(column)  {}
 
 vector<TokenAndPosition> readLines (istream &is) {
-    // Need line counter
     int lineCounter = 1;
     string inputBuffer;
     vector<TokenAndPosition> myTokens;
@@ -35,11 +34,11 @@ vector<TokenAndPosition> readLines (istream &is) {
             unsigned int position = iss.tellg() ;
             iss >> tempBuffer;
 
+            // Skip if empty . In case of \r\n, checking for \r
             if(tempBuffer == "\r" || tempBuffer.empty())
                 break;
 
-            std::cout << lineCounter << " " << (position + 1)<< " " << tempBuffer << std::endl;
-            myTokens.push_back(TokenAndPosition(tempBuffer, lineCounter, position + 1  ));
+            myTokens.push_back(TokenAndPosition{tempBuffer, lineCounter, position + 1  });
             if(!iss)
                 break;
         }
@@ -57,5 +56,5 @@ void printTokens ( ostream &os, const std::vector<TokenAndPosition> &tokens) {
 ostream operator<<(ostream &os, const TokenAndPosition &token) {
     os << "Line " << std::setw(8) << token._line;
     os << ", Column " << std::setw(4) << token._column;
-    os << ": " << token._token << std::endl;
+    os << ": \"" << token._token << "\"" << std::endl;
 }
