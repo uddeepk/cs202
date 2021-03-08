@@ -33,15 +33,16 @@ vector <string> lineToTokens (const string &line) {
 vector <TokenAndPosition> readLines (istream &is) {
     vector <TokenAndPosition> myTP ; //The variable that will hold the return value
     string inputBuffer;
-    for( int lineNumber = 0 ; getline( is, inputBuffer) ; ++lineNumber) {
+    for( int lineNumber = 1 ; getline( is, inputBuffer) ; ++lineNumber) {
         if( inputBuffer == "\r" || inputBuffer.empty())
             continue;
         vector <string> tokensInLine = lineToTokens(inputBuffer);
         unsigned int column = 0;
         for( const auto &token: tokensInLine) {
             unsigned int currentColumn = inputBuffer.find(token, column);
+            // note about above, ensuring that find provides actual match instead of populist match.
             myTP.push_back(TokenAndPosition{token, lineNumber, currentColumn});
-            column = currentColumn + 1;
+            column = currentColumn + 1; // so that next find will look from one past beginning of match.
         }
     }
     return myTP;
