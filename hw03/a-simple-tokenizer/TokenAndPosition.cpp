@@ -24,19 +24,27 @@ vector <string> lineToTokens (const string &line) {
             break;
         string tempBuffer;
         iss >> tempBuffer;
+        if(tempBuffer.empty())
+            continue;
         myTokens.push_back(tempBuffer);
     }
     return myTokens;
 }
 vector <TokenAndPosition> readLines (istream &is) {
+    vector <TokenAndPosition> myTP ; //The variable that will hold the return value
     string inputBuffer;
-    while (getline( is, inputBuffer)) {
+    for( int lineNumber = 0 ; getline( is, inputBuffer) ; ++lineNumber) {
         if( inputBuffer == "\r" || inputBuffer.empty())
-            break;
-
-        vector <string> tokensInLine { lineToTokens(inputBuffer)} ;
-
+            continue;
+        vector <string> tokensInLine = lineToTokens(inputBuffer);
+        unsigned int column = 0;
+        for( const auto &token: tokensInLine) {
+            unsigned int currentColumn = inputBuffer.find(token, column);
+            myTP.push_back(TokenAndPosition{token, lineNumber, currentColumn});
+            column = currentColumn + 1;
+        }
     }
+    return myTP;
 }
 vector<TokenAndPosition> readLinesMyWay (istream &is) {
     int lineCounter = 1;
@@ -75,8 +83,9 @@ void printTokens ( ostream &os, const std::vector<TokenAndPosition> &tokens) {
     }
 }
 
-ostream operator<<(ostream &os, const TokenAndPosition &token) {
+ostream& operator<<(ostream &os, const TokenAndPosition &token) {
     os << "Line " << std::setw(8) << token._line;
     os << ", Column " << std::setw(4) << token._column;
     os << ": \"" << token._token << "\"" << std::endl;
+    return os;
 }
