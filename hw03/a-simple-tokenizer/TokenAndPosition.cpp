@@ -11,9 +11,7 @@ using std::string;
 using std::istream;
 using std::ostream;
 using std::istringstream;
-//vector <string> lineToTokens ( const string &line) {
-//
-//}
+
 TokenAndPosition::TokenAndPosition(const string &token, const int &line, const unsigned int &column):_token(token), _line(line),_column(column)  {}
 
 vector <string> lineToTokens (const string &line) {
@@ -41,8 +39,9 @@ vector <TokenAndPosition> readLines (istream &is) {
         for( const auto &token: tokensInLine) {
             unsigned int currentColumn = inputBuffer.find(token, column);
             // note about above, ensuring that find provides actual match instead of populist match.
-            myTP.push_back(TokenAndPosition{token, lineNumber, currentColumn});
-            column = currentColumn + 1; // so that next find will look from one past beginning of match.
+            column = currentColumn + 1; // because positions start at 1, and to move forward 1 position
+            myTP.push_back(TokenAndPosition{token, lineNumber, column});
+
         }
     }
     return myTP;

@@ -8,21 +8,9 @@ using std::ifstream;
 using std::string;
 
 int main(int argc, char** argv) {
-//    std::istringstream testIss("Hello, World! \n ifthere asdf");
-//    auto myTestTokens  {readLines(testIss)};
-//    printTokens(std::cout , myTestTokens);
-//    testIss.clear();
-//    testIss.str("n 1 6 berry\n\n"
-//            " vc 255 0 0");
-//    auto myTestTokens2 { readLines(testIss)};
-//    printTokens(std::cout , myTestTokens2);
-
     ifstream inputFile ;
     string fileName, commandArgument;
     StopWatch myAwesomeStopWatch;
-//    bool withPrinting = true;
-
-
 
     // 2 or 3 arguments
     if ( argc == 2 || argc == 3) {
@@ -35,15 +23,13 @@ int main(int argc, char** argv) {
                 return 1;
             }
         }
-        // is fstream working?
         fileName = argv[1];
         inputFile.open(fileName);
+        // is fstream working?
         if(!inputFile) {
             std::cerr << "Error with input file! " << std::endl;
             if(inputFile.fail())
                 std::cerr << "Check file location, or filename. " << std::endl;
-            if (inputFile.eof())
-                std::cerr << "No data in file. " << std::endl;
             return 1;
         }
         myAwesomeStopWatch.Start();
@@ -53,15 +39,19 @@ int main(int argc, char** argv) {
             printTokens(std::cout, vecTokens);
         myAwesomeStopWatch.Stop();
         std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
+
+        inputFile.close();
+        inputFile.open(fileName);
+        myAwesomeStopWatch.Start();
+        auto vecTokens2 { readLinesMyWay(inputFile)};
+        // Check command argument
+        if( commandArgument != "--lineonly")
+            printTokens(std::cout, vecTokens);
+        myAwesomeStopWatch.Stop();
+        std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
     } else {
         std::cerr << "Incorrect number of arguments! " << std::endl;
         return 1;
     }
-
-
-
-
-    // Incorrect number of args
-
     return 0;
 }
