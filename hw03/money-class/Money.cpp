@@ -1,15 +1,17 @@
-//
-// Created by uddeepk on 2/18/21.
-//
+/*
+ * Money.cpp
+ * Uddeep Karki
+ * Mar 8, 2021
+ * Source File for Money class
+ */
 
 #include "Money.hpp"
-#include <math.h>
+#include <cmath>
+#include <iomanip>
 
-Money::Money():_totalCents(0) {}
+Money::Money(int cents, int dollars):_totalCents(dollars * 100 + cents) {}
 
-Money::Money(int dollars, int cents):_totalCents(dollars * 100 + cents) {}
-
-Money::Money(double dollarAndCents):_totalCents(round(dollarAndCents * 100)) {}
+Money::Money(double dollarAndCents):_totalCents(std::round(dollarAndCents * 100)) {}
 
 
 bool operator== (const Money& lhs, const Money& rhs) {
@@ -28,7 +30,7 @@ bool operator> (const Money& lhs, const Money& rhs) {
     return rhs < lhs;
 }
 bool operator <= (const Money& lhs, const Money& rhs) {
-    return !(lhs < rhs);
+    return !(lhs > rhs);
 }
 
 Money& Money::operator+=(const Money& rhs) {
@@ -69,8 +71,15 @@ Money operator/ (const Money& lhs, double number) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Money& myMoney) {
+    auto cents = myMoney._totalCents;
     // positive or negative
+    if(cents < 0) {
+        os << "-";
+        cents *= (-1);
+    }
     // extract dollar
+    os << "$" << cents / 100 ;
     // extract cents
-
+    os << "." << std::setfill('0') << std::setw(2) << cents % 100;
+    return os;
 }
