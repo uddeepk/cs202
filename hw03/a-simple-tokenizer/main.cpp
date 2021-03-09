@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
 
     ifstream inputFile ;
     string fileName, commandArgument;
+    StopWatch myAwesomeStopWatch;
 //    bool withPrinting = true;
 
 
@@ -45,10 +46,13 @@ int main(int argc, char** argv) {
                 std::cerr << "No data in file. " << std::endl;
             return 1;
         }
+        myAwesomeStopWatch.Start();
         auto vecTokens { readLines(inputFile)};
         // Check command argument
         if( commandArgument != "--lineonly")
             printTokens(std::cout, vecTokens);
+        myAwesomeStopWatch.Stop();
+        std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
     } else {
         std::cerr << "Incorrect number of arguments! " << std::endl;
         return 1;

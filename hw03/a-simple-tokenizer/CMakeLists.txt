@@ -3,4 +3,4 @@ project(a_simple_tokenizer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(a_simple_tokenizer main.cpp TokenAndPosition.cpp TokenAndPosition.hpp)
+add_executable(a_simple_tokenizer main.cpp TokenAndPosition.cpp TokenAndPosition.hpp StopWatch.cpp StopWatch.hpp)
