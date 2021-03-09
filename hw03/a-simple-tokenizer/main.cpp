@@ -1,11 +1,10 @@
 #include <iostream>
-#include <sstream>
-
 #include <fstream>
 #include "TokenAndPosition.hpp"
 
 using std::istringstream;
 using std::ifstream;
+using std::string;
 
 int main(int argc, char** argv) {
 //    std::istringstream testIss("Hello, World! \n ifthere asdf");
@@ -18,21 +17,25 @@ int main(int argc, char** argv) {
 //    printTokens(std::cout , myTestTokens2);
 
     ifstream inputFile ;
-    bool withPrinting = true;
-    // 3 args
-    if ( argc == 3) {
-        // is 3rd argument --lineonly
-        if(argv[2] == "--lineonly" )
-            withPrinting = false;
-        else {
-            std::cerr << "Invalid argument!" << std::endl;
-            return 1;
-        }
-    }
-    // 2 or more args
+    string fileName, commandArgument;
+//    bool withPrinting = true;
+
+
+
+    // 2 or 3 arguments
     if ( argc == 2 || argc == 3) {
+        // 3 arguments
+        if ( argc == 3) {
+            // is 3rd argument --lineonly
+            commandArgument = argv[2];
+            if(commandArgument != "--lineonly" ) {
+                std::cerr << "Unrecognized command " << commandArgument << std::endl;
+                return 1;
+            }
+        }
         // is fstream working?
-        inputFile.open(argv[1]);
+        fileName = argv[1];
+        inputFile.open(fileName);
         if(!inputFile) {
             std::cerr << "Error with input file! " << std::endl;
             if(inputFile.fail())
@@ -41,7 +44,13 @@ int main(int argc, char** argv) {
                 std::cerr << "No data in file. " << std::endl;
             return 1;
         }
-
+        auto vecTokens { readLines(inputFile)};
+        // Check command argument
+        if( commandArgument != "--lineonly")
+            printTokens(std::cout, vecTokens);
+    } else {
+        std::cerr << "Incorrect number of arguments! " << std::endl;
+        return 1;
     }
 
 
