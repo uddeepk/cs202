@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "TokenAndPosition.hpp"
+#include "StopWatch.hpp"
 
 using std::istringstream;
 using std::ifstream;
