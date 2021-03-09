@@ -18,6 +18,7 @@ int main(int argc, char** argv) {
     ifstream inputFile ;
     string fileName, commandArgument;
     StopWatch myAwesomeStopWatch;
+    bool shouldPrintLines = true;
 
     // 2 or 3 arguments
     if ( argc == 2 || argc == 3) {
@@ -25,7 +26,9 @@ int main(int argc, char** argv) {
         if ( argc == 3) {
             // is 3rd argument --lineonly
             commandArgument = argv[2];
-            if(commandArgument != "--lineonly" ) {
+            if(commandArgument == "--lineonly" ) {
+                shouldPrintLines = false;
+            } else {
                 std::cerr << "Unrecognized command " << commandArgument << std::endl;
                 return 1;
             }
@@ -40,10 +43,12 @@ int main(int argc, char** argv) {
             return 1;
         }
         myAwesomeStopWatch.Start();
+
         auto vecTokens { readLines(inputFile)};
         // Check command argument
-        if( commandArgument != "--lineonly")
+        if( shouldPrintLines)
             printTokens(std::cout, vecTokens);
+
         myAwesomeStopWatch.Stop();
         std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
 
