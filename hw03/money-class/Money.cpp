@@ -9,7 +9,9 @@
 #include <cmath>
 #include <iomanip>
 
-Money::Money(int cents, int dollars):_totalCents(dollars * 100 + cents) {}
+Money::Money(int cents):_totalCents(cents) {}
+
+Money::Money(int dollars, int cents):_totalCents(dollars * 100 + cents) {}
 
 Money::Money(double dollarAndCents):_totalCents(std::round(dollarAndCents * 100)) {}
 
@@ -49,7 +51,7 @@ Money& Money::operator/=(double number) {
     _totalCents /= number;
     return *this;
 }
-//TODO: Check the two following operator
+
 Money operator+(const Money& lhs, const Money& rhs) {
     Money sumMoney {lhs};
     return (sumMoney+= lhs);

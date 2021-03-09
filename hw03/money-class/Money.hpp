@@ -16,7 +16,8 @@ class Money {
 
 public:
     // Constructors
-    Money(int = 0 , int = 0); // user defined default constructor for taking dollar and cent value
+    Money (int = 0) ;
+    Money(int  , int ); // user defined default constructor for taking dollar and cent value
     Money(double);
 
     Money& operator+=(const Money&rhs);
