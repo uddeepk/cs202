@@ -46,36 +46,6 @@ vector <TokenAndPosition> readLines (istream &is) {
     }
     return myTP;
 }
-vector<TokenAndPosition> readLinesMyWay (istream &is) {
-    int lineCounter = 1;
-    string inputBuffer;
-    vector<TokenAndPosition> myTokens;
-    while (getline(is, inputBuffer)) {
-        istringstream iss(inputBuffer);
-
-        while (true) {
-            // Traverse white space
-            while( iss.peek() == ' ')
-                iss.get();
-
-            string tempBuffer;
-
-            //unsigned int to store the position in stream. note, it can be modified
-            unsigned int position = iss.tellg() ;
-            iss >> tempBuffer;
-
-            // Skip if empty . In case of \r\n, checking for \r
-            if(tempBuffer == "\r" || tempBuffer.empty())
-                break;
-
-            myTokens.push_back(TokenAndPosition{tempBuffer, lineCounter, position + 1  });
-            if(!iss)
-                break;
-        }
-        ++lineCounter;
-    }
-    return myTokens;
-}
 
 void printTokens ( ostream &os, const std::vector<TokenAndPosition> &tokens) {
     for( const auto &currentToken: tokens) {

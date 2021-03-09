@@ -40,15 +40,6 @@ int main(int argc, char** argv) {
         myAwesomeStopWatch.Stop();
         std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
 
-        inputFile.close();
-        inputFile.open(fileName);
-        myAwesomeStopWatch.Start();
-        auto vecTokens2 { readLinesMyWay(inputFile)};
-        // Check command argument
-        if( commandArgument != "--lineonly")
-            printTokens(std::cout, vecTokens);
-        myAwesomeStopWatch.Stop();
-        std::cout << "Time Taken: " << myAwesomeStopWatch.getCurrentTimeInMilliseconds() << "ms\n";
     } else {
         std::cerr << "Incorrect number of arguments! " << std::endl;
         return 1;
