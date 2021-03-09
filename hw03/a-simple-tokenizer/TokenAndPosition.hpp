@@ -1,6 +1,10 @@
-//
-// Created by uddeepk on 2/17/21.
-//
+/*
+ * TokenAndPosition.hpp
+ * Uddeep Karki
+ * 2/17/21
+ * Header for TokenAndPosition class
+ */
+
 
 #ifndef A_SIMPLE_TOKENIZER_TOKENANDPOSITION_HPP
 #define A_SIMPLE_TOKENIZER_TOKENANDPOSITION_HPP
