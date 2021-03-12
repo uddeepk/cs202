@@ -1,6 +1,9 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    //
+    // 1. Pass fstream / istream
+    // 2. Process strings
+    // 3. Pretty Print strings
     return 0;
 }
