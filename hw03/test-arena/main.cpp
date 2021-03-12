@@ -1,41 +1,73 @@
-#include <iostream>
-#include <fstream>
+#include <GL/glew.h>
+#include <GL/glext.h>
+#include <GL/glx.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
+#define GLEW_STATIC
 
-int main() {
-    std::string testString ("Wad up?");
-    size_t size = testString.size();
-//    std::cout << size ;
-    std::fstream myFout;
-    myFout.open("that_file.dat", std::ios::out | std::ios::binary);
-    myFout.write(reinterpret_cast<char*>(&size), sizeof(size) );
-    myFout.write ( testString.c_str(), testString.size());
-    myFout.close();
+// Specify prototype of function
+typedef void (*GENBUFFERS) (GLsizei, GLuint*);
 
-    size = 0;
-    std::fstream myFin ("that_file.dat", std::ios::in | std::ios::binary);
+//// Load address of function and assign it to a function pointer
+//GENBUFFERS glGenBuffers = (GENBUFFERS)wglGetProcAddress("glGenBuffers");
+//// or Linux:
+//GENBUFFERS glGenBuffers = (GENBUFFERS)glXGetProcAddress((const GLubyte *) "glGenBuffers");
+//// or OSX:
+//GENBUFFERS glGenBuffers = (GENBUFFERS)NSGLGetProcAddress("glGenBuffers");
 
-    myFin.read(reinterpret_cast<char*>(&size), sizeof(size) );
-//    std::cout << size ;
-    std::string textRead ;
-    textRead.resize(size);
+// Call function as normal
+//GLuint buffer;
+//glGenBuffers(1, &buffer);
 
-    myFin.read(&textRead[0], textRead.size() );
-    myFin.close();
-    //myFin.read
+void draw() {
+// clear the screen to something other than black
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+// draw a triangle that covers the screen
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 0.0f);
+    glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(0.0f, 1.0f, 0.0f);
+    glColor3f(0.0f, 0.0f, 1.0f); glVertex3f(1.0f, -1.0f, 0.0f);
+    glEnd();
+}
+int main(int argc, char *argv[])
+{
+    float vertices[] = {
+            0.0f,  0.5f, // Vertex 1 (X, Y)
+            0.5f, -0.5f, // Vertex 2 (X, Y)
+            -0.5f, -0.5f  // Vertex 3 (X, Y)
+    };
+    SDL_Init(SDL_INIT_EVERYTHING);
 
-    std::cout << "Read text = " << textRead << std::endl;
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+//    draw(); // not working ...
+    SDL_Window* window = SDL_CreateWindow("OpenGL", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
 
-    //16 doubles would be 128 bytes because double is a 8 bytes
-    myFout.open("128bytes.dat", std::ios::out | std::ios::binary);
-
-    double myDouble = 1;
-
-    for(int i = 0 ; i < (16 * 9) ; ++i ) {
-        myFout.write(reinterpret_cast<char *>(&myDouble), sizeof(myDouble));
-//        std::cout << myFout.tellg() << std::endl;
+    SDL_GLContext context = SDL_GL_CreateContext(window);
+    // Fill with code ??...
+    GENBUFFERS glGenBuffers = (GENBUFFERS)glXGetProcAddress((const GLubyte *) "glGenBuffers");
+    SDL_Event windowEvent;
+    while (true)
+    {
+        GLuint vbo;
+        glGenBuffers(1, &vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//        draw();
+        if (SDL_PollEvent(&windowEvent))
+        {
+            if (windowEvent.type == SDL_KEYUP &&
+                windowEvent.key.keysym.sym == SDLK_ESCAPE) break;
+        }
+        draw();
+        SDL_GL_SwapWindow(window);
     }
-    std::cout << myFout.tellp() << std::endl; // tellp output position
-    //tellg input position. But in fstreams they return the same
+    SDL_GL_DeleteContext(context);
+    SDL_Delay(1000);
 
+    SDL_Quit();
     return 0;
 }
