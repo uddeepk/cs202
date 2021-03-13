@@ -1,3 +1,10 @@
+/*
+ * main.cpp
+ * Uddeep Karki
+ * 3/12/2021
+ * main source file for homework 3 additional program 1 book pretty printer
+ */
+
 #include <iostream>
 
 int main() {
