@@ -27,6 +27,7 @@ int main() {
     // 2. Process strings
     auto myVec = makeVecOfMyParagraph(iss);
     // 3. Pretty Print strings
+    prettyPrint(myVec, 40);
 
     return 0;
 }

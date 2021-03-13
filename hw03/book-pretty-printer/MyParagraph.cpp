@@ -5,13 +5,51 @@
 #include "MyParagraph.hpp"
 #include "TokenAndPosition.hpp"
 //#include <algorithm>
+#include <sstream>
 
 using std::string;
 using std::vector;
 using std::istream;
+using std::ostream;
+using std::istringstream;
+using std::cout;
 
 MyParagraph::MyParagraph(const string &contents):_contents(contents) {
 
+}
+
+void MyParagraph::print(int wrapPosition) const{
+    auto printTokens = lineToTokens(_contents);
+    for (auto it = printTokens.begin() ; it != printTokens.end() ; ) {
+        std::ostringstream oss ;
+        while ( oss.tellp()  <= (wrapPosition - it->length()) ) {
+            oss << *it << " ";
+            ++it;
+            if ( it == printTokens.end())
+                break;
+        }
+        cout << oss.str() << "\n";
+    }
+}
+void MyParagraph::printv2(int wrapPosition) const {
+    auto printTokens = lineToTokens(_contents);
+    int lineCharCounter = 0;
+    for ( const auto &token : printTokens) {
+        if ( (lineCharCounter + token.length() ) > 40 ) {
+            cout << "\n";
+            lineCharCounter = 0;
+        }
+        cout << token << " " ;
+        lineCharCounter += token.length() + 1;
+    }
+
+}
+
+void prettyPrint( const vector<MyParagraph> &myVecOfMyParagraph, int wrapPoint) {
+    for ( const auto &currentParagraph : myVecOfMyParagraph) {
+        currentParagraph.printv2(wrapPoint);
+        cout << "\n";
+    }
 };
 
 vector<MyParagraph> makeVecOfMyParagraph (istream &is) {
