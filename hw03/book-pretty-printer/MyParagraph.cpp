@@ -23,11 +23,12 @@ vector<MyParagraph> makeVecOfMyParagraph (istream &is) {
     vector <string> tokensOfParagraphs;
 
     while(getline(is, readBuffer)) {
+//        std::cout << readBuffer;
         if(readBuffer.empty() || readBuffer == "\r") {
             // The first one is a new paragraph
             if(!tokensOfParagraphs.empty()) {
-                string lastParagraph(tokensToParagraph(tokensOfParagraphs));
-                myVecOfMyParagraph.push_back(MyParagraph(lastParagraph));
+                string previousParagraph(tokensToParagraph(tokensOfParagraphs));
+                myVecOfMyParagraph.push_back(MyParagraph(previousParagraph));
                 tokensOfParagraphs.clear();
             }
             // Eat up the other new lines
@@ -36,6 +37,9 @@ vector<MyParagraph> makeVecOfMyParagraph (istream &is) {
         vector tempTokens = lineToTokens(readBuffer);
         tokensOfParagraphs.insert(tokensOfParagraphs.end(), tempTokens.begin(), tempTokens.end());
     }
+    string lastParagraph(tokensToParagraph(tokensOfParagraphs));
+    myVecOfMyParagraph.push_back(MyParagraph(lastParagraph));
+    return myVecOfMyParagraph;
 }
 
 string tokensToParagraph(const vector<string> &tokens) {
