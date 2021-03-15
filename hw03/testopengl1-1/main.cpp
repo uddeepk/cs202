@@ -1,3 +1,10 @@
+/*
+ * main.cpp
+ * Uddeep Karki
+ * 03/14/2021
+ * Program that uses OpenGL1.1 with GLFW to draw the triangle from Additional Program 3 from hw03
+ */
+
 #include <iostream>
 
 #include <cmath>
