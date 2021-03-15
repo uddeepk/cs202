@@ -9,14 +9,16 @@
 
 #include <cmath>
 
-#include <GL/gl.h>
-#include <GL/glu.h>
+//#include <GL/gl.h> //notice I commented this and the next line and it still works
+//#include <GL/glu.h>
 //#include <glad/glad.h> // had to comment out because errors with 1.1
 #include <GLFW/glfw3.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 void draw();
+
+// TODO : Encapsulate the whole implementation
 
 int main() {
     //settings
@@ -71,6 +73,10 @@ int main() {
 
         draw();
 
+        glBegin(GL_LINES);
+        glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(-1.00f, .75f, 0.0f);
+        glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(1.0f, .75f, 0.0f);
+        glEnd();
         // glfw: swap buffers and poll IO events (keys pressed/ released, mouse moved etc.
 
         glfwSwapBuffers(window);
