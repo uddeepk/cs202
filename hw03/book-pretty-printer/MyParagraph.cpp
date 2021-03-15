@@ -55,7 +55,7 @@ ostream &MyParagraph::printv2(ostream& os, int wrapPosition) const {
 ostream &prettyPrint(ostream &os, const vector<MyParagraph> &myVecOfMyParagraph, int wrapPoint) {
     for ( const auto &currentParagraph : myVecOfMyParagraph) {
         currentParagraph.printv2(os, wrapPoint);
-        os << "\n";
+        os << "\n\n";
     }
     return os;
 };
