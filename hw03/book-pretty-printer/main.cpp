@@ -6,28 +6,58 @@
  */
 
 #include <iostream>
-#include <sstream>
+#include <fstream>
 #include "MyParagraph.hpp"
+#include <algorithm>
 
 using std::string;
 using std::cout;
 
-int main() {
-    //
-    // 1. Pass fstream / istream
-    string test1 = "I felt I uttered my explanations awkwardly; the master frowned. 'It is\n"
-                   "nothing, is it, Ellen Dean?' he said sternly. 'You shall account more\n"
-                   "clearly for keeping me ignorant of this!' And he took his wife in his\n"
-                   "arms, and looked at her with anguish.\n\n"
-                   "At first she gave him no glance of recognition: he was invisible to her\n"
-                   "abstracted gaze. The delirium was not fixed, however; having weaned her\n"
-                   "eyes from contemplating the outer darkness, by degrees she centred her\n"
-                   "attention on him, and discovered who it was that held her.";
-    std::istringstream iss (test1);
-    // 2. Process strings
-    auto myVec = makeVecOfMyParagraph(iss);
-    // 3. Pretty Print strings
-    prettyPrint(myVec, 40);
+int main(int argc, char* argv[]) {
+    // Passing fstream
+
+    // BUt first we have to check if the correct number of arguments were passed
+    string fileName, commandArgument;
+    std::ifstream myFile;
+    std::vector<MyParagraph> vecParagraphs;
+    switch(argc) {
+        case 3:
+            //Normal run
+            // Check if arguments are valid
+            // check fstream
+            fileName = argv[1];
+            myFile.open (fileName);
+            if (!myFile) {
+                std::cerr << "Check file and filename!" << std::endl;
+                return 1;
+            }
+            // else
+            vecParagraphs = makeVecOfMyParagraph(myFile);
+
+            // check arguments
+            commandArgument = argv[2];
+            if ( std::all_of(commandArgument.begin(), commandArgument.end(), [](char c) { return isdigit(c);})) {
+                // Is a numeric argument
+                prettyPrint(vecParagraphs, std::stoi(commandArgument));
+            }
+            else {
+                // is html ??
+                if ( commandArgument == "--html") {
+                    // yes print with paragraph tags
+                }
+                else {
+                    // no then print error message
+                    std::cerr << "Invalid argument! Final argument should be a number or --html" << std::endl;
+                    return 1;
+                }
+            }
+            break;
+        default:
+            //Error message
+            std::cerr << "Invalid number of arguments!" << std::endl;
+            return 1;
+            break; // not required
+    }
 
     return 0;
 }
