@@ -13,13 +13,15 @@ class MyParagraph {
 public:
     //Constructor
     MyParagraph(const std::string &) ;
-    void print(int) const;
-    void printv2(int wrapPosition) const;
+    std::ostream &print(std::ostream &os , int) const;
+    std::ostream &printv2(std::ostream&os, int wrapPosition) const;
 private:
     std::string _contents;
+friend std::ostream& operator<< (std::ostream& os, const MyParagraph &paragraph);
 };
 std::vector<MyParagraph> makeVecOfMyParagraph (std::istream &is);
 std::string tokensToParagraph(const std::vector<std::string> &tokens);
-void prettyPrint (const std::vector <MyParagraph> &yVecOfMyParagraph, int wrapPoint) ;
+std::ostream &prettyPrint (std::ostream &os, const std::vector <MyParagraph> &myVecOfMyParagraph, int wrapPoint) ;
+std::ostream &prettyPrintHtml ( std::ostream &os, const std::vector <MyParagraph> &myVecOfMyParagraph);
 
 #endif //BOOK_PRETTY_PRINTER_MYPARAGRAPH_HPP

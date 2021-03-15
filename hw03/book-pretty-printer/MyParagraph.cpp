@@ -4,7 +4,6 @@
 
 #include "MyParagraph.hpp"
 #include "TokenAndPosition.hpp"
-//#include <algorithm>
 #include <sstream>
 
 using std::string;
@@ -18,39 +17,54 @@ MyParagraph::MyParagraph(const string &contents):_contents(contents) {
 
 }
 
-void MyParagraph::print(int wrapPosition) const{
+ostream & operator<<(ostream& os, const MyParagraph &paragraph ) {
+    os << paragraph._contents;
+    return os;
+}
+ostream &MyParagraph::print(ostream& os, int wrapPosition) const {
     auto printTokens = lineToTokens(_contents);
     for (auto it = printTokens.begin() ; it != printTokens.end() ; ) {
         std::ostringstream oss ;
-        while ( oss.tellp()  <= (wrapPosition - it->length()) ) {
+        do {
             oss << *it << " ";
             ++it;
             if ( it == printTokens.end())
                 break;
-        }
-        cout << oss.str() << "\n";
+        } while ((it->length() + oss.tellp())  <= (wrapPosition ) );
+        os << oss.str() << "\n";
     }
+    return os;
 }
-void MyParagraph::printv2(int wrapPosition) const {
+ostream &MyParagraph::printv2(ostream& os, int wrapPosition) const {
     auto printTokens = lineToTokens(_contents);
     int lineCharCounter = 0;
     for ( const auto &token : printTokens) {
-        if ( (lineCharCounter + token.length() ) > 40 ) {
-            cout << "\n";
+        if ( (lineCharCounter + token.length() ) > wrapPosition ) {
+            os << "\n";
             lineCharCounter = 0;
         }
-        cout << token << " " ;
+        os << token << " " ;
         lineCharCounter += token.length() + 1;
     }
-
+    return os;
 }
 
-void prettyPrint( const vector<MyParagraph> &myVecOfMyParagraph, int wrapPoint) {
+ostream &prettyPrint(ostream &os, const vector<MyParagraph> &myVecOfMyParagraph, int wrapPoint) {
     for ( const auto &currentParagraph : myVecOfMyParagraph) {
-        currentParagraph.printv2(wrapPoint);
-        cout << "\n";
+        currentParagraph.printv2(os, wrapPoint);
+        os << "\n";
     }
+    return os;
 };
+
+ostream &prettyPrintHtml(ostream &os, const vector <MyParagraph> &myVecOfMyParagraph) {
+    for (const auto &currentParagraph : myVecOfMyParagraph) {
+        os << "<p>";
+        os << currentParagraph;
+        os << "</p>" << "\n";
+    }
+    return os;
+}
 
 vector<MyParagraph> makeVecOfMyParagraph (istream &is) {
     // read buffer
