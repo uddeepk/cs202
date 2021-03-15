@@ -1,5 +1,8 @@
 //
-// Created by uddeepk on 3/12/21.
+// MyParagraph.Hpp
+// Uddeep Karki
+// 3/12/21.
+// Header for the MyParagraph class for CS202 HW03
 //
 
 #ifndef BOOK_PRETTY_PRINTER_MYPARAGRAPH_HPP

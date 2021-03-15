@@ -1,5 +1,8 @@
 //
-// Created by uddeepk on 3/12/21.
+// MyParagraph.cpp
+// Uddeep Karki
+// 3/12/21.
+// Source File for the MyParagraph class for CS202 HW03
 //
 
 #include "MyParagraph.hpp"
