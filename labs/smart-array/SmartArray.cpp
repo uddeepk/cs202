@@ -27,7 +27,8 @@ SmartArray::SmartArray(const SmartArray &orig) :_size{orig._size}, _data(new int
 }
 
 SmartArray &SmartArray::operator=(const SmartArray &orig) {
-    if (_data == orig._data)
+//    if (_data == orig._data)
+    if ( &orig == this)
         return *this;
 
     delete [] _data;
