@@ -15,6 +15,9 @@ int Person::getInstances() {
 Person::Person() {
     cout << "Called Person default constructor! \n";
     ++_instances;
+    // change for this lab follows. check for _instances > 5 then throw exception
+    if(_instances > 5 )
+        throw std::runtime_error("More than 5 people were being created");
 }
 
 Person::Person (const Person &per):_name(per._name) {
