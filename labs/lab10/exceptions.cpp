@@ -2,6 +2,16 @@
 using std::cin;
 using std::cout;
 using std::endl;
+#include "Person.hpp"
+//functionC() contains exactly one statement.
+//functionB() declares an object of your class that notifies you of construction and destruction
+//The output of the program is
+    //Starting main()
+    //Your object constructed message
+    //Starting functionB()
+    //Your object destruction message
+    //Caught an exception: functionC() threw std::runtime_error
+    //Ended normally.
 
 void functionC(){
     //your code here
