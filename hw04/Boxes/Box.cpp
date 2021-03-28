@@ -12,11 +12,11 @@ Box::Box(int width, int height):_width(width), _height(height) {
 
 }
 
-int Box::getWidth() {
+int Box::getWidth() const{
     return _width;
 }
 
-int Box::getHeight() {
+int Box::getHeight() const{
     return _height;
 }
 

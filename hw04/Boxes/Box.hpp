@@ -13,8 +13,8 @@
 class Box {
 public:
     Box (int width, int height);
-    int getWidth();
-    int getHeight();
+    int getWidth() const;
+    int getHeight() const;
     void setWidth(int);
     void setHeight(int);
 
