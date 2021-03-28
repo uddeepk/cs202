@@ -5,8 +5,9 @@
 // For Boxes3 Homework in CS 202
 
 // Includes for code to be tested
-#include "box.hpp"   // For class Box
-#include "box.hpp"   // Double inclusion test
+// Capitalized the letters B for Box.hpp
+#include "Box.hpp"   // For class Box
+#include "Box.hpp"   // Double inclusion test
 
 // Includes for testing package & code common to all test programs
 #include <iostream>     // for std::cout, std::endl, std::cin
