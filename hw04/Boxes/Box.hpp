@@ -18,13 +18,15 @@ public:
     void setWidth(int);
     void setHeight(int);
 
-    virtual void print(std::ostream &os) = 0;
+    virtual void print(std::ostream &os) const= 0;
     virtual std::string type() const = 0; // = 0 means pure virtual abstraction, and requires overwriting
 
     virtual ~Box() = default;
 private:
     int _width;
     int _height;
+
+    friend std::ostream& operator<< (std::ostream &os, const Box &b);
 };
 
 

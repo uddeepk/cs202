@@ -6,6 +6,7 @@
  */
 
 #include "Box.hpp"
+using std::ostream;
 
 Box::Box(int width, int height):_width(width), _height(height) {
 
@@ -27,3 +28,7 @@ void Box::setHeight(int height) {
     _height = height;
 }
 
+ostream& operator<< (ostream &os, const Box &b) {
+    b.print(os);
+    return os;
+}
