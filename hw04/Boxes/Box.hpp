@@ -9,6 +9,7 @@
 #define BOXES_BOX_HPP
 
 #include <iostream>
+#include <memory>
 
 class Box {
 public:
@@ -69,4 +70,11 @@ public:
     virtual void print(std::ostream &os) const override;
     virtual std::string type() const override;
 };
+
+//CheckeredBox ends
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// boxFactory factory method declarations
+std::unique_ptr <Box> boxFactory(char c, int w, int h) ;
+
 #endif //BOXES_BOX_HPP
