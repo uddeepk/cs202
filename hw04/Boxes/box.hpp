@@ -33,8 +33,10 @@ private:
     int _width;
     int _height;
 
-    friend std::ostream &operator<<(std::ostream &os, const Box &b);
+
 };
+
+std::ostream &operator<<(std::ostream &os, const Box &b);
 
 //////////////////////////////////////////////////////////////////
 // FilledBox
