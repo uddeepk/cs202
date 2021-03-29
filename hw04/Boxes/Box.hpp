@@ -46,14 +46,27 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //HollowBox
 
-class HollowBox {
+class HollowBox:public Box {
 public:
     HollowBox();
     HollowBox(int width, int height);
 
     virtual void print (std::ostream &os) const override;
-    virtual std::string type()  const override;
+    virtual std::string type() const override;
 };
 
+//HollowBox end
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//CheckeredBox
+
+class CheckeredBox: public Box{
+public:
+    CheckeredBox();
+    CheckeredBox(int width, int height);
+
+    virtual void print(std::ostream &os) const override;
+    virtual std::string type() const override;
+};
 #endif //BOXES_BOX_HPP

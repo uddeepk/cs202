@@ -8,6 +8,8 @@
 #include "Box.hpp"
 using std::ostream;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Box Code
 Box::Box(int width, int height):_width(width), _height(height) {
 
 }
@@ -32,6 +34,7 @@ ostream& operator<< (ostream &os, const Box &b) {
     b.print(os);
     return os;
 }
+//Box source ends
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // FilledBox source, definitions
@@ -42,7 +45,7 @@ FilledBox::FilledBox(): Box(1, 1) {
 FilledBox::FilledBox(int width, int height): Box(width, height) {
 }
 
-void FilledBox::print(std::ostream &os) const {
+void FilledBox::print(ostream &os) const {
     for(int i = 0 ; i < this->getHeight() ; ++i) {
         for (int j = 0 ; j < this ->getWidth() ; ++j) {
             os << "x" ;
@@ -59,4 +62,27 @@ std::string FilledBox::type() const {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //HollowBox source, definitions
+
+HollowBox::HollowBox(): Box(1, 1) {
+}
+
+HollowBox::HollowBox(int width, int height): Box(width, height) {
+}
+
+void HollowBox::print(ostream &os) const {
+    for ( int i = 0 ; i < this->getHeight() ; ++i ) {
+        for ( int j = 0 ; j < this->getWidth() ; ++j) {
+            if( i == 0 || i == this->getHeight()-1 || j == 0 || j == this->getWidth()-1)
+                os << "x";
+            else
+                os << " ";
+        }
+        os << "\n";
+    }
+}
+
+// HollowBox source ends
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CheckeredBox source starts
 
