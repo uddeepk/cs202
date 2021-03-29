@@ -16,6 +16,7 @@ Box::Box(int width, int height) : _width(width), _height(height) {
 
 }
 
+// getter methods
 int Box::getWidth() const {
     return _width;
 }
@@ -24,6 +25,7 @@ int Box::getHeight() const {
     return _height;
 }
 
+//setter methods
 void Box::setWidth(int width) {
     _width = width;
 }
@@ -47,9 +49,10 @@ FilledBox::FilledBox() : Box(1, 1) {
 FilledBox::FilledBox(int width, int height) : Box(width, height) {
 }
 
+// puts the box into output stream passed
 void FilledBox::print(ostream &os) const {
-    for (int i = 0; i < this->getHeight(); ++i) {
-        for (int j = 0; j < this->getWidth(); ++j) {
+    for (int row = 0; row < this->getHeight(); ++row) {
+        for (int col = 0; col < this->getWidth(); ++col) {
             os << "x";
         }
         os << "\n";
@@ -72,9 +75,9 @@ HollowBox::HollowBox(int width, int height) : Box(width, height) {
 }
 
 void HollowBox::print(ostream &os) const {
-    for (int i = 0; i < this->getHeight(); ++i) {
-        for (int j = 0; j < this->getWidth(); ++j) {
-            if (i == 0 || i == this->getHeight() - 1 || j == 0 || j == this->getWidth() - 1)
+    for (int row = 0; row < this->getHeight(); ++row) {
+        for (int col = 0; col < this->getWidth(); ++col) {
+            if (row == 0 || row == this->getHeight() - 1 || col == 0 || col == this->getWidth() - 1)
                 os << "x";
             else
                 os << " ";
@@ -98,9 +101,9 @@ CheckeredBox::CheckeredBox(int width, int height) : Box(width, height) {
 }
 
 void CheckeredBox::print(ostream &os) const {
-    for (int i = 0; i < this->getHeight(); ++i) {
-        for (int j = 0; j < this->getWidth(); ++j) {
-            if ((i + j) % 2) // because its 1 :)
+    for (int row = 0; row < this->getHeight(); ++row) {
+        for (int col = 0; col < this->getWidth(); ++col) {
+            if ((row + col) % 2) // because its 1 :)
                 os << " ";
             else
                 os << "x";
@@ -115,7 +118,8 @@ std::string CheckeredBox::type() const {
 //CheckeredBox source ends
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// boxFactory factory function
+// boxFactory factory function.
+    // returns a unique_ptr to specified box depending on the argument
 unique_ptr<Box> boxFactory(char c, int w, int h) {
     unique_ptr<Box> myBox = nullptr;
     switch (c) {
@@ -129,7 +133,7 @@ unique_ptr<Box> boxFactory(char c, int w, int h) {
             myBox = std::make_unique<CheckeredBox>(w, h);
             break;
         default:
-//          // Do nothing. Can't construct a Box
+//          // Do nothing. Can't construct a Box that is abstract
             break;
     }
     return myBox;
