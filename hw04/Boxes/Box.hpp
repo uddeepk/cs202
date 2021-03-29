@@ -29,5 +29,31 @@ private:
     friend std::ostream& operator<< (std::ostream &os, const Box &b);
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FilledBox
+
+class FilledBox: public Box {
+public:
+    FilledBox();
+    FilledBox(int width , int height );
+
+    virtual void print (std::ostream &os) const override;
+    virtual std::string type()  const override;
+
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//HollowBox
+
+class HollowBox {
+public:
+    HollowBox();
+    HollowBox(int width, int height);
+
+    virtual void print (std::ostream &os) const override;
+    virtual std::string type()  const override;
+};
+
 
 #endif //BOXES_BOX_HPP
