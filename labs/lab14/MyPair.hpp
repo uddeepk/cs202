@@ -36,5 +36,9 @@ template<typename First, typename Second>
 void MyPair<First, Second>::setSecond(Second second) {
     _second = second;
 }
-
+template<typename First, typename Second>
+MyPair<First, Second> makeMyPair( First first, Second second) {
+    MyPair<First, Second> ret {first, second};
+    return ret;
+}
 #endif //LAB14_MYPAIR_HPP

@@ -6,8 +6,15 @@
  * CS202
  */
 #include <iostream>
-
+using std::cout;
+#include "MyPair.hpp"
 int main() {
     std::cout << "Hello, World!" << std::endl;
+    MyPair<int, char> m(2, '2');
+    cout << m.getFirst() << " " << m.getSecond() << "\n";
+
+    auto m2 = MyPair( 3.14, "PIE");
+    cout << m2.getFirst() << " " << m2.getSecond() << "\n";
+
     return 0;
 }
