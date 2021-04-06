@@ -8,16 +8,19 @@
 #include <iostream>
 using std::cout;
 #include "MyPair.hpp"
+#include "Wrapper.hpp"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    MyPair<int, char> m(2, '2');
-    cout << m.getFirst() << " " << m.getSecond() << "\n";
-
-    auto m2 = MyPair( 3.14, "PIE");
-    cout << m2.getFirst() << " " << m2.getSecond() << "\n";
-
-    cout << std::string(m2) << "\n";
-    cout << m2 << "\n";
-    cout << m2;
+//    std::cout << "Hello, World!" << std::endl;
+//    MyPair<int, char> m(2, '2');
+//    cout << m.getFirst() << " " << m.getSecond() << "\n";
+//
+//    auto m2 = MyPair( 3.14, "PIE");
+//    cout << m2.getFirst() << " " << m2.getSecond() << "\n";
+//
+//    cout << std::string(m2) << "\n";
+//    cout << m2 << "\n";
+//    cout << m2;
+    Wrapper<int> w(w)
     return 0;
 }
