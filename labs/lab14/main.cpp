@@ -15,12 +15,15 @@ int main() {
 //    MyPair<int, char> m(2, '2');
 //    cout << m.getFirst() << " " << m.getSecond() << "\n";
 //
-//    auto m2 = MyPair( 3.14, "PIE");
+    auto m2 = MyPair( 3.14, "PIE");
 //    cout << m2.getFirst() << " " << m2.getSecond() << "\n";
 //
-//    cout << std::string(m2) << "\n";
+    cout << std::string(m2) << "\n";
 //    cout << m2 << "\n";
 //    cout << m2;
-    Wrapper<int> w(w)
+    Wrapper<int> w(2);
+    auto s = Wrapper{"Hello World"};
+    cout << w << " " << s << std::endl;
+    cout << std::string(s) << "\n";
     return 0;
 }

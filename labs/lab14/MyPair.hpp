@@ -14,11 +14,7 @@ public:
     Second getSecond() const;
     void setFirst(First first);
     void setSecond(Second second);
-    operator std::string() {
-        std::ostringstream os;
-        os << _first << " " << _second;
-        return os.str();
-    }
+    operator std::string();
     template<typename R, typename S>
     friend std::ostream& operator <<( std::ostream &os, const MyPair<R, S> &m);
 private:
@@ -57,4 +53,12 @@ template<typename First, typename Second>
 std::ostream& operator <<( std::ostream &os, const MyPair<First, Second> &m) {
     return os << m.getFirst() << " " << m.getSecond() ;
 }
+
+template<typename First, typename Second>
+MyPair<First, Second>::operator std::string() {
+    std::ostringstream os;
+    os << _first << " " << _second;
+    return os.str();
+}
+
 #endif //LAB14_MYPAIR_HPP
