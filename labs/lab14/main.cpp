@@ -16,5 +16,6 @@ int main() {
     auto m2 = MyPair( 3.14, "PIE");
     cout << m2.getFirst() << " " << m2.getSecond() << "\n";
 
+    cout << std::string(m2) << "\n";
     return 0;
 }
