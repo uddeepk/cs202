@@ -17,5 +17,7 @@ int main() {
     cout << m2.getFirst() << " " << m2.getSecond() << "\n";
 
     cout << std::string(m2) << "\n";
+    cout << m2 << "\n";
+    cout << m2;
     return 0;
 }
