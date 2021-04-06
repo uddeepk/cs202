@@ -9,8 +9,8 @@ template<typename First, typename Second>
 class MyPair {
 public:
     MyPair(First first, Second second);
-    int getFirst() const;
-    char getSecond() const;
+    First getFirst() const;
+    Second getSecond() const;
     void setFirst(First first);
     void setSecond(Second second);
 private:
