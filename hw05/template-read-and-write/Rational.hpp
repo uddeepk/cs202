@@ -8,15 +8,22 @@
 
 // class invariant:
 // _denominator is always > 0
+template <typename T>
 class Rational {
-   friend std::ostream& operator<<(std::ostream &, const Rational &rhs);
-   friend Rational operator+(const Rational &lhs, const Rational &rhs);
-   friend Rational operator-(const Rational &lhs);
-   friend bool operator==(const Rational &lhs, const Rational &rhs);
-   friend bool operator<(const Rational &lhs, const Rational &rhs);
+   template<typename U>
+   friend std::ostream& operator<<(std::ostream &, const Rational<U> &rhs);
+   template<typename U>
+   friend Rational<U> operator+(const Rational<U> &lhs, const Rational<U> &rhs);
+   template<typename U>
+   friend Rational<U> operator-(const Rational<U> &lhs);
+   template<typename U>
+   friend bool operator==(const Rational<U> &lhs, const Rational<U> &rhs);
+   template <typename U>
+   friend bool operator<(const Rational<U> &lhs, const Rational<U> &rhs);
 
 public:
-   Rational(int,int=1); //NOLINT(google-explicit-constructor): Allow implicit conversion from int
+   Rational();
+   Rational(T,T=1); //NOLINT(google-explicit-constructor): Allow implicit conversion from int
    Rational & operator+=(const Rational& rhs);
    Rational & operator-=(const Rational& rhs);
    Rational & operator*=(const Rational& rhs);
@@ -28,17 +35,27 @@ public:
 private:
    void reduce();
 
-   int _numerator;
-   int _denominator;
+   T _numerator;
+   T _denominator;
 };
 
-Rational operator-(const Rational &lhs, const Rational &rhs);
-Rational operator*(Rational lhs, const Rational &rhs);
-Rational operator/(Rational lhs, const Rational &rhs);
+template<typename T>
+std::ostream &operator<<(std::ostream &os, const Rational<T> &rhs);
 
-bool operator!=(const Rational &lhs, const Rational &rhs);
-bool operator>(const Rational &lhs, const Rational &rhs);
-bool operator<=(const Rational &lhs, const Rational &rhs);
-bool operator>=(const Rational &lhs, const Rational &rhs);
+template <typename T>
+Rational<T> operator-(const Rational<T> &lhs, const Rational<T> &rhs);
+template <typename T>
+Rational<T> operator*(Rational<T> lhs, const Rational<T> &rhs);
+template <typename T>
+Rational<T> operator/(Rational<T> lhs, const Rational<T> &rhs);
+
+template <typename T>
+bool operator!=(const Rational<T> &lhs, const Rational<T> &rhs);
+template <typename T>
+bool operator>(const Rational<T> &lhs, const Rational<T> &rhs);
+template <typename T>
+bool operator<=(const Rational<T> &lhs, const Rational<T> &rhs);
+template <typename T>
+bool operator>=(const Rational<T> &lhs, const Rational<T> &rhs);
 
 #endif//CS202CLASSEXAMPLE_RATIONAL_HPP
