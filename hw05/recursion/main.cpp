@@ -2,6 +2,7 @@
 #include <vector>
 #include <limits>
 #include <iomanip>
+#include "StopWatch.hpp"
 
 //unsigned long long fib(unsigned )
 unsigned long long fib(unsigned long long n);
@@ -19,37 +20,77 @@ long long ack ( long long m, long long n) {
     }
 }
 int main() {
-    std::vector<unsigned long long> fibNums { 0, 1};
-    std::string readBuffer;
-    std::cout << "Hello, World!" << std::endl;
-//    std::cout << fib ( 6) << "\n";
-//    std::cout << fib_loop(6, fibNums)  << "\n";
+    StopWatch myStopwatch{};
+//    std::vector<unsigned long long> fibNums { 0, 1};
+//    std::string readBuffer;
+//    std::cout << "Hello, World!" << std::endl;
+////    std::cout << fib ( 6) << "\n";
+////    std::cout << fib_loop(6, fibNums)  << "\n";
+//
+//    std::cout << "Printing Fibionacci Numbers from both functions\n";
+//    std::cout << "Please press enter to continue";
+//    getline(std::cin, readBuffer);
+//    std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop" <<"\n";
+//    for (unsigned long long i = 0 ; i < 38 ; ++i ) {
+//        std::cout << std::setw(4) << i << std::setw( 22) << fib ( i ) << std::setw(22) << fib_loop(i) << "\n";
+//
+//    }
+//    std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
+//    std::cout << "\n";
+//    std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
+//    std::cout << "Please press enter to continue";
+//    getline(std::cin, readBuffer);
+//    std::cout << std::setw(4) << "n" << std::setw(22) << "fib_loop" << "\n";
+//    for ( unsigned long long i = 0 ; i < 95/*std::numeric_limits<unsigned long long>::max()*/; ++i) {
+//        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << /*" " << fib(i, fibNums) << */  "\n";
+//    }
+//
+//    std::cout << "Notice the overflow at n = 94, for the 95th Fibionacci number" << "\n";
+//    std::cout << "Thus the bigges number that can be computed is the 94h Fibionacci number 12200160415121876738.";
+//    std::cout << "\n\n";
+//    std::cout << "Please press enter to continue";
+//    getline(std::cin, readBuffer);
+    char choice;
 
-    std::cout << "Printing Fibionacci Numbers from both functions\n";
-    std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
-    std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop" <<"\n";
-    for (unsigned long long i = 0 ; i < 38 ; ++i ) {
-        std::cout << std::setw(4) << i << std::setw( 22) << fib ( i ) << std::setw(22) << fib_loop(i) << "\n";
+    do {
 
-    }
-    std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
-    std::cout << "\n";
-    std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
-    std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
-    std::cout << std::setw(4) << "n" << std::setw(22) << "fib_loop" << "\n";
-    for ( unsigned long long i = 0 ; i < 95/*std::numeric_limits<unsigned long long>::max()*/; ++i) {
-        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << /*" " << fib(i, fibNums) << */  "\n";
-    }
+        long long x, y;
+        while (true) {
+            std::cout << "Please enter two numbers to find Ackerman numbers: ";
+            if (std::cin >> x >> y) {
+                break;
+            } else {
+                std::cout << "Invalid input! Please enter two integer values" << "\n";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
+        }
+        myStopwatch.Start();
+        auto ackNumber = ack(x, y);
+        myStopwatch.Stop();
 
-    std::cout << "Notice the overflow at n = 94, for the 95th Fibionacci number" << "\n";
-    std::cout << "Thus the bigges number that can be computed is the 94h Fibionacci number 12200160415121876738.";
-    std::cout << "\n\n";
-    std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
+        std::cout << "Ackerman (" << x << ", " << y << ") = " << ackNumber << "\n";
+        std::cout << "Time taken : " << myStopwatch.getCurrentTimeInSeconds() << " seconds." << "\n";
+        std::cout << "\n";
 
-    std::cout << ack(1, 4) << "\n";
+
+
+        while (true) {
+            std::cout << "Do you want to compute another Ackerman number?(y/n)";
+            std::cin >> choice;
+            if ( choice == 'y' || choice == 'n') {
+                    std::cin.ignore(10000, '\n');
+                break;
+            }
+            else {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Please enter valid choice y or n ! \n";
+                continue;
+            }
+        }
+
+} while ( choice == 'y');
     return 0;
 }
 
