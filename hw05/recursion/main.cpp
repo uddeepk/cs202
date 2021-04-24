@@ -22,7 +22,8 @@ int main() {
 //    std::cout << fib ( 6) << "\n";
 //    std::cout << fib_loop(6, fibNums)  << "\n";
 
-    std::cout << "Printing Fibionacci Numbers from both functions\n";
+    std::cout << "Printing Fibionacci Numbers from both functions.\n";
+    std::cout << "Also printing the sequnce from the Online Encyclopedia of Integer Sequences\n";
     std::cout << "Please press enter to continue";
     getline(std::cin, readBuffer);
     std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop"
