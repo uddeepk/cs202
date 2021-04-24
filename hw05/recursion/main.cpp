@@ -15,20 +15,22 @@ long long ack ( long long m, long long n);
 int main() {
     StopWatch myStopwatch{};
     std::vector <unsigned long long> fibioList =  getFibionacciFromFile ();
-//    std::vector<unsigned long long> fibNums { 0, 1};
-//    std::string readBuffer;
-//    std::cout << "Hello, World!" << std::endl;
-////    std::cout << fib ( 6) << "\n";
-////    std::cout << fib_loop(6, fibNums)  << "\n";
-//
-//    std::cout << "Printing Fibionacci Numbers from both functions\n";
-//    std::cout << "Please press enter to continue";
-//    getline(std::cin, readBuffer);
-//    std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop" <<"\n";
-//    for (unsigned long long i = 0 ; i < 38 ; ++i ) {
-//        std::cout << std::setw(4) << i << std::setw( 22) << fib ( i ) << std::setw(22) << fib_loop(i) << "\n";
-//
-//    }
+    std::vector<unsigned long long> fibNums { 0, 1};
+    std::string readBuffer;
+    std::cout << "Hello, World!" << std::endl;
+//    std::cout << fib ( 6) << "\n";
+//    std::cout << fib_loop(6, fibNums)  << "\n";
+
+    std::cout << "Printing Fibionacci Numbers from both functions\n";
+    std::cout << "Please press enter to continue";
+    getline(std::cin, readBuffer);
+    std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop"
+        << std::setw(22) << "oeis.org" << "\n";
+    for (unsigned long long i = 0 ; i < 38 ; ++i ) {
+        std::cout << std::setw(4) << i << std::setw( 22) << fib ( i ) << std::setw(22) << fib_loop(i)
+            << std::setw(22) << fibioList[i] <<"\n";
+
+    }
 //    std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
 //    std::cout << "\n";
 //    std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
@@ -110,7 +112,7 @@ unsigned long long fib_loop(unsigned long long int n) {
 // Gets the list of fibionacci numbers from the list procured from online encyclopedia of integer sequences
 std::vector<unsigned long long> getFibionacciFromFile() {
     std::vector <unsigned long long> listOfFibio ;
-    std::ifstream myFile ("b0000045.txt");
+    std::ifstream myFile ("b000045.txt");
     std::string readBuffer ;
     while (std::getline(myFile, readBuffer)) {
         std::stringstream ss (readBuffer);
