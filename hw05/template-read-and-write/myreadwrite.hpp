@@ -9,8 +9,6 @@
 
 #include <fstream>
 #include <array>
-//template < typename T>
-//void myWrite( std::ofstream& os, T);
 
 template <typename T>
 std::ostream& myWrite (std::ostream& os,const T &t) {
@@ -25,10 +23,7 @@ std::ostream& myWrite (std::ostream& os, std::array <T, n> const &t) {
     }
     return os;
 }
-//template <typename T>
-//void myWrite (std::ofstream& os,const T t[]) {
-//    os.write( reinterpret_cast<char*> (t), sizeof(t)* t->size());
-//}
+
 
 template <typename T>
 void myRead(std::istream& is, T &t) {
