@@ -5,9 +5,7 @@
 #include <fstream>
 #include "StopWatch.hpp"
 
-//unsigned long long fib(unsigned )
 unsigned long long fib(unsigned long long n);
-
 unsigned long long fib_loop(unsigned long long n);
 std::vector <unsigned long long> getFibionacciFromFile();
 
@@ -18,14 +16,11 @@ int main() {
     std::vector <unsigned long long> fibioList =  getFibionacciFromFile ();
     std::vector<unsigned long long> fibNums { 0, 1};
     std::string readBuffer;
-    std::cout << "Hello, World!" << std::endl;
-//    std::cout << fib ( 6) << "\n";
-//    std::cout << fib_loop(6, fibNums)  << "\n";
 
     std::cout << "Printing Fibionacci Numbers from both functions.\n";
     std::cout << "Also printing the sequnce from the Online Encyclopedia of Integer Sequences\n";
     std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
+    std::getline(std::cin, readBuffer);
     std::cout << std::setw(4) << "n" << std::setw(22) << "fib" << std::setw(22) << "fib_loop"
         << std::setw(22) << "oeis.org" << "\n";
     for (unsigned long long i = 0 ; i < 38 ; ++i ) {
@@ -35,19 +30,20 @@ int main() {
     }
     std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
     std::cout << "\n";
+
     std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
     std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
+    std::getline(std::cin, readBuffer);
     std::cout << std::setw(4) << "n" << std::setw(22) << "fib_loop" << "\n";
-    for ( unsigned long long i = 0 ; i < 95/*std::numeric_limits<unsigned long long>::max()*/; ++i) {
-        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << /*" " << fib(i, fibNums) << */  "\n";
+    for ( unsigned long long i = 0 ; i < 95 ; ++i) {
+        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << "\n";
     }
 
     std::cout << "Notice the overflow at n = 94, for the 95th Fibionacci number" << "\n";
     std::cout << "Thus the bigges number that can be computed is the 94h Fibionacci number 12200160415121876738.";
     std::cout << "\n\n";
     std::cout << "Please press enter to continue";
-    getline(std::cin, readBuffer);
+    std::getline(std::cin, readBuffer);
     char choice;
 
     do {
