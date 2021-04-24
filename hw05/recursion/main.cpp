@@ -2,25 +2,19 @@
 #include <vector>
 #include <limits>
 #include <iomanip>
+#include <fstream>
 #include "StopWatch.hpp"
 
 //unsigned long long fib(unsigned )
 unsigned long long fib(unsigned long long n);
 
 unsigned long long fib_loop(unsigned long long n);
+std::vector <unsigned long long> getFibionacciFromFile();
 
-long long ack ( long long m, long long n) {
-    if (m == 0)
-        return n + 1;
-    if (m > 0) {
-        if (n == 0)
-            return ack(m - 1, 1);
-        if (n > 0)
-            return ack( m - 1 , ack ( m , n - 1));
-    }
-}
+long long ack ( long long m, long long n);
 int main() {
     StopWatch myStopwatch{};
+    std::vector <unsigned long long> fibioList =  getFibionacciFromFile ();
 //    std::vector<unsigned long long> fibNums { 0, 1};
 //    std::string readBuffer;
 //    std::cout << "Hello, World!" << std::endl;
@@ -111,4 +105,30 @@ unsigned long long fib_loop(unsigned long long int n) {
         fibNums.push_back(fibNums[i-1] + fibNums[i-2]);
     }
     return fibNums[n];
+}
+
+// Gets the list of fibionacci numbers from the list procured from online encyclopedia of integer sequences
+std::vector<unsigned long long> getFibionacciFromFile() {
+    std::vector <unsigned long long> listOfFibio ;
+    std::ifstream myFile ("b0000045.txt");
+    std::string readBuffer ;
+    while (std::getline(myFile, readBuffer)) {
+        std::stringstream ss (readBuffer);
+        unsigned long long buf, num;
+        ss >> buf >> num;
+        listOfFibio.push_back(num);
+    }
+
+    return listOfFibio;
+}
+
+long long ack(long long int m, long long int n) {
+    if (m == 0)
+        return n + 1;
+    if (m > 0) {
+        if (n == 0)
+            return ack(m - 1, 1);
+        if (n > 0)
+            return ack( m - 1 , ack ( m , n - 1));
+    }
 }
