@@ -11,7 +11,8 @@ unsigned long long fib(unsigned long long n);
 unsigned long long fib_loop(unsigned long long n);
 std::vector <unsigned long long> getFibionacciFromFile();
 
-long long ack ( long long m, long long n);
+int ack ( int m, int n);
+
 int main() {
     StopWatch myStopwatch{};
     std::vector <unsigned long long> fibioList =  getFibionacciFromFile ();
@@ -31,26 +32,25 @@ int main() {
             << std::setw(22) << fibioList[i] <<"\n";
 
     }
-//    std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
-//    std::cout << "\n";
-//    std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
-//    std::cout << "Please press enter to continue";
-//    getline(std::cin, readBuffer);
-//    std::cout << std::setw(4) << "n" << std::setw(22) << "fib_loop" << "\n";
-//    for ( unsigned long long i = 0 ; i < 95/*std::numeric_limits<unsigned long long>::max()*/; ++i) {
-//        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << /*" " << fib(i, fibNums) << */  "\n";
-//    }
-//
-//    std::cout << "Notice the overflow at n = 94, for the 95th Fibionacci number" << "\n";
-//    std::cout << "Thus the bigges number that can be computed is the 94h Fibionacci number 12200160415121876738.";
-//    std::cout << "\n\n";
-//    std::cout << "Please press enter to continue";
-//    getline(std::cin, readBuffer);
+    std::cout << "Here we only are going to n = 37 because after this, the recursive function takes too long." << "\n";
+    std::cout << "\n";
+    std::cout << "Trying to find max fibionacci number possible in this system" << "\n";
+    std::cout << "Please press enter to continue";
+    getline(std::cin, readBuffer);
+    std::cout << std::setw(4) << "n" << std::setw(22) << "fib_loop" << "\n";
+    for ( unsigned long long i = 0 ; i < 95/*std::numeric_limits<unsigned long long>::max()*/; ++i) {
+        std::cout << std::setw(4) << i << std::setw( 22) << fib_loop ( i ) << /*" " << fib(i, fibNums) << */  "\n";
+    }
+
+    std::cout << "Notice the overflow at n = 94, for the 95th Fibionacci number" << "\n";
+    std::cout << "Thus the bigges number that can be computed is the 94h Fibionacci number 12200160415121876738.";
+    std::cout << "\n\n";
+    std::cout << "Please press enter to continue";
+    getline(std::cin, readBuffer);
     char choice;
 
     do {
-
-        long long x, y;
+        int x, y;
         while (true) {
             std::cout << "Please enter two numbers to find Ackerman numbers: ";
             if (std::cin >> x >> y) {
@@ -67,9 +67,8 @@ int main() {
 
         std::cout << "Ackerman (" << x << ", " << y << ") = " << ackNumber << "\n";
         std::cout << "Time taken : " << myStopwatch.getCurrentTimeInSeconds() << " seconds." << "\n";
+        std::cout << " or " << myStopwatch.getCurrentTimeInMilliseconds() << "milliseconds." << "\n";
         std::cout << "\n";
-
-
 
         while (true) {
             std::cout << "Do you want to compute another Ackerman number?(y/n)";
@@ -86,11 +85,12 @@ int main() {
             }
         }
 
-} while ( choice == 'y');
+    } while ( choice == 'y');
+
     return 0;
 }
 
-unsigned long long fib(unsigned long long int n) {
+unsigned long long fib(unsigned long long n) {
     if ( n <= 0  )
         return 0;
     if ( n == 1)
@@ -98,7 +98,7 @@ unsigned long long fib(unsigned long long int n) {
     return fib ( n - 1) + fib (n - 2 );
 }
 
-unsigned long long fib_loop(unsigned long long int n) {
+unsigned long long fib_loop(unsigned long long n) {
     std::vector<unsigned long long> fibNums { 0, 1};
 
     if ( n >= 0 && n < 2 )
@@ -124,7 +124,7 @@ std::vector<unsigned long long> getFibionacciFromFile() {
     return listOfFibio;
 }
 
-long long ack(long long int m, long long int n) {
+int ack(int m, int n) {
     if (m == 0)
         return n + 1;
     if (m > 0) {
